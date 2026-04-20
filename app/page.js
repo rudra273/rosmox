@@ -3,11 +3,64 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
+/* ── SVG Icons ── */
+const ChipIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" />
+    <rect x="9" y="9" width="6" height="6" />
+    <path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2" />
+  </svg>
+);
+
+const GlobeIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const PhoneIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2" />
+    <path d="M12 18h.01" />
+  </svg>
+);
+
+const ServerIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="8" rx="2" />
+    <rect x="2" y="14" width="20" height="8" rx="2" />
+    <circle cx="6" cy="6" r="1" fill="currentColor" stroke="none" />
+    <circle cx="6" cy="18" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const BookIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+  </svg>
+);
+
+const OrbitIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="2.5" />
+    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(-30 12 12)" />
+    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)" />
+  </svg>
+);
+
+const BoltIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+  </svg>
+);
+
 export default function Home() {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    // Scroll-triggered reveal
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -21,7 +74,6 @@ export default function Home() {
     );
     document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
 
-    // Nav scroll state + hero parallax
     const handleScroll = () => {
       const y = window.scrollY;
       document.querySelector(".nav-pill")?.classList.toggle("nav-scrolled", y > 100);
@@ -31,7 +83,6 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Mouse spotlight on hero
     const hero = heroRef.current;
     const handleMouse = (e) => {
       if (!hero) return;
@@ -57,6 +108,7 @@ export default function Home() {
         <Link href="/" className="nav-logo">ROSMOX</Link>
         <div className="nav-divider" />
         <div className="nav-links">
+          <a href="#services" className="nav-link">Services</a>
           <a href="#products" className="nav-link">Products</a>
           <a href="mailto:placeholder@rosmox.com" className="nav-link">Contact</a>
         </div>
@@ -77,21 +129,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── About ── */}
-      <section className="section section-about" data-animate>
+      {/* ── Stats Bar ── */}
+      <div className="stats-bar" data-animate>
+        <div className="stats-inner">
+          <div className="stat-item">
+            <span className="stat-number">3+</span>
+            <span className="stat-label">Products Shipped</span>
+          </div>
+          <div className="stat-divider" />
+          <div className="stat-item">
+            <span className="stat-number">1K+</span>
+            <span className="stat-label">Users</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Services ── */}
+      <section className="section" id="services" data-animate>
         <div className="section-inner">
-          <span className="section-label">About</span>
-          <h2 className="section-heading">We build software<br />that ships.</h2>
-          <div className="about-text">
-            <p>
-              ROSMOX is a product studio focused on building clean, functional
-              apps and websites. We prioritize craft over complexity — shipping
-              products that people actually use.
-            </p>
-            <p>
-              Every product we release is production-grade: optimized, tested,
-              and built with real users in mind.
-            </p>
+          <span className="section-label">What We Do</span>
+          <h2 className="section-heading">Our capabilities</h2>
+          <div className="services-grid">
+            <div className="service-card" data-animate>
+              <div className="icon-wrap"><ChipIcon size={22} /></div>
+              <h3 className="service-title">Agentic AI Systems</h3>
+              <p className="service-desc">Autonomous AI agents and intelligent automation pipelines that get real work done.</p>
+            </div>
+            <div className="service-card" data-animate>
+              <div className="icon-wrap"><GlobeIcon size={22} /></div>
+              <h3 className="service-title">Websites</h3>
+              <p className="service-desc">Fast, modern websites built with Next.js — optimized for performance and SEO.</p>
+            </div>
+            <div className="service-card" data-animate>
+              <div className="icon-wrap"><PhoneIcon size={22} /></div>
+              <h3 className="service-title">Mobile Apps</h3>
+              <p className="service-desc">Native Android apps built with Flutter — clean, fast, and production-ready.</p>
+            </div>
+            <div className="service-card" data-animate>
+              <div className="icon-wrap"><ServerIcon size={22} /></div>
+              <h3 className="service-title">Backend</h3>
+              <p className="service-desc">APIs, databases, and infrastructure that scale with your product.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -105,10 +183,10 @@ export default function Home() {
           <h2 className="section-heading">What we&apos;ve shipped</h2>
           <div className="products-grid">
             {/* Vidyālaya */}
-            <article className="product-card">
+            <article className="product-card" data-animate>
               <div className="product-card-inner">
                 <div className="product-header">
-                  <div className="product-icon">📚</div>
+                  <div className="icon-wrap icon-wrap-lg"><BookIcon size={26} /></div>
                   <div className="product-meta">
                     <span className="product-badge">Android</span>
                     <span className="product-year">2026</span>
@@ -123,8 +201,31 @@ export default function Home() {
                   <a href="#" className="product-link product-link-primary">
                     Play Store <span className="link-arrow">→</span>
                   </a>
-                  <Link href="/projects/vidyalaya/privacy-policy" className="product-link">
-                    Privacy Policy <span className="link-arrow">→</span>
+                  <Link href="/projects/vidyalaya" className="product-link">
+                    Learn More <span className="link-arrow">→</span>
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* OrbitAI */}
+            <article className="product-card" data-animate>
+              <div className="product-card-inner">
+                <div className="product-header">
+                  <div className="icon-wrap icon-wrap-lg"><OrbitIcon size={26} /></div>
+                  <div className="product-meta">
+                    <span className="product-badge">Android</span>
+                    <span className="product-year">2026</span>
+                  </div>
+                </div>
+                <h3 className="product-name">OrbitAI</h3>
+                <p className="product-description">
+                  On-device AI chat and productivity assistant.
+                  Private, offline-capable, with RAG and local LLM inference.
+                </p>
+                <div className="product-links">
+                  <Link href="/projects/orbitai" className="product-link product-link-primary">
+                    Learn More <span className="link-arrow">→</span>
                   </Link>
                 </div>
               </div>
@@ -134,7 +235,7 @@ export default function Home() {
             <article className="product-card product-card-coming">
               <div className="product-card-inner">
                 <div className="product-header">
-                  <div className="product-icon">⚡</div>
+                  <div className="icon-wrap icon-wrap-lg" style={{ opacity: 0.4 }}><BoltIcon size={26} /></div>
                 </div>
                 <h3 className="product-name">More coming</h3>
                 <p className="product-description">
@@ -142,6 +243,48 @@ export default function Home() {
                 </p>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* ── Testimonials ── */}
+      <section className="section" data-animate>
+        <div className="section-inner">
+          <span className="section-label">Testimonials</span>
+          <h2 className="section-heading">What people say</h2>
+          <div className="testimonials-grid">
+            <div className="testimonial-card" data-animate>
+              <p className="testimonial-quote">&ldquo;ROSMOX delivered exactly what we needed — a clean, fast app that our students love. Professional team with real attention to detail.&rdquo;</p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar" />
+                <div className="testimonial-info">
+                  <span className="testimonial-name">Client Name</span>
+                  <span className="testimonial-role">Role, Company</span>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card" data-animate>
+              <p className="testimonial-quote">&ldquo;Working with ROSMOX was seamless. They understood our requirements perfectly and shipped ahead of schedule.&rdquo;</p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar" />
+                <div className="testimonial-info">
+                  <span className="testimonial-name">Client Name</span>
+                  <span className="testimonial-role">Role, Company</span>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card" data-animate>
+              <p className="testimonial-quote">&ldquo;Top-notch engineering. The backend they built handles our scale effortlessly. Highly recommend.&rdquo;</p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar" />
+                <div className="testimonial-info">
+                  <span className="testimonial-name">Client Name</span>
+                  <span className="testimonial-role">Role, Company</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -159,8 +302,27 @@ export default function Home() {
 
       {/* ── Footer ── */}
       <footer className="site-footer" id="footer">
-        <div className="footer-inner">
-          <span className="footer-logo">ROSMOX</span>
+        <div className="footer-grid">
+          <div className="footer-column footer-brand-col">
+            <span className="footer-brand">ROSMOX</span>
+            <p className="footer-tagline">We build software that ships.</p>
+          </div>
+          <div className="footer-column">
+            <h4 className="footer-heading">Quick Links</h4>
+            <a href="#services" className="footer-link">Services</a>
+            <a href="#products" className="footer-link">Products</a>
+            <a href="#" className="footer-link">Portfolio</a>
+            <a href="mailto:placeholder@rosmox.com" className="footer-link">Contact</a>
+          </div>
+          <div className="footer-column">
+            <h4 className="footer-heading">Connect</h4>
+            <a href="#" className="footer-link">GitHub</a>
+            <a href="#" className="footer-link">Twitter / X</a>
+            <a href="#" className="footer-link">LinkedIn</a>
+            <a href="mailto:placeholder@rosmox.com" className="footer-link">Email</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
           <span className="footer-copy">© 2026 ROSMOX. All rights reserved.</span>
         </div>
       </footer>
