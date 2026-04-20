@@ -1,42 +1,56 @@
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-grotesk",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://rosmox.com"),
   title: {
-    default: "Rosmox",
-    template: "%s | Rosmox",
+    default: "ROSMOX — Product Studio",
+    template: "%s | ROSMOX",
   },
   description:
-    "Rosmox builds focused apps and websites, showcases shipped products, and accepts new freelance projects.",
-  applicationName: "Rosmox",
+    "ROSMOX is a product studio that designs and builds production-grade apps and digital products.",
+  applicationName: "ROSMOX",
   keywords: [
-    "Rosmox",
-    "freelance developer",
+    "ROSMOX",
+    "product studio",
     "app development",
     "website development",
     "Vidyalaya",
+    "software studio",
   ],
   openGraph: {
-    title: "Rosmox",
+    title: "ROSMOX — Product Studio",
     description:
-      "A product studio site for Rosmox apps, launches, and client work.",
+      "We design and build production-grade apps and digital products.",
     url: "https://rosmox.com",
-    siteName: "Rosmox",
+    siteName: "ROSMOX",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rosmox",
+    title: "ROSMOX — Product Studio",
     description:
-      "A product studio site for Rosmox apps, launches, and client work.",
+      "We design and build production-grade apps and digital products.",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="bg-[#efe8da] text-slate-900 antialiased">{children}</body>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
