@@ -1019,6 +1019,17 @@ a {
   font-weight: 600;
 }
 
+.privacy-link {
+  color: var(--accent-1);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.privacy-link:hover {
+  color: var(--accent-2);
+}
+
 /* ── Project Page ── */
 .project-page {
   min-height: 100vh;
