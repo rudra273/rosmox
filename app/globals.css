@@ -431,6 +431,15 @@ a {
   line-height: 1;
 }
 
+.product-app-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 12px 30px -16px rgba(0, 0, 0, 0.8);
+}
+
 .product-meta {
   display: flex;
   gap: 0.625rem;
@@ -1042,6 +1051,16 @@ a {
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.project-app-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 18px 45px -22px rgba(0, 0, 0, 0.85);
+  animation: fadeInUp 0.8s var(--ease-out-expo) both;
 }
 
 .project-hero-meta {

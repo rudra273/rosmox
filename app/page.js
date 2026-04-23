@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 /* ── SVG Icons ── */
@@ -36,24 +37,11 @@ const ServerIcon = ({ size = 24 }) => (
   </svg>
 );
 
-const BookIcon = ({ size = 24 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-  </svg>
-);
-
 const OrbitIcon = ({ size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="2.5" />
     <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(-30 12 12)" />
     <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)" />
-  </svg>
-);
-
-const BoltIcon = ({ size = 24 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
   </svg>
 );
 
@@ -186,7 +174,13 @@ export default function Home() {
             <article className="product-card" data-animate>
               <div className="product-card-inner">
                 <div className="product-header">
-                  <div className="icon-wrap icon-wrap-lg"><BookIcon size={26} /></div>
+                  <Image
+                    src="/project/vidyalaya.png"
+                    alt="Vidyālaya app logo"
+                    width={56}
+                    height={56}
+                    className="product-app-logo"
+                  />
                   <div className="product-meta">
                     <span className="product-badge">Android</span>
                     <span className="product-year">2026</span>
@@ -231,16 +225,35 @@ export default function Home() {
               </div>
             </article>
 
-            {/* Coming soon */}
-            <article className="product-card product-card-coming">
+            {/* Storely */}
+            <article className="product-card" data-animate>
               <div className="product-card-inner">
                 <div className="product-header">
-                  <div className="icon-wrap icon-wrap-lg" style={{ opacity: 0.4 }}><BoltIcon size={26} /></div>
+                  <Image
+                    src="/project/storely.png"
+                    alt="Storely app logo"
+                    width={56}
+                    height={56}
+                    className="product-app-logo"
+                  />
+                  <div className="product-meta">
+                    <span className="product-badge">Android</span>
+                    <span className="product-year">2026</span>
+                  </div>
                 </div>
-                <h3 className="product-name">More coming</h3>
+                <h3 className="product-name">Storely</h3>
                 <p className="product-description">
-                  We&apos;re working on something new. Stay tuned.
+                  Inventory, barcode scanning, and billing for store owners.
+                  Local-first and built for everyday shop workflows.
                 </p>
+                <div className="product-links">
+                  <a href="#" className="product-link product-link-primary">
+                    Play Store <span className="link-arrow">→</span>
+                  </a>
+                  <Link href="/projects/storely" className="product-link">
+                    Learn More <span className="link-arrow">→</span>
+                  </Link>
+                </div>
               </div>
             </article>
           </div>

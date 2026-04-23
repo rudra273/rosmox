@@ -2,12 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Vidyālaya — Offline Textbook Reader",
+  title: "Storely — Inventory and Billing",
   description:
-    "Vidyālaya is a free offline textbook reader for Indian school students. Download once, read anytime.",
+    "Storely helps store owners manage inventory, products, billing, barcode scanning, and local records.",
 };
 
-export default function VidyalayaPage() {
+export default function StorelyPage() {
   return (
     <div className="project-page">
       <div className="grain-overlay" aria-hidden="true" />
@@ -18,11 +18,10 @@ export default function VidyalayaPage() {
         </Link>
       </nav>
 
-      {/* Hero */}
       <div className="project-hero">
         <Image
-          src="/project/vidyalaya.png"
-          alt="Vidyālaya app logo"
+          src="/project/storely.png"
+          alt="Storely app logo"
           width={96}
           height={96}
           className="project-app-logo"
@@ -32,23 +31,55 @@ export default function VidyalayaPage() {
           <span className="product-badge">Android</span>
           <span className="product-year">2026</span>
         </div>
-        <h1 className="project-hero-title">Vidyālaya</h1>
+        <h1 className="project-hero-title">Storely</h1>
         <p className="project-hero-desc">
-          A free, offline textbook reader built for Indian school students.
-          Download your books once, read them anytime — no internet required.
-          No ads, no tracking, no accounts.
+          Inventory and billing management for store owners. Track products,
+          scan barcodes, create bills, and keep business records locally on the
+          device.
         </p>
         <div className="project-actions">
           <a href="#" className="project-btn project-btn-primary">
             Download on Play Store →
           </a>
-          <Link href="/projects/vidyalaya/privacy-policy" className="project-btn project-btn-secondary">
+          <Link
+            href="/projects/storely/privacy-policy"
+            className="project-btn project-btn-secondary"
+          >
             Privacy Policy
           </Link>
         </div>
       </div>
 
-      {/* Screenshots */}
+      <div className="project-section">
+        <h2 className="project-section-title">Features</h2>
+        <div className="project-features-grid">
+          <div className="project-feature">
+            <h4>Inventory Management</h4>
+            <p>Manage product names, prices, quantities, categories, suppliers, and barcodes.</p>
+          </div>
+          <div className="project-feature">
+            <h4>Billing</h4>
+            <p>Create bills inside the app and keep billing records on the device.</p>
+          </div>
+          <div className="project-feature">
+            <h4>Barcode and QR Scanning</h4>
+            <p>Use the camera only when scanning product barcodes and QR codes.</p>
+          </div>
+          <div className="project-feature">
+            <h4>Import and Export</h4>
+            <p>Work with invoices, CSV or Excel files, and QR sheets through file access.</p>
+          </div>
+          <div className="project-feature">
+            <h4>Local Storage</h4>
+            <p>No account, cloud sync, or server storage is required in version 1.0.0.</p>
+          </div>
+          <div className="project-feature">
+            <h4>No Advertising SDK</h4>
+            <p>Version 1.0.0 does not include an advertising SDK or default third-party sharing.</p>
+          </div>
+        </div>
+      </div>
+
       <div className="project-section">
         <h2 className="project-section-title">Screenshots</h2>
         <div className="project-screenshots">
@@ -58,42 +89,10 @@ export default function VidyalayaPage() {
         </div>
       </div>
 
-      {/* Features */}
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          <div className="project-feature">
-            <h4>Offline Reading</h4>
-            <p>Download textbooks once and read anytime without an internet connection.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Zero Data Collection</h4>
-            <p>No accounts, no tracking, no analytics. Your data stays on your device.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Light &amp; Dark Mode</h4>
-            <p>Switch between light and dark themes for comfortable reading day or night.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Class-Based Organization</h4>
-            <p>Books organized by class and subject for quick access to what you need.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Bookmarks</h4>
-            <p>Save your reading progress and jump back to where you left off.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Lightweight</h4>
-            <p>Minimal app size with efficient PDF rendering for smooth performance.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Tech */}
       <div className="project-section">
         <h2 className="project-section-title">Built With</h2>
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-          {["Flutter", "Dart", "PDF Renderer", "SharedPreferences", "Material 3"].map((tech) => (
+          {["Flutter", "Dart", "Local Database", "Barcode Scanner", "File Export"].map((tech) => (
             <span
               key={tech}
               style={{
