@@ -26,9 +26,8 @@ export default function StorelySchemaSection() {
           marginBottom: "1.5rem",
         }}
       >
-        Interactive entity-relationship diagram for Storely&apos;s local SQLite
-        database. Pan and zoom to explore tables, columns, types, and
-        relationships.
+        The basic system design for Storely app. This can be scalable and
+        modifiable as per the client requirement.
       </p>
       <SchemaViewer dbml={STORELY_DBML} />
     </div>
