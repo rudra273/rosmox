@@ -47,10 +47,18 @@ export const metadata = {
   },
 };
 
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body>{children}</body>
+      <body style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative" }}>
+        <div className="grain-overlay" aria-hidden="true" />
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

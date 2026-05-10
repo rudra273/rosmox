@@ -64,7 +64,6 @@ export default function Home() {
 
     const handleScroll = () => {
       const y = window.scrollY;
-      document.querySelector(".nav-pill")?.classList.toggle("nav-scrolled", y > 100);
       document.querySelectorAll(".hero-orb").forEach((orb, i) => {
         orb.style.transform = `translateY(${y * (i + 1) * 0.12}px)`;
       });
@@ -88,20 +87,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh", position: "relative" }}>
-      <div className="grain-overlay" aria-hidden="true" />
-
-      {/* ── Nav ── */}
-      <nav className="nav-pill" id="main-nav">
-        <Link href="/" className="nav-logo">ROSMOX</Link>
-        <div className="nav-divider" />
-        <div className="nav-links">
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#products" className="nav-link">Products</a>
-          <a href="mailto:placeholder@rosmox.com" className="nav-link">Contact</a>
-        </div>
-      </nav>
-
+    <main>
       {/* ── Hero ── */}
       <section className="hero" id="hero" ref={heroRef}>
         <div className="hero-bg">
@@ -307,38 +293,12 @@ export default function Home() {
         <div className="section-inner cta-inner">
           <h2 className="cta-heading">Got a project?</h2>
           <p className="cta-subtext">Let&apos;s build something together.</p>
-          <a href="mailto:placeholder@rosmox.com" className="cta-button">
+          <Link href="/contact" className="cta-button">
             Get in touch <span className="link-arrow">→</span>
-          </a>
+          </Link>
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="site-footer" id="footer">
-        <div className="footer-grid">
-          <div className="footer-column footer-brand-col">
-            <span className="footer-brand">ROSMOX</span>
-            <p className="footer-tagline">We build software that ships.</p>
-          </div>
-          <div className="footer-column">
-            <h4 className="footer-heading">Quick Links</h4>
-            <a href="#services" className="footer-link">Services</a>
-            <a href="#products" className="footer-link">Products</a>
-            <a href="#" className="footer-link">Portfolio</a>
-            <a href="mailto:placeholder@rosmox.com" className="footer-link">Contact</a>
-          </div>
-          <div className="footer-column">
-            <h4 className="footer-heading">Connect</h4>
-            <a href="#" className="footer-link">GitHub</a>
-            <a href="#" className="footer-link">Twitter / X</a>
-            <a href="#" className="footer-link">LinkedIn</a>
-            <a href="mailto:placeholder@rosmox.com" className="footer-link">Email</a>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span className="footer-copy">© 2026 ROSMOX. All rights reserved.</span>
-        </div>
-      </footer>
-    </div>
+    </main>
   );
 }
