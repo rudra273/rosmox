@@ -112,7 +112,7 @@ export default function Home() {
         <div className="hero-content">
           <h1 className="hero-title">ROSMOX</h1>
           <p className="hero-description">
-            We design and build production-grade<br />apps and digital products.
+            We engineer intelligent, AI-powered<br />SaaS solutions for modern businesses.
           </p>
         </div>
       </section>
