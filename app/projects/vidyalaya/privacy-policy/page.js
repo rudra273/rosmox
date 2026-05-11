@@ -9,8 +9,6 @@ export const metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="privacy-page">
-      <div className="grain-overlay" aria-hidden="true" />
-
       <nav className="privacy-nav">
         <Link href="/" className="back-link">
           <span className="back-arrow">←</span> ROSMOX
@@ -139,13 +137,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </article>
 
-      <footer className="site-footer">
-        <div className="footer-inner" style={{ justifyContent: "center" }}>
-          <span className="footer-copy">
-            © 2026 Vidyālaya. All rights reserved.
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

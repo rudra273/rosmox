@@ -10,8 +10,6 @@ export const metadata = {
 export default function VidyalayaPage() {
   return (
     <div className="project-page">
-      <div className="grain-overlay" aria-hidden="true" />
-
       <nav className="privacy-nav">
         <Link href="/" className="back-link">
           <span className="back-arrow">←</span> ROSMOX
@@ -112,11 +110,6 @@ export default function VidyalayaPage() {
         </div>
       </div>
 
-      <footer className="site-footer">
-        <div className="footer-bottom" style={{ marginTop: 0 }}>
-          <span className="footer-copy">© 2026 ROSMOX. All rights reserved.</span>
-        </div>
-      </footer>
     </div>
   );
 }
