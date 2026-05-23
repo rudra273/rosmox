@@ -1,45 +1,32 @@
-"use client";
+import ArrowIcon from "./ui/ArrowIcon";
 
-import { useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+const links = [
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
+];
 
 export default function Navbar() {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const y = window.scrollY;
-      document.querySelector(".nav-pill")?.classList.toggle("nav-scrolled", y > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav className="nav-pill" id="main-nav">
-      <Link href="/" className="nav-logo">ROSMOX</Link>
-      <div className="nav-divider" />
-      <div className="nav-links">
-        {pathname === "/" ? (
-          <>
-            <a href="#services" className="nav-link">Services</a>
-            <a href="#products" className="nav-link">Products</a>
-          </>
-        ) : (
-          <>
-            <Link href="/#services" className="nav-link">Services</Link>
-            <Link href="/#products" className="nav-link">Products</Link>
-          </>
-        )}
-        <Link 
-          href="/contact" 
-          className="nav-link" 
-          style={pathname === "/contact" ? { color: "var(--text-primary)" } : {}}
-        >
-          Contact
-        </Link>
+    <header className="nav">
+      <div className="nav-inner">
+        <a href="#" className="brand">
+          <span className="brand-dot" />
+          <span>Rosmox</span>
+        </a>
+        <nav className="nav-links" aria-label="Primary">
+          {links.map((l) => (
+            <a key={l.href} href={l.href}>
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <a href="#contact" className="nav-cta">
+          Book a call
+          <ArrowIcon size={12} />
+        </a>
       </div>
-    </nav>
+    </header>
   );
 }

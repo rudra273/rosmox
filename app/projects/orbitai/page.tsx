@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "OrbitAI — On-Device AI Assistant",
   description:
     "OrbitAI is an advanced on-device AI chat and productivity assistant for Android. Private, fast, and offline-capable.",

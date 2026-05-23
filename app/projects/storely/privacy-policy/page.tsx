@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy — Storely",
   description:
     "Privacy Policy for the Storely app by ROSMOX — local inventory, billing, and optional user-configured cloud sync.",

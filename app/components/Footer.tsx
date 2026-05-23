@@ -1,29 +1,76 @@
-import Link from "next/link";
+const columns = [
+  {
+    title: "Studio",
+    links: [
+      { href: "#services", label: "Services" },
+      { href: "#work", label: "Work" },
+      { href: "#process", label: "Process" },
+      { href: "#contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      { href: "#", label: "Pulse" },
+      { href: "#", label: "Forge" },
+      { href: "#", label: "Relay" },
+      { href: "#", label: "Lens" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: "#", label: "About" },
+      { href: "#", label: "Careers" },
+      { href: "#", label: "Privacy" },
+      { href: "#", label: "Terms" },
+    ],
+  },
+];
+
+const socials = [
+  { href: "#", label: "X", aria: "X / Twitter" },
+  { href: "#", label: "LinkedIn", aria: "LinkedIn" },
+  { href: "#", label: "GitHub", aria: "GitHub" },
+  { href: "#", label: "Dribbble", aria: "Dribbble" },
+];
 
 export default function Footer() {
   return (
-    <footer className="site-footer" id="footer" style={{ marginTop: 'auto' }}>
-      <div className="footer-grid">
-        <div className="footer-column footer-brand-col">
-          <span className="footer-brand">ROSMOX</span>
-          <p className="footer-tagline">We build software that ships.</p>
+    <footer>
+      <div className="container">
+        <div className="foot-grid">
+          <div className="foot-brand">
+            <a href="#" className="brand">
+              <span className="brand-dot" />
+              <span>Rosmox</span>
+            </a>
+            <p>
+              An AI-native software studio. We design, build, and ship the work
+              that earns trust.
+            </p>
+          </div>
+          {columns.map((col) => (
+            <div className="foot-col" key={col.title}>
+              <h5>{col.title}</h5>
+              {col.links.map((l, i) => (
+                <a key={`${l.label}-${i}`} href={l.href}>
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          ))}
         </div>
-        <div className="footer-column">
-          <h4 className="footer-heading">Quick Links</h4>
-          <Link href="/#services" className="footer-link">Services</Link>
-          <Link href="/#products" className="footer-link">Products</Link>
-          <Link href="/contact" className="footer-link">Contact</Link>
+        <div className="foot-bottom">
+          <span>© 2026 Rosmox Studio. All rights reserved.</span>
+          <div className="socials">
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} aria-label={s.aria}>
+                {s.label}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="footer-column">
-          <h4 className="footer-heading">Connect</h4>
-          <a href="#" className="footer-link">GitHub</a>
-          <a href="#" className="footer-link">Twitter / X</a>
-          <a href="#" className="footer-link">LinkedIn</a>
-          <a href="mailto:hello@rosmox.com" className="footer-link">Email</a>
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <span className="footer-copy">© 2026 ROSMOX. All rights reserved.</span>
       </div>
     </footer>
   );

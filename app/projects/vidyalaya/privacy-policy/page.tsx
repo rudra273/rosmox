@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy — Vidyālaya",
   description:
     "Privacy Policy for the Vidyālaya app by ROSMOX — an offline textbook reader for Indian school students.",

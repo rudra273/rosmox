@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy — Everything",
   description:
     "Privacy Policy for the Everything app — a local-first privacy utility app.",
