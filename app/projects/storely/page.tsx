@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import StorelySchemaSection from "../../components/storely/StorelySchemaSection";
 
 export const metadata: Metadata = {
   title: "Storely — Inventory and Billing",
@@ -79,8 +78,6 @@ export default function StorelyPage() {
           </div>
         </div>
       </div>
-
-      <StorelySchemaSection />
 
       <div className="project-section">
         <h2 className="project-section-title">Screenshots</h2>

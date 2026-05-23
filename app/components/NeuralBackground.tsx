@@ -171,11 +171,13 @@ export default function NeuralBackground() {
     };
     window.addEventListener("resize", onResize);
 
-    const clock = new THREE.Clock();
+    const timer = new THREE.Timer();
+    timer.connect(document);
     let rafId = 0;
-    function animate() {
+    function animate(timestamp?: number) {
       rafId = requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
+      timer.update(timestamp);
+      const t = timer.getElapsed();
 
       currentMorph += (targetMorph - currentMorph) * 0.04;
       mx += (tmx - mx) * 0.06;
@@ -232,6 +234,7 @@ export default function NeuralBackground() {
       window.removeEventListener("scroll", updateScroll);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", onResize);
+      timer.dispose();
       pointsGeo.dispose();
       pointsMat.dispose();
       lineGeo.dispose();

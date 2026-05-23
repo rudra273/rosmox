@@ -1,126 +1,169 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, type ReactNode } from "react";
 import { useInView } from "motion/react";
 import SectionHead from "./SectionHead";
 import ArrowIcon from "../ui/ArrowIcon";
 
 /* ---- per-product preview mocks ---- */
-function MockPulse() {
-  return (
-    <div className="mock-pulse">
-      <div className="bar" />
-      <div className="bar" />
-      <div className="bar" />
-      <div className="grid-mini">
-        <svg viewBox="0 0 100 40" preserveAspectRatio="none">
-          <path
-            d="M0,30 L15,24 L30,28 L45,16 L60,18 L75,10 L100,4"
-            fill="none"
-            stroke="#4F8DFF"
-            strokeWidth="1.5"
-          />
-        </svg>
-      </div>
-    </div>
-  );
-}
-function MockForge() {
+function MockOrbit() {
   return (
     <div className="mock-forge">
       <div className="node">
-        <span className="ring" /> input.ingest
+        <span className="ring" /> local.chat
       </div>
       <div className="node b">
-        <span className="ring" /> llm.reason
+        <span className="ring" /> rag.search
       </div>
       <div className="node a">
-        <span className="ring" /> tool.search
+        <span className="ring" /> bubble.ai
       </div>
       <div className="node r">
-        <span className="ring" /> output.dispatch
+        <span className="ring" /> tasks.run
       </div>
     </div>
   );
 }
-function MockRelay() {
+
+function MockVidyalaya() {
   return (
-    <div className="mock-relay">
-      <div className="row">
-        <span className="pill">inbound</span>
-        <span className="arrow">→</span>
-        <span className="pill">classify</span>
-        <span className="arrow">→</span>
-        <span className="pill">draft</span>
+    <div className="mock-vidyalaya">
+      <div className="book-stack" aria-hidden="true">
+        <div className="book-cover cover-one" />
+        <div className="book-cover cover-two" />
+        <div className="book-cover cover-three" />
       </div>
-      <div className="row">
-        <span className="pill">sent</span>
-        <span className="arrow">→</span>
-        <span className="ok">94% resolved</span>
+      <div className="reader-panel">
+        <div className="reader-toolbar">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="reader-page">
+          <div className="page-line long" />
+          <div className="page-line" />
+          <div className="page-line short" />
+          <div className="bookmark-ribbon" />
+        </div>
+        <div className="reader-progress">
+          <span />
+        </div>
       </div>
     </div>
   );
 }
+
 function MockLens() {
   return <div className="mock-lens" />;
+}
+
+function MockStorely() {
+  return (
+    <div className="mock-storely">
+      <div className="inventory-panel">
+        <div className="inventory-row">
+          <span />
+          <strong />
+        </div>
+        <div className="inventory-row">
+          <span />
+          <strong />
+        </div>
+        <div className="inventory-row low">
+          <span />
+          <strong />
+        </div>
+      </div>
+      <div className="barcode-card" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className="bill-card">
+        <div className="bill-line" />
+        <div className="bill-total" />
+      </div>
+    </div>
+  );
 }
 
 interface ProductData {
   mark: string;
   markColor: "blue" | "green" | "amber" | "red";
+  logo?: {
+    src: string;
+    alt: string;
+  };
   name: string;
   version: string;
   tag: string;
   headline: string;
   desc: string;
-  link: string;
+  href: string;
+  cta: string;
   mock: ReactNode;
 }
 
 const products: ProductData[] = [
   {
-    mark: "P",
-    markColor: "blue",
-    name: "Rosmox Pulse",
-    version: "v2.4 · live",
-    tag: "AI · ANALYTICS",
-    headline: "Product analytics with an analyst built in.",
-    desc: "Ask in plain English. Pulse drafts the query, runs it, and explains the chart. Built for product teams who can't wait on data.",
-    link: "pulse.rosmox.com",
-    mock: <MockPulse />,
-  },
-  {
-    mark: "F",
-    markColor: "green",
-    name: "Rosmox Forge",
-    version: "v1.1 · live",
-    tag: "AGENT · BUILDER",
-    headline: "Compose production agents without the boilerplate.",
-    desc: "Drag tools, wire conditions, deploy as an API. Forge handles retries, memory, and traces so you can focus on the workflow.",
-    link: "forge.rosmox.com",
-    mock: <MockForge />,
-  },
-  {
-    mark: "R",
-    markColor: "amber",
-    name: "Rosmox Relay",
-    version: "v0.9 · beta",
-    tag: "CUSTOMER · AI",
-    headline: "An inbox that triages, drafts, and resolves.",
-    desc: "Trained on your tone and product. Relay handles tier-1 in seconds and escalates the rest with full context.",
-    link: "relay.rosmox.com",
-    mock: <MockRelay />,
-  },
-  {
-    mark: "L",
+    mark: "B",
     markColor: "red",
-    name: "Rosmox Lens",
-    version: "v1.0 · live",
-    tag: "VISION · API",
-    headline: "Vision API for documents, IDs, and receipts.",
-    desc: "Field-level extraction with confidence scores. Drop-in REST, SDKs for Node, Python, and Kotlin.",
-    link: "lens.rosmox.com",
+    name: "BhashaLens",
+    version: "OCR · pipeline",
+    tag: "VISION · INDIC OCR",
+    headline: "Indic OCR for printed and handwritten documents.",
+    desc: "A smart OCR pipeline for accurate image-to-text conversion across regional language documents, built to handle scale.",
+    href: "#contact",
+    cta: "Discuss BhashaLens",
     mock: <MockLens />,
+  },
+  {
+    mark: "O",
+    markColor: "blue",
+    name: "OrbitAI",
+    version: "Android · 2026",
+    tag: "ON-DEVICE · AI",
+    headline: "Private AI chat and productivity on Android.",
+    desc: "Local LLM chat, RAG, floating assistant mode, reminders, tasks, and automation tools that run privately on the device.",
+    href: "/projects/orbitai",
+    cta: "Visit in Play Store",
+    mock: <MockOrbit />,
+  },
+  {
+    mark: "V",
+    markColor: "amber",
+    logo: {
+      src: "/logo/vidyalaya.png",
+      alt: "Vidyālaya logo",
+    },
+    name: "Vidyālaya",
+    version: "Android · 2026",
+    tag: "EDUCATION · OFFLINE",
+    headline: "Offline textbooks for Indian school students.",
+    desc: "Download textbooks once and read anytime with class-based organization, bookmarks, light and dark mode, and no accounts.",
+    href: "/projects/vidyalaya",
+    cta: "Visit in Play Store",
+    mock: <MockVidyalaya />,
+  },
+  {
+    mark: "S",
+    markColor: "green",
+    logo: {
+      src: "/logo/storely.png",
+      alt: "Storely logo",
+    },
+    name: "Storely",
+    version: "Android · 2026",
+    tag: "RETAIL · BILLING",
+    headline: "Inventory, barcode scanning, and billing for stores.",
+    desc: "Manage products, stock, suppliers, barcodes, bills, CSV or Excel imports, and local business records from one app.",
+    href: "/projects/storely",
+    cta: "Visit in Play Store",
+    mock: <MockStorely />,
   },
 ];
 
@@ -132,7 +175,13 @@ function ProductCard({ data }: { data: ProductData }) {
     <div ref={ref} className={`product${live ? " live" : ""}`}>
       <div className="product-head">
         <div className="product-meta">
-          <div className={`product-mark ${data.markColor}`}>{data.mark}</div>
+          <div className={`product-mark ${data.markColor}`}>
+            {data.logo ? (
+              <Image src={data.logo.src} alt={data.logo.alt} width={24} height={24} />
+            ) : (
+              data.mark
+            )}
+          </div>
           <div>
             <div className="product-name">{data.name}</div>
             <div className="product-version">{data.version}</div>
@@ -143,8 +192,8 @@ function ProductCard({ data }: { data: ProductData }) {
       <h3>{data.headline}</h3>
       <p>{data.desc}</p>
       <div className="product-preview">{data.mock}</div>
-      <a href="#" className="product-link">
-        Visit {data.link}
+      <a href={data.href} className="product-link">
+        {data.cta}
         <ArrowIcon size={12} />
       </a>
     </div>
