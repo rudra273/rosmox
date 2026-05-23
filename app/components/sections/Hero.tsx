@@ -16,7 +16,7 @@ export default function Hero() {
           the depth, and ship work that earns trust.
         </p>
         <div className="hero-actions">
-          <PrimaryBtn href="#contact" variant="primary" arrow arrowSize={13}>
+          <PrimaryBtn href="/contact" variant="primary" arrow arrowSize={13}>
             Start a project
           </PrimaryBtn>
           <PrimaryBtn href="#products" variant="ghost">

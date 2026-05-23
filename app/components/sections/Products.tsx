@@ -117,7 +117,7 @@ const products: ProductData[] = [
     tag: "VISION · OCR",
     headline: "Indic OCR for printed and handwritten documents.",
     desc: "A smart OCR pipeline for accurate image-to-text conversion across regional language documents, built to handle scale.",
-    href: "#contact",
+    href: "/contact",
     cta: "Discuss BhashaLens",
     mock: <MockLens />,
   },

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import SectionHead from "./SectionHead";
 
 const testimonials = [
@@ -25,6 +28,17 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [active, setActive] = useState(0);
+  const testimonial = testimonials[active];
+
+  const goPrev = () => {
+    setActive((current) => (current === 0 ? testimonials.length - 1 : current - 1));
+  };
+
+  const goNext = () => {
+    setActive((current) => (current + 1) % testimonials.length);
+  };
+
   return (
     <section id="words">
       <div className="container">
@@ -32,22 +46,30 @@ export default function Testimonials() {
           label="From clients"
           title="Words from the people we've shipped with."
         />
-        <div className="testimonials">
-          {testimonials.map((t) => (
-            <div className="t-card" key={t.name}>
+        <div className="testimonials-shell">
+          <div className="testimonials" aria-live="polite">
+            <div className="t-card" key={testimonial.name}>
               <p className="quote">
                 <span className="mark">&quot;</span>
-                {t.quote}
+                {testimonial.quote}
               </p>
               <div className="t-foot">
-                <div className="t-avatar">{t.avatar}</div>
+                <div className="t-avatar">{testimonial.avatar}</div>
                 <div>
-                  <div className="t-name">{t.name}</div>
-                  <div className="t-role">{t.role}</div>
+                  <div className="t-name">{testimonial.name}</div>
+                  <div className="t-role">{testimonial.role}</div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+          <div className="testimonial-controls" aria-label="Testimonial controls">
+            <button type="button" onClick={goPrev} aria-label="Previous testimonial">
+              &lt;
+            </button>
+            <button type="button" onClick={goNext} aria-label="Next testimonial">
+              &gt;
+            </button>
+          </div>
         </div>
       </div>
     </section>

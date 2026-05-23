@@ -38,7 +38,7 @@ export default function Navbar() {
               </a>
             ))}
           </nav>
-          <a href="#contact" className="nav-cta">
+          <a href="/contact" className="nav-cta">
             Book a call
             <ArrowIcon size={12} />
           </a>
@@ -69,7 +69,7 @@ export default function Navbar() {
           </div>
           <div className="mobile-menu-divider" />
           <a
-            href="#contact"
+            href="/contact"
             className="mobile-menu-cta"
             style={{ "--i": links.length } as CSSProperties}
             onClick={() => setMenuOpen(false)}

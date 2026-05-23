@@ -20,8 +20,8 @@ export default function Contact() {
             <PrimaryBtn href="mailto:hello@rosmox.com" variant="primary" arrow arrowSize={13}>
               hello@rosmox.com
             </PrimaryBtn>
-            <PrimaryBtn href="#" variant="ghost">
-              Book a 20-min intro
+            <PrimaryBtn href="/contact" variant="ghost">
+              Book a call
             </PrimaryBtn>
           </div>
         </div>

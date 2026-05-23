@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <TrustMarquee />
       <Services />
-      <Interlude />
+      {/* <Interlude /> */}
       <Products />
       <Work />
       <Process />
