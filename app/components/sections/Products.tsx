@@ -114,7 +114,7 @@ const products: ProductData[] = [
     markColor: "red",
     name: "BhashaLens",
     version: "OCR · pipeline",
-    tag: "VISION · INDIC OCR",
+    tag: "VISION · OCR",
     headline: "Indic OCR for printed and handwritten documents.",
     desc: "A smart OCR pipeline for accurate image-to-text conversion across regional language documents, built to handle scale.",
     href: "#contact",
