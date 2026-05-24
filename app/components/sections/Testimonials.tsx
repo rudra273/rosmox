@@ -27,47 +27,60 @@ const testimonials = [
   },
 ];
 
+const total = testimonials.length;
+const wrap = (index: number) => (index % total + total) % total;
+
 export default function Testimonials() {
   const [active, setActive] = useState(0);
   const testimonial = testimonials[active];
-  const stripRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Native horizontal scroll: pick whichever card is nearest the center.
-  const onScroll = () => {
-    const strip = stripRef.current;
-    if (!strip) return;
-    const center = strip.scrollLeft + strip.clientWidth / 2;
-    let nearest = 0;
-    let min = Infinity;
-    cardRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const mid = el.offsetLeft + el.clientWidth / 2;
-      const dist = Math.abs(mid - center);
-      if (dist < min) {
-        min = dist;
-        nearest = i;
-      }
-    });
-    if (nearest !== active) setActive(nearest);
-  };
+  // Three circular slots: previous (left), active (center), next (right).
+  const slots = [
+    { offset: -1, index: wrap(active - 1) },
+    { offset: 0, index: active },
+    { offset: 1, index: wrap(active + 1) },
+  ];
 
-  const select = (i: number) => {
-    setActive(i);
-    cardRefs.current[i]?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
-  };
+  const rotate = (step: number) => setActive((current) => wrap(current + step));
 
-  // Center the first card on mount (horizontal only — don't scroll the page).
+  // Gesture handling: wheel (two-finger / trackpad) + swipe, both rotate the
+  // circular set. Loops infinitely in either direction.
+  const cardsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const strip = stripRef.current;
-    const first = cardRefs.current[0];
-    if (!strip || !first) return;
-    strip.scrollLeft =
-      first.offsetLeft - strip.clientWidth / 2 + first.clientWidth / 2;
+    const el = cardsRef.current;
+    if (!el) return;
+
+    let wheelLock = false;
+    const onWheel = (e: WheelEvent) => {
+      const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(dx) < 8) return;
+      e.preventDefault(); // keep the page from scrolling while swiping the strip
+      if (wheelLock) return;
+      wheelLock = true;
+      rotate(dx > 0 ? 1 : -1);
+      setTimeout(() => (wheelLock = false), 280);
+    };
+
+    let startX: number | null = null;
+    const onPointerDown = (e: PointerEvent) => {
+      startX = e.clientX;
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) < 40) return;
+      rotate(dx < 0 ? 1 : -1); // drag left → next, right → prev
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointerup", onPointerUp);
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointerup", onPointerUp);
+    };
   }, []);
 
   return (
@@ -88,23 +101,25 @@ export default function Testimonials() {
               className="t-cards"
               role="tablist"
               aria-label="Choose a testimonial"
-              ref={stripRef}
-              onScroll={onScroll}
+              ref={cardsRef}
+              style={{ touchAction: "pan-y" }}
             >
-              <span className="t-spacer" aria-hidden="true" />
-              {testimonials.map((item, i) => {
-                const isActive = i === active;
+              {slots.map(({ offset, index }) => {
+                const item = testimonials[index];
+                const isActive = offset === 0;
                 return (
                   <button
-                    key={item.name}
+                    key={offset}
                     type="button"
                     role="tab"
                     aria-selected={isActive}
-                    ref={(el) => {
-                      cardRefs.current[i] = el;
-                    }}
+                    aria-label={
+                      offset < 0
+                        ? "Show previous testimonial"
+                        : "Show next testimonial"
+                    }
                     className={`t-profile${isActive ? " is-active" : ""}`}
-                    onClick={() => select(i)}
+                    onClick={() => rotate(isActive ? 1 : offset)}
                   >
                     <div className="t-avatar">{item.avatar}</div>
                     <div>
@@ -114,7 +129,6 @@ export default function Testimonials() {
                   </button>
                 );
               })}
-              <span className="t-spacer" aria-hidden="true" />
             </div>
           </div>
         </div>

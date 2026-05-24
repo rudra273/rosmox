@@ -1275,19 +1275,15 @@ section { position: relative; padding: 100px 0; }
 .t-cards {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   margin-top: 40px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
 }
-.t-cards::-webkit-scrollbar { display: none; }
-/* Spacers let the first & last profile reach the center of the strip. */
-.t-spacer { flex: 0 0 calc(50% - 90px); }
+.t-cards:active { cursor: grabbing; }
 .t-profile {
   flex: 0 0 auto;
-  scroll-snap-align: center;
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -1333,11 +1329,26 @@ section { position: relative; padding: 100px 0; }
   }
   .testimonials { max-width: none; }
   .t-mark { font-size: 68px; }
-  /* Edge-to-edge native scroll strip; cards keep their natural width. */
-  .t-cards { gap: 10px; margin-inline: -24px; }
-  .t-profile { padding: 12px 16px; gap: 10px; }
-  .t-profile .t-name,
-  .t-profile .t-role { white-space: nowrap; }
+  /* Keep the prev/active/next peek layout; shrink neighbors so left & right
+     cards peek at the edges without overflowing. */
+  .t-cards { gap: 6px; flex-wrap: nowrap; }
+  .t-profile {
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 12px 12px;
+    gap: 9px;
+  }
+  .t-profile.is-active { flex: 1 1 auto; }
+  .t-profile:not(.is-active) {
+    flex: 0 1 64px;
+    overflow: hidden;
+  }
+  .t-profile:not(.is-active) .t-name,
+  .t-profile:not(.is-active) .t-role {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* =====================================================
