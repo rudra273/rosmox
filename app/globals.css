@@ -621,14 +621,14 @@ section { position: relative; padding: 100px 0; }
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 0 20px 0;
-    margin: 0;
-    scroll-padding-left: 0;
+    padding: 4px 24px 20px 24px;
+    margin-inline: -24px;
+    scroll-padding-left: 24px;
     scrollbar-width: none;
   }
   .services-scroll::-webkit-scrollbar { display: none; }
   .services-scroll .service {
-    flex: 0 0 88%;
+    flex: 0 0 86%;
     scroll-snap-align: start;
     border-radius: var(--radius-lg);
     border: 1px solid var(--line);
@@ -1000,13 +1000,14 @@ section { position: relative; padding: 100px 0; }
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 0 20px 0;
-    margin: 0;
+    padding: 4px 24px 20px 24px;
+    margin-inline: -24px;
+    scroll-padding-left: 24px;
     scrollbar-width: none;
   }
   .products::-webkit-scrollbar { display: none; }
   .products .product {
-    flex: 0 0 88%;
+    flex: 0 0 86%;
     scroll-snap-align: start;
     opacity: 1; transform: none;
   }
