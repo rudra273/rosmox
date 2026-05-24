@@ -1483,6 +1483,7 @@ footer {
   border-bottom: 1px solid var(--line);
   margin-bottom: 56px;
 }
+.project-back { display: inline-flex; margin-bottom: 26px; }
 .project-app-logo {
   border-radius: 18px;
   border: 1px solid var(--line-strong);
@@ -1675,18 +1676,18 @@ footer {
   position: relative; z-index: 1;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 120px 0 120px;
+  padding: 110px 0 120px;
 }
 .products-page-head {
-  max-width: 720px;
-  margin-bottom: 48px;
-  padding-inline: 16px;
+  max-width: 640px;
+  margin-bottom: 40px;
+  padding-inline: 4px;
 }
-.products-explorer { padding-inline: 16px; }
+.products-explorer { padding-inline: 4px; }
 .products-page-title {
-  font-size: clamp(34px, 5vw, 58px);
-  font-weight: 500; letter-spacing: -0.035em; line-height: 1.03;
-  margin: 14px 0 16px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;
+  margin: 12px 0 14px;
 }
 .products-page-sub {
   font-size: clamp(15px, 1.6vw, 18px);
@@ -1745,6 +1746,29 @@ footer {
 .products-index-dot.amber { background: var(--amber); box-shadow: 0 0 10px var(--amber); }
 .products-index-dot.red { background: var(--red); box-shadow: 0 0 10px var(--red); }
 .products-index-dot.violet { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
+
+/* Mock reveal animations are written for `.product.live` (homepage cards).
+   On /products the wrapper is `.products-detail-preview.live`, so alias the
+   reveal triggers here too (otherwise lens/forge mocks stay invisible). */
+.products-detail-preview.live .mock-lens::before { opacity: 1; transform: scale(1); transition-delay: 0.3s; }
+.products-detail-preview.live .mock-lens::after { opacity: 1; transition-delay: 0.9s; }
+.products-detail-preview.live .mock-forge .node { opacity: 1; transform: translateY(0); }
+.products-detail-preview.live .mock-forge .node:nth-child(1) { transition-delay: 0.1s; }
+.products-detail-preview.live .mock-forge .node:nth-child(2) { transition-delay: 0.25s; }
+.products-detail-preview.live .mock-forge .node:nth-child(3) { transition-delay: 0.4s; }
+.products-detail-preview.live .mock-forge .node:nth-child(4) { transition-delay: 0.55s; }
+.products-detail-preview.live .mock-vidyalaya .book-cover { opacity: 1; transform: translateY(0) rotate(-8deg); }
+.products-detail-preview.live .mock-vidyalaya .cover-two { transition-delay: 0.12s; transform: translateY(0) rotate(2deg); }
+.products-detail-preview.live .mock-vidyalaya .cover-three { transition-delay: 0.24s; transform: translateY(0) rotate(9deg); }
+.products-detail-preview.live .mock-vidyalaya .reader-panel { opacity: 1; transform: translateX(0); transition-delay: 0.32s; }
+.products-detail-preview.live .mock-vidyalaya .reader-progress span { width: 72%; transition-delay: 0.7s; }
+.products-detail-preview.live .mock-storely .inventory-panel,
+.products-detail-preview.live .mock-storely .barcode-card,
+.products-detail-preview.live .mock-storely .bill-card { opacity: 1; transform: translateY(0); }
+.products-detail-preview.live .mock-storely .inventory-panel { transition-delay: 0.1s; }
+.products-detail-preview.live .mock-storely .barcode-card { transition-delay: 0.25s; }
+.products-detail-preview.live .mock-storely .bill-card { transition-delay: 0.42s; }
+.products-detail-preview.live .mock-storely .barcode-card span { transform: scaleY(1); transition-delay: 0.55s; }
 
 /* Right column — scrolls through stacked slides */
 .products-detail { position: relative; }

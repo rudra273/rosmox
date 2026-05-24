@@ -56,6 +56,9 @@ export default function BhashaLensPage() {
     <div className="project-page">
       {/* Hero */}
       <div className="project-hero">
+        <Link href="/products" className="back-link project-back">
+          <span className="back-arrow">←</span> All products
+        </Link>
         <div className="project-hero-meta">
           <span className="product-badge">Vision · OCR</span>
           <span className="product-year">2026</span>

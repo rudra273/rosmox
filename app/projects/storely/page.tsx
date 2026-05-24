@@ -12,6 +12,9 @@ export default function StorelyPage() {
   return (
     <div className="project-page">
       <div className="project-hero">
+        <Link href="/products" className="back-link project-back">
+          <span className="back-arrow">←</span> All products
+        </Link>
         <Image
           src="/logo/storely.png"
           alt="Storely app logo"

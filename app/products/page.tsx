@@ -38,6 +38,9 @@ export default function ProductsPage() {
   return (
     <div className="products-page">
       <header className="products-page-head">
+        <Link href="/" className="back-link project-back">
+          <span className="back-arrow">←</span> Home
+        </Link>
         <div className="section-label">Our products</div>
         <h1 className="products-page-title">
           Everything we&apos;ve built, in one place.

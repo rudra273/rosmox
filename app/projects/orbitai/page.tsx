@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "OrbitAI — On-Device AI Assistant",
@@ -11,6 +12,9 @@ export default function OrbitAIPage() {
     <div className="project-page">
       {/* Hero */}
       <div className="project-hero">
+        <Link href="/products" className="back-link project-back">
+          <span className="back-arrow">←</span> All products
+        </Link>
         <div className="project-hero-meta">
           <span className="product-badge">Android</span>
           <span className="product-year">2026</span>

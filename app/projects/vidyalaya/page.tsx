@@ -13,6 +13,9 @@ export default function VidyalayaPage() {
     <div className="project-page">
       {/* Hero */}
       <div className="project-hero">
+        <Link href="/products" className="back-link project-back">
+          <span className="back-arrow">←</span> All products
+        </Link>
         <Image
           src="/logo/vidyalaya.png"
           alt="Vidyālaya app logo"
