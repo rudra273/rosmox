@@ -69,13 +69,13 @@ export default function Testimonials() {
                     aria-selected={isActive}
                     aria-label={
                       isActive
-                        ? undefined
+                        ? "Show next testimonial"
                         : offset < 0
                         ? "Show previous testimonial"
                         : "Show next testimonial"
                     }
                     className={`t-profile${isActive ? " is-active" : ""}`}
-                    onClick={() => !isActive && rotate(offset)}
+                    onClick={() => rotate(isActive ? 1 : offset)}
                   >
                     <div className="t-avatar">{item.avatar}</div>
                     <div>
