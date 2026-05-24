@@ -11,8 +11,8 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="privacy-page">
       <nav className="privacy-nav">
-        <Link href="/" className="back-link">
-          <span className="back-arrow">←</span> ROSMOX
+        <Link href="/projects/vidyalaya" className="back-link">
+          <span className="back-arrow">←</span> Vidyālaya
         </Link>
       </nav>
 

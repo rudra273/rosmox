@@ -11,8 +11,8 @@ export default function StorelyPrivacyPolicyPage() {
   return (
     <div className="privacy-page">
       <nav className="privacy-nav">
-        <Link href="/" className="back-link">
-          <span className="back-arrow">←</span> ROSMOX
+        <Link href="/projects/storely" className="back-link">
+          <span className="back-arrow">←</span> Storely
         </Link>
       </nav>
 
