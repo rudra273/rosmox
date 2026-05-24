@@ -8,6 +8,22 @@ import ArrowIcon from "../components/ui/ArrowIcon";
 export default function ProductsPage() {
   const [active, setActive] = useState(0);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const pillRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const barRef = useRef<HTMLOListElement>(null);
+
+  // Keep the active pill centered in the horizontal mobile bar without
+  // affecting the page's vertical scroll. Compute scrollLeft relative to the
+  // bar (offsetParent-independent) so the last pill can fully reveal.
+  useEffect(() => {
+    const bar = barRef.current;
+    const pill = pillRefs.current[active];
+    if (!bar || !pill) return;
+    const barRect = bar.getBoundingClientRect();
+    const pillRect = pill.getBoundingClientRect();
+    const delta =
+      pillRect.left - barRect.left - bar.clientWidth / 2 + pillRect.width / 2;
+    bar.scrollTo({ left: bar.scrollLeft + delta, behavior: "smooth" });
+  }, [active]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,11 +70,14 @@ export default function ProductsPage() {
       <div className="products-explorer">
         {/* Left: sticky index (does not scroll with the page) */}
         <nav className="products-index" aria-label="Product list">
-          <ol>
+          <ol ref={barRef}>
             {products.map((p, i) => (
               <li key={p.name}>
                 <button
                   type="button"
+                  ref={(el) => {
+                    pillRefs.current[i] = el;
+                  }}
                   className={`products-index-item${i === active ? " is-active" : ""}`}
                   aria-current={i === active ? "true" : undefined}
                   onClick={() => scrollTo(i)}
