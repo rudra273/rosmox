@@ -104,7 +104,6 @@ interface ProductData {
   headline: string;
   desc: string;
   href: string;
-  cta: string;
   mock: ReactNode;
 }
 
@@ -117,8 +116,7 @@ const products: ProductData[] = [
     tag: "VISION · OCR",
     headline: "Indic OCR for printed and handwritten documents.",
     desc: "A smart OCR pipeline for accurate image-to-text conversion across regional language documents, built to handle scale.",
-    href: "/contact",
-    cta: "Discuss BhashaLens",
+    href: "/projects/bhashalens",
     mock: <MockLens />,
   },
   {
@@ -130,7 +128,6 @@ const products: ProductData[] = [
     headline: "Private AI chat and productivity on Android.",
     desc: "Local LLM chat, RAG, floating assistant mode, reminders, tasks, and automation tools that run privately on the device.",
     href: "/projects/orbitai",
-    cta: "Visit in Play Store",
     mock: <MockOrbit />,
   },
   {
@@ -142,11 +139,10 @@ const products: ProductData[] = [
     },
     name: "Vidyālaya",
     version: "Android · 2026",
-    tag: "EDUCATION · OFFLINE",
+    tag: "EDUCATION",
     headline: "Offline textbooks for Indian school students.",
     desc: "Download textbooks once and read anytime with class-based organization, bookmarks, light and dark mode, and no accounts.",
     href: "/projects/vidyalaya",
-    cta: "Visit in Play Store",
     mock: <MockVidyalaya />,
   },
   {
@@ -162,7 +158,6 @@ const products: ProductData[] = [
     headline: "Inventory, barcode scanning, and billing for stores.",
     desc: "Manage products, stock, suppliers, barcodes, bills, CSV or Excel imports, and local business records from one app.",
     href: "/projects/storely",
-    cta: "Visit in Play Store",
     mock: <MockStorely />,
   },
 ];
@@ -193,7 +188,7 @@ function ProductCard({ data }: { data: ProductData }) {
       <p>{data.desc}</p>
       <div className="product-preview">{data.mock}</div>
       <a href={data.href} className="product-link">
-        {data.cta}
+        Learn more
         <ArrowIcon size={12} />
       </a>
     </div>

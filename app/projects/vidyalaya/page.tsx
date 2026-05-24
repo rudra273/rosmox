@@ -11,16 +11,10 @@ export const metadata: Metadata = {
 export default function VidyalayaPage() {
   return (
     <div className="project-page">
-      <nav className="privacy-nav">
-        <Link href="/" className="back-link">
-          <span className="back-arrow">←</span> ROSMOX
-        </Link>
-      </nav>
-
       {/* Hero */}
       <div className="project-hero">
         <Image
-          src="/project/vidyalaya.png"
+          src="/logo/vidyalaya.png"
           alt="Vidyālaya app logo"
           width={96}
           height={96}
@@ -91,22 +85,9 @@ export default function VidyalayaPage() {
       {/* Tech */}
       <div className="project-section">
         <h2 className="project-section-title">Built With</h2>
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+        <div className="project-tech">
           {["Flutter", "Dart", "PDF Renderer", "SharedPreferences", "Material 3"].map((tech) => (
-            <span
-              key={tech}
-              style={{
-                padding: "0.375rem 0.875rem",
-                borderRadius: "100px",
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border-subtle)",
-                fontSize: "0.8125rem",
-                color: "var(--text-secondary)",
-                fontWeight: 500,
-              }}
-            >
-              {tech}
-            </span>
+            <span key={tech}>{tech}</span>
           ))}
         </div>
       </div>

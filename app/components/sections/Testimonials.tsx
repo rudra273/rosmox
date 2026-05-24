@@ -9,35 +9,39 @@ const testimonials = [
     name: "Anya Kowal",
     role: "Co-founder, Halden Labs",
     quote:
-      "Rosmox shipped our v1 in eight weeks, and it's still the cleanest codebase we own. The kind of team you write a retainer with, not a contract.",
+      "Rosmox shipped our v1 in eight weeks, and it's still the cleanest codebase we own.",
   },
   {
     avatar: "RM",
     name: "Rahul Menon",
     role: "VP Operations, Sundra",
     quote:
-      "They treated our agent infrastructure like a real product, not a demo. Three months in, our support backlog is gone.",
+      "They treated our agent infrastructure like a real product. Our support backlog is gone.",
   },
   {
     avatar: "EC",
     name: "Elena Costa",
     role: "Founder, Mirroir Studio",
     quote:
-      "Design that holds up under load. Engineering that holds up under scale. Rare to find both under one roof.",
+      "Design that holds up under load. Engineering that holds up under scale.",
   },
 ];
+
+const total = testimonials.length;
+const wrap = (index: number) => (index % total + total) % total;
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
   const testimonial = testimonials[active];
 
-  const goPrev = () => {
-    setActive((current) => (current === 0 ? testimonials.length - 1 : current - 1));
-  };
+  // Three circular slots: previous, active (center), next.
+  const slots = [
+    { offset: -1, index: wrap(active - 1) },
+    { offset: 0, index: active },
+    { offset: 1, index: wrap(active + 1) },
+  ];
 
-  const goNext = () => {
-    setActive((current) => (current + 1) % testimonials.length);
-  };
+  const rotate = (step: number) => setActive((current) => wrap(current + step));
 
   return (
     <section id="words">
@@ -48,27 +52,40 @@ export default function Testimonials() {
         />
         <div className="testimonials-shell">
           <div className="testimonials" aria-live="polite">
-            <div className="t-card" key={testimonial.name}>
-              <p className="quote">
-                <span className="mark">&quot;</span>
-                {testimonial.quote}
-              </p>
-              <div className="t-foot">
-                <div className="t-avatar">{testimonial.avatar}</div>
-                <div>
-                  <div className="t-name">{testimonial.name}</div>
-                  <div className="t-role">{testimonial.role}</div>
-                </div>
-              </div>
+            <blockquote className="t-quote" key={testimonial.name}>
+              <span className="t-mark t-mark-open">&ldquo;</span>
+              <p className="t-quote-text">{testimonial.quote}</p>
+              <span className="t-mark t-mark-close">&rdquo;</span>
+            </blockquote>
+            <div className="t-cards" role="tablist" aria-label="Choose a testimonial">
+              {slots.map(({ offset, index }) => {
+                const item = testimonials[index];
+                const isActive = offset === 0;
+                return (
+                  <button
+                    key={offset}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={
+                      isActive
+                        ? undefined
+                        : offset < 0
+                        ? "Show previous testimonial"
+                        : "Show next testimonial"
+                    }
+                    className={`t-profile${isActive ? " is-active" : ""}`}
+                    onClick={() => !isActive && rotate(offset)}
+                  >
+                    <div className="t-avatar">{item.avatar}</div>
+                    <div>
+                      <div className="t-name">{item.name}</div>
+                      <div className="t-role">{item.role}</div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-          </div>
-          <div className="testimonial-controls" aria-label="Testimonial controls">
-            <button type="button" onClick={goPrev} aria-label="Previous testimonial">
-              &lt;
-            </button>
-            <button type="button" onClick={goNext} aria-label="Next testimonial">
-              &gt;
-            </button>
           </div>
         </div>
       </div>

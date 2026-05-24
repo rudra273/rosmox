@@ -27,7 +27,7 @@ export default function Navbar() {
     <header className={`nav${menuOpen ? " menu-open" : ""}`}>
       <div className="nav-panel">
         <div className="nav-inner">
-          <a href="#" className="brand">
+          <a href="/" className="brand">
             <span className="brand-dot" />
             <span>Rosmox</span>
           </a>
