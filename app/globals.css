@@ -1328,7 +1328,7 @@ section { position: relative; padding: 100px 0; }
   .t-mark { font-size: 68px; }
   /* Keep the prev/active/next peek layout, but shrink the cards so the
      left & right neighbors still peek at the edges without overflowing. */
-  .t-cards { gap: 6px; flex-wrap: nowrap; }
+  .t-cards { gap: 6px; flex-wrap: nowrap; margin-inline: -24px; }
   .t-profile {
     flex: 0 1 auto;
     min-width: 0;

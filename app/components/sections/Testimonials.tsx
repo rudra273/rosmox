@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SectionHead from "./SectionHead";
 
 const testimonials = [
@@ -43,6 +43,36 @@ export default function Testimonials() {
 
   const rotate = (step: number) => setActive((current) => wrap(current + step));
 
+  // Swipe / drag to change testimonial, without changing the centered visuals.
+  // Native listeners on document so pointer-capture on the buttons can't eat it.
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const didSwipe = useRef(false);
+  useEffect(() => {
+    const el = cardsRef.current;
+    if (!el) return;
+    let startX: number | null = null;
+
+    const down = (e: PointerEvent) => {
+      startX = e.clientX;
+      didSwipe.current = false;
+    };
+    const up = (e: PointerEvent) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) < 40) return;
+      didSwipe.current = true;
+      setActive((c) => wrap(c + (dx < 0 ? 1 : -1)));
+    };
+
+    el.addEventListener("pointerdown", down);
+    window.addEventListener("pointerup", up);
+    return () => {
+      el.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointerup", up);
+    };
+  }, []);
+
   return (
     <section id="words">
       <div className="container">
@@ -57,7 +87,13 @@ export default function Testimonials() {
               <p className="t-quote-text">{testimonial.quote}</p>
               <span className="t-mark t-mark-close">&rdquo;</span>
             </blockquote>
-            <div className="t-cards" role="tablist" aria-label="Choose a testimonial">
+            <div
+              className="t-cards"
+              role="tablist"
+              aria-label="Choose a testimonial"
+              ref={cardsRef}
+              style={{ touchAction: "pan-y" }}
+            >
               {slots.map(({ offset, index }) => {
                 const item = testimonials[index];
                 const isActive = offset === 0;
@@ -75,7 +111,13 @@ export default function Testimonials() {
                         : "Show next testimonial"
                     }
                     className={`t-profile${isActive ? " is-active" : ""}`}
-                    onClick={() => rotate(isActive ? 1 : offset)}
+                    onClick={() => {
+                      if (didSwipe.current) {
+                        didSwipe.current = false;
+                        return;
+                      }
+                      rotate(isActive ? 1 : offset);
+                    }}
                   >
                     <div className="t-avatar">{item.avatar}</div>
                     <div>
