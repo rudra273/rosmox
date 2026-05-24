@@ -11,8 +11,8 @@ export default function EverythingPrivacyPolicyPage() {
   return (
     <div className="privacy-page">
       <nav className="privacy-nav">
-        <Link href="/" className="back-link">
-          <span className="back-arrow">←</span> ROSMOX
+        <Link href="/projects/everything" className="back-link">
+          <span className="back-arrow">←</span> Everything
         </Link>
       </nav>
 
