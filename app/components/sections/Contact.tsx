@@ -12,7 +12,7 @@ export default function Contact() {
     <section id="contact">
       <div className="container">
         <div ref={ref} className={`cta-wrap${inView ? " in" : ""}`}>
-          <h2>
+          <h2 id="contact-title">
             Let&apos;s build something <span className="serif">people use.</span>
           </h2>
           <p>Tell us about the project. We respond within one business day.</p>

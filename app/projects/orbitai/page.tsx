@@ -1,15 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd, { productJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "OrbitAI — On-Device AI Assistant",
   description:
     "OrbitAI is an advanced on-device AI chat and productivity assistant for Android. Private, fast, and offline-capable.",
+  alternates: { canonical: "/projects/orbitai" },
 };
 
 export default function OrbitAIPage() {
   return (
     <div className="project-page">
+      <JsonLd
+        data={productJsonLd({
+          name: "OrbitAI",
+          description:
+            "On-device AI chat and productivity assistant for Android with local LLM inference, RAG, and automation tools.",
+          path: "/projects/orbitai",
+          category: "ProductivityApplication",
+          operatingSystem: "Android",
+        })}
+      />
       {/* Hero */}
       <div className="project-hero">
         <Link href="/products" className="back-link project-back">
@@ -27,12 +39,10 @@ export default function OrbitAIPage() {
           privately on your device.
         </p>
         <div className="project-actions">
-          <a href="#" className="project-btn project-btn-primary">
-            Coming Soon →
-          </a>
-          <a href="#" className="project-btn project-btn-secondary">
-            GitHub
-          </a>
+          <span className="project-status">Coming soon to Play Store</span>
+          <Link href="/contact" className="project-btn project-btn-secondary">
+            Get notified
+          </Link>
         </div>
       </div>
 

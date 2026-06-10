@@ -34,15 +34,23 @@ export default function Process() {
   return (
     <section id="process">
       <div className="container">
-        <SectionHead label="How we work" title="Small team. Tight loops. Visible work." />
+        <SectionHead
+          label="How we work"
+          index="05"
+          title={
+            <>
+              Small team. Tight loops. <span className="serif">Visible work.</span>
+            </>
+          }
+        />
 
         <div ref={ref} className={`process${inView ? " in" : ""}`}>
           {/* must remain first child for the CSS nth-child stagger to line up */}
-          <div className="process-line" />
+          <div className="process-line" aria-hidden="true" />
           {steps.map((s) => (
             <div className="step" key={s.num}>
-              <div className="step-num">{s.num}</div>
-              <h4>{s.title}</h4>
+              <div className="step-num" aria-hidden="true">{s.num}</div>
+              <h3>{s.title}</h3>
               <p>{s.desc}</p>
             </div>
           ))}

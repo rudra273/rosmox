@@ -35,10 +35,10 @@ function ProductCard({ data }: { data: ProductData }) {
       <h3>{data.headline}</h3>
       <p>{data.desc}</p>
       <div className="product-preview">{data.mock}</div>
-      <a href={data.href} className="product-link">
-        Learn more
+      <Link href={data.href} className="product-link">
+        Learn more about {data.name}
         <ArrowIcon size={12} />
-      </a>
+      </Link>
     </div>
   );
 }
@@ -49,9 +49,17 @@ export default function Products() {
   const gridInView = useInView(gridRef, { once: true, amount: 0.15, margin: "0px 0px -60px 0px" });
 
   return (
-    <section id="products">
+    <section id="products" aria-labelledby="products-title">
       <div className="container">
-        <SectionHead label="Our products" title="Software we build for ourselves.">
+        <SectionHead
+          label="Our products"
+          index="03"
+          title={
+            <span id="products-title">
+              Software we build <span className="serif">for ourselves.</span>
+            </span>
+          }
+        >
           Each product solves a problem we encountered while shipping client
           work — then refined until it stood on its own.
         </SectionHead>

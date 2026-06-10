@@ -10,16 +10,20 @@ const companies = [
 ];
 
 export default function TrustMarquee() {
-  // duplicated track (×2) so the -50% translateX loop is seamless
-  const items = [...companies, ...companies];
   return (
-    <section className="trust">
+    <section className="trust" aria-label="Teams we have worked with">
       <div className="container trust-inner">
         <div className="trust-label">Trusted by teams at</div>
         <div className="marquee">
           <div className="marquee-track">
-            {items.map((name, i) => (
-              <div className="marquee-item" key={`${name}-${i}`}>
+            {companies.map((name) => (
+              <div className="marquee-item" key={name}>
+                {name} <span className="dot" aria-hidden="true" />
+              </div>
+            ))}
+            {/* duplicated track (×2) so the -50% translateX loop is seamless */}
+            {companies.map((name) => (
+              <div className="marquee-item" key={`${name}-dup`} aria-hidden="true">
                 {name} <span className="dot" />
               </div>
             ))}

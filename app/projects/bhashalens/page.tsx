@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd, { productJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "BhashaLens — Indic OCR Pipeline",
   description:
     "BhashaLens is a smart OCR pipeline for accurate image-to-text conversion across Indian regional language documents — printed and handwritten, built to handle scale.",
+  alternates: { canonical: "/projects/bhashalens" },
 };
 
 const features = [
@@ -54,6 +56,15 @@ const tech = ["Python", "PyTorch", "ONNX Runtime", "OpenCV", "FastAPI", "Docker"
 export default function BhashaLensPage() {
   return (
     <div className="project-page">
+      <JsonLd
+        data={productJsonLd({
+          name: "BhashaLens",
+          description:
+            "OCR pipeline for printed and handwritten Indic-language documents — layout-aware, confidence-scored, built for scale.",
+          path: "/projects/bhashalens",
+          category: "DeveloperApplication",
+        })}
+      />
       {/* Hero */}
       <div className="project-hero">
         <Link href="/products" className="back-link project-back">

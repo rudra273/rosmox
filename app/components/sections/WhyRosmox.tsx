@@ -63,7 +63,12 @@ export default function WhyRosmox() {
       <div className="container">
         <SectionHead
           label="Why Rosmox"
-          title="Built for teams who care about the details."
+          index="06"
+          title={
+            <>
+              Built for teams who care <span className="serif">about the details.</span>
+            </>
+          }
         />
         <div className="why-wrap">
           <div className="stats">
@@ -77,9 +82,9 @@ export default function WhyRosmox() {
           <div className="pillars">
             {pillars.map((p) => (
               <div className="pillar" key={p.title}>
-                <h4>
-                  <span className="swatch" /> {p.title}
-                </h4>
+                <h3>
+                  <span className="swatch" aria-hidden="true" /> {p.title}
+                </h3>
                 <p>{p.desc}</p>
               </div>
             ))}
