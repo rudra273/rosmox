@@ -34,7 +34,15 @@ export default function Work() {
   return (
     <section id="work">
       <div className="container">
-        <SectionHead label="Selected work" title="Sites, apps & systems we've shipped.">
+        <SectionHead
+          label="Selected work"
+          index="04"
+          title={
+            <>
+              Sites, apps &amp; systems <span className="serif">we&apos;ve shipped.</span>
+            </>
+          }
+        >
           A small sample. We work with founders, ops teams, and agencies —
           usually in 6–12 week engagements.
         </SectionHead>

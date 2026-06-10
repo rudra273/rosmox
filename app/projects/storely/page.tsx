@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import JsonLd, { productJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Storely — Inventory and Billing",
   description:
     "Storely helps store owners manage inventory, products, billing, barcode scanning, and local records.",
+  alternates: { canonical: "/projects/storely" },
 };
 
 export default function StorelyPage() {
   return (
     <div className="project-page">
+      <JsonLd
+        data={productJsonLd({
+          name: "Storely",
+          description:
+            "Inventory and billing management for store owners — products, stock, barcodes, bills, and local business records.",
+          path: "/projects/storely",
+          category: "BusinessApplication",
+          operatingSystem: "Android",
+        })}
+      />
       <div className="project-hero">
         <Link href="/products" className="back-link project-back">
           <span className="back-arrow">←</span> All products
@@ -34,9 +46,7 @@ export default function StorelyPage() {
           device.
         </p>
         <div className="project-actions">
-          <a href="#" className="project-btn project-btn-primary">
-            Download on Play Store →
-          </a>
+          <span className="project-status">Coming soon to Play Store</span>
           <Link
             href="/projects/storely/privacy-policy"
             className="project-btn project-btn-secondary"

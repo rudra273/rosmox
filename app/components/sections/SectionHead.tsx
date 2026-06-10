@@ -1,32 +1,42 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { useInView } from "motion/react";
 import type { ReactNode } from "react";
 
 interface SectionHeadProps {
   label: string;
+  /** mono index annotation, e.g. "01" */
+  index?: string;
   title: ReactNode;
   children?: ReactNode; // optional description paragraph
 }
 
 /**
- * Reusable section header with the draft1 `.head-reveal` entrance,
- * reimplemented with Framer Motion `whileInView` (replaces the
- * IntersectionObserver `.in` toggle). Mirrors the CSS:
- *   opacity 0 -> 1, translateY 16px -> 0, .8s ease, once.
+ * Section header with the seam motif: the hairline tick draws in, the label
+ * fades, and the title rises from behind a mask when scrolled into view.
  */
-export default function SectionHead({ label, title, children }: SectionHeadProps) {
+export default function SectionHead({ label, index, title, children }: SectionHeadProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3, margin: "0px 0px -60px 0px" });
+
   return (
-    <motion.div
-      className="section-head"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -60px 0px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="section-label">{label}</div>
-      <h2>{title}</h2>
+    <div ref={ref} className={`section-head${inView ? " in" : ""}`}>
+      <div className="section-label">
+        <span className="seam-tick" aria-hidden="true" />
+        {index && (
+          <span className="index" aria-hidden="true">
+            {index}
+          </span>
+        )}
+        {label}
+      </div>
+      <h2>
+        <span className="head-mask">
+          <span>{title}</span>
+        </span>
+      </h2>
       {children && <p>{children}</p>}
-    </motion.div>
+    </div>
   );
 }

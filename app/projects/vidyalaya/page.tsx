@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import JsonLd, { productJsonLd } from "../../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Vidyālaya — Offline Textbook Reader",
   description:
     "Vidyālaya is a free offline textbook reader for Indian school students. Download once, read anytime.",
+  alternates: { canonical: "/projects/vidyalaya" },
 };
 
 export default function VidyalayaPage() {
   return (
     <div className="project-page">
+      <JsonLd
+        data={productJsonLd({
+          name: "Vidyālaya",
+          description:
+            "Free offline textbook reader for Indian school students — download once, read anytime, no accounts or tracking.",
+          path: "/projects/vidyalaya",
+          category: "EducationalApplication",
+          operatingSystem: "Android",
+        })}
+      />
       {/* Hero */}
       <div className="project-hero">
         <Link href="/products" className="back-link project-back">
@@ -35,9 +47,7 @@ export default function VidyalayaPage() {
           No ads, no tracking, no accounts.
         </p>
         <div className="project-actions">
-          <a href="#" className="project-btn project-btn-primary">
-            Download on Play Store →
-          </a>
+          <span className="project-status">Coming soon to Play Store</span>
           <Link href="/projects/vidyalaya/privacy-policy" className="project-btn project-btn-secondary">
             Privacy Policy
           </Link>
