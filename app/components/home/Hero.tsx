@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero-topline mono">
           <span>
             <span className="hero-pulse" aria-hidden="true" />
-            Rosmox — AI software studio
+            Rosmox — AI software company
           </span>
           <span aria-hidden="true">Fig. 01 — The work</span>
         </div>
@@ -65,7 +65,7 @@ export default function Hero() {
             <dd className="display">05</dd>
           </div>
           <div>
-            <dt className="mono">Disciplines, one studio</dt>
+            <dt className="mono">Disciplines, one company</dt>
             <dd className="display">04</dd>
           </div>
           <div>

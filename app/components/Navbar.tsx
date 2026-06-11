@@ -39,7 +39,7 @@ export default function Navbar() {
           <Link href="/" className="wordmark" aria-label="Rosmox — home">
             Rosmox<sup>®</sup>
           </Link>
-          <span className="masthead-tag">AI software studio</span>
+          <span className="masthead-tag">AI software company</span>
           <nav className="masthead-links" aria-label="Primary">
             {links.slice(0, 4).map((l) => (
               <Link key={l.href} href={l.href}>
@@ -90,7 +90,7 @@ export default function Navbar() {
           <a href="mailto:hello@rosmox.com" tabIndex={menuOpen ? 0 : -1}>
             hello@rosmox.com
           </a>
-          <span>AI software studio — est. 2025</span>
+          <span>AI software company — est. 2025</span>
         </div>
       </nav>
     </>

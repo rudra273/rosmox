@@ -50,7 +50,7 @@ export function productJsonLd({
   };
 }
 
-/** The studio's services, for the home page. */
+/** The company's services, for the home page. */
 export function servicesJsonLd() {
   const services = [
     ["AI SaaS product development", "Multi-tenant SaaS platforms with AI built into the product core."],

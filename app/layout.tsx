@@ -30,13 +30,13 @@ const SITE_URL = "https://rosmox.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rosmox — AI-native software studio",
+    default: "Rosmox — AI-native software company",
     template: "%s — Rosmox",
   },
   description:
-    "Rosmox is an AI-native software studio. We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+    "Rosmox is an AI-native software company. We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
   keywords: [
-    "AI software studio",
+    "AI software company",
     "agentic AI development",
     "AI SaaS development",
     "Android app development",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Rosmox",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI-native software company",
     description:
       "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI-native software company",
     description:
       "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
   },
@@ -73,7 +73,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   email: "hello@rosmox.com",
   description:
-    "AI-native software studio building AI SaaS products, agentic AI systems, Android apps, and web platforms.",
+    "AI-native software company building AI SaaS products, agentic AI systems, Android apps, and web platforms.",
   knowsAbout: [
     "Artificial intelligence",
     "AI agents",

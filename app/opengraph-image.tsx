@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt =
-  "Rosmox — AI-native software studio. Intelligence, engineered to ship.";
+  "Rosmox — AI-native software company. Intelligence, engineered to ship.";
 
 /** OG card in the "Ink & Index" identity: paper sheet, ruled lines,
  *  giant ink wordmark, orange signal band. */
@@ -37,7 +37,7 @@ export default function OgImage() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={{ width: 12, height: 12, background: "#ff4d00" }} />
-            <span>Rosmox — AI software studio</span>
+            <span>Rosmox — AI software company</span>
           </div>
           <span>Fig. 01</span>
         </div>

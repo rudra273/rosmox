@@ -53,7 +53,7 @@ export default function Services() {
           <h2 id="services-title" className="rv-wipe">
             Four disciplines.
             <br />
-            <span className="accent">One studio.</span>
+            <span className="accent">One company.</span>
           </h2>
           <p className="sec-sub rv" style={{ "--d": "0.15s" } as CSSProperties}>
             Strategy, design, and engineering under the same roof — no
