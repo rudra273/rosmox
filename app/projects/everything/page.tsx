@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd, { productJsonLd } from "../../components/JsonLd";
+import {
+  ChipList,
+  CrumbBar,
+  FeatureGrid,
+  ProjectHero,
+  ProjectSection,
+  Screens,
+  StatusStamp,
+} from "../../components/project/ProjectKit";
 
 export const metadata: Metadata = {
   title: "Everything — Local-First Privacy Utility",
@@ -40,7 +49,7 @@ const tech = ["Kotlin", "Jetpack Compose", "Room DB", "EncryptedFile", "Drive AP
 
 export default function EverythingPage() {
   return (
-    <div className="project-page">
+    <div className="proj-page">
       <JsonLd
         data={productJsonLd({
           name: "Everything",
@@ -51,65 +60,30 @@ export default function EverythingPage() {
           operatingSystem: "Android",
         })}
       />
-      {/* Hero */}
-      <div className="project-hero">
-        <Link href="/products" className="back-link project-back">
-          <span className="back-arrow">←</span> All products
+      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 05/05" />
+      <ProjectHero
+        badge="Privacy · Local-First"
+        year="2026"
+        title="Everything"
+        desc="A local-first privacy utility for your whole device. Everything keeps user-created data on the device unless you intentionally create an encrypted local backup or connect Google Drive — with clear, opt-in control over every permission it touches."
+      >
+        <StatusStamp>Coming soon — Play Store</StatusStamp>
+        <Link href="/projects/everything/privacy-policy" className="btn btn-outline">
+          Privacy policy
         </Link>
-        <div className="project-hero-meta">
-          <span className="product-badge">Privacy · Local-First</span>
-          <span className="product-year">2026</span>
-        </div>
-        <h1 className="project-hero-title">Everything</h1>
-        <p className="project-hero-desc">
-          A local-first privacy utility for your whole device. Everything keeps
-          user-created data on the device unless you intentionally create an
-          encrypted local backup or connect Google Drive — with clear, opt-in
-          control over every permission it touches.
-        </p>
-        <div className="project-actions">
-          <span className="project-status">Coming soon to Play Store</span>
-          <Link
-            href="/projects/everything/privacy-policy"
-            className="project-btn project-btn-secondary"
-          >
-            Privacy Policy
-          </Link>
-        </div>
-      </div>
+      </ProjectHero>
 
-      {/* Features */}
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          {features.map((f) => (
-            <div className="project-feature" key={f.title}>
-              <h4>{f.title}</h4>
-              <p>{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ProjectSection index="Spec 01" title="Features">
+        <FeatureGrid features={features} />
+      </ProjectSection>
 
-      {/* Screenshots */}
-      <div className="project-section">
-        <h2 className="project-section-title">In action</h2>
-        <div className="project-screenshots">
-          <div className="screenshot-placeholder">Dashboard</div>
-          <div className="screenshot-placeholder">Permissions</div>
-          <div className="screenshot-placeholder">Backups</div>
-        </div>
-      </div>
+      <ProjectSection index="Spec 02" title="In action">
+        <Screens labels={["Dashboard", "Permissions", "Backups"]} />
+      </ProjectSection>
 
-      {/* Tech */}
-      <div className="project-section">
-        <h2 className="project-section-title">Built with</h2>
-        <div className="project-tech">
-          {tech.map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
-      </div>
+      <ProjectSection index="Spec 03" title="Built with">
+        <ChipList items={tech} />
+      </ProjectSection>
     </div>
   );
 }

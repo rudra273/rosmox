@@ -1,13 +1,12 @@
-import Hero from "./components/sections/Hero";
-import TrustMarquee from "./components/sections/TrustMarquee";
-import Services from "./components/sections/Services";
-import AgentFlow from "./components/sections/AgentFlow";
-import Products from "./components/sections/Products";
-import Work from "./components/sections/Work";
-import Process from "./components/sections/Process";
-import WhyRosmox from "./components/sections/WhyRosmox";
-import Testimonials from "./components/sections/Testimonials";
-import Contact from "./components/sections/Contact";
+import Hero from "./components/home/Hero";
+import Ticker from "./components/home/Ticker";
+import Services from "./components/home/Services";
+import ProductDeck from "./components/home/ProductDeck";
+import Work from "./components/home/Work";
+import Process from "./components/home/Process";
+import Numbers from "./components/home/Numbers";
+import Testimonials from "./components/home/Testimonials";
+import CtaBand from "./components/home/CtaBand";
 import JsonLd, { servicesJsonLd } from "./components/JsonLd";
 
 export default function Home() {
@@ -15,15 +14,14 @@ export default function Home() {
     <>
       <JsonLd data={servicesJsonLd()} />
       <Hero />
-      <TrustMarquee />
+      <Ticker />
       <Services />
-      <AgentFlow />
-      <Products />
+      <ProductDeck />
       <Work />
       <Process />
-      <WhyRosmox />
+      <Numbers />
       <Testimonials />
-      <Contact />
+      <CtaBand />
     </>
   );
 }

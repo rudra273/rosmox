@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import JsonLd, { productJsonLd } from "../../components/JsonLd";
+import {
+  ChipList,
+  CrumbBar,
+  FeatureGrid,
+  ProjectHero,
+  ProjectSection,
+  Screens,
+  StatusStamp,
+} from "../../components/project/ProjectKit";
 
 export const metadata: Metadata = {
   title: "Vidyālaya — Offline Textbook Reader",
@@ -10,9 +18,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects/vidyalaya" },
 };
 
+const features = [
+  {
+    title: "Offline Reading",
+    desc: "Download textbooks once and read anytime without an internet connection.",
+  },
+  {
+    title: "Zero Data Collection",
+    desc: "No accounts, no tracking, no analytics. Your data stays on your device.",
+  },
+  {
+    title: "Light & Dark Mode",
+    desc: "Switch between light and dark themes for comfortable reading day or night.",
+  },
+  {
+    title: "Class-Based Organization",
+    desc: "Books organized by class and subject for quick access to what you need.",
+  },
+  {
+    title: "Bookmarks",
+    desc: "Save your reading progress and jump back to where you left off.",
+  },
+  {
+    title: "Lightweight",
+    desc: "Minimal app size with efficient PDF rendering for smooth performance.",
+  },
+];
+
 export default function VidyalayaPage() {
   return (
-    <div className="project-page">
+    <div className="proj-page">
       <JsonLd
         data={productJsonLd({
           name: "Vidyālaya",
@@ -23,88 +58,33 @@ export default function VidyalayaPage() {
           operatingSystem: "Android",
         })}
       />
-      {/* Hero */}
-      <div className="project-hero">
-        <Link href="/products" className="back-link project-back">
-          <span className="back-arrow">←</span> All products
+      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 03/05" />
+      <ProjectHero
+        badge="Android"
+        year="2026"
+        title="Vidyālaya"
+        desc="A free, offline textbook reader built for Indian school students. Download your books once, read them anytime — no internet required. No ads, no tracking, no accounts."
+        logo={{ src: "/logo/vidyalaya.png", alt: "Vidyālaya app logo" }}
+      >
+        <StatusStamp>Coming soon — Play Store</StatusStamp>
+        <Link href="/projects/vidyalaya/privacy-policy" className="btn btn-outline">
+          Privacy policy
         </Link>
-        <Image
-          src="/logo/vidyalaya.png"
-          alt="Vidyālaya app logo"
-          width={96}
-          height={96}
-          className="project-app-logo"
-          priority
+      </ProjectHero>
+
+      <ProjectSection index="Spec 01" title="Screenshots">
+        <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
+      </ProjectSection>
+
+      <ProjectSection index="Spec 02" title="Features">
+        <FeatureGrid features={features} />
+      </ProjectSection>
+
+      <ProjectSection index="Spec 03" title="Built with">
+        <ChipList
+          items={["Flutter", "Dart", "PDF Renderer", "SharedPreferences", "Material 3"]}
         />
-        <div className="project-hero-meta">
-          <span className="product-badge">Android</span>
-          <span className="product-year">2026</span>
-        </div>
-        <h1 className="project-hero-title">Vidyālaya</h1>
-        <p className="project-hero-desc">
-          A free, offline textbook reader built for Indian school students.
-          Download your books once, read them anytime — no internet required.
-          No ads, no tracking, no accounts.
-        </p>
-        <div className="project-actions">
-          <span className="project-status">Coming soon to Play Store</span>
-          <Link href="/projects/vidyalaya/privacy-policy" className="project-btn project-btn-secondary">
-            Privacy Policy
-          </Link>
-        </div>
-      </div>
-
-      {/* Screenshots */}
-      <div className="project-section">
-        <h2 className="project-section-title">Screenshots</h2>
-        <div className="project-screenshots">
-          <div className="screenshot-placeholder">Screenshot 1</div>
-          <div className="screenshot-placeholder">Screenshot 2</div>
-          <div className="screenshot-placeholder">Screenshot 3</div>
-        </div>
-      </div>
-
-      {/* Features */}
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          <div className="project-feature">
-            <h4>Offline Reading</h4>
-            <p>Download textbooks once and read anytime without an internet connection.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Zero Data Collection</h4>
-            <p>No accounts, no tracking, no analytics. Your data stays on your device.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Light &amp; Dark Mode</h4>
-            <p>Switch between light and dark themes for comfortable reading day or night.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Class-Based Organization</h4>
-            <p>Books organized by class and subject for quick access to what you need.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Bookmarks</h4>
-            <p>Save your reading progress and jump back to where you left off.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Lightweight</h4>
-            <p>Minimal app size with efficient PDF rendering for smooth performance.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Tech */}
-      <div className="project-section">
-        <h2 className="project-section-title">Built With</h2>
-        <div className="project-tech">
-          {["Flutter", "Dart", "PDF Renderer", "SharedPreferences", "Material 3"].map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </div>
-      </div>
-
+      </ProjectSection>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import ArrowIcon from "../components/ui/ArrowIcon";
+import { CrumbBar } from "../components/project/ProjectKit";
 
 type Status = "idle" | "submitting" | "success";
 
@@ -72,42 +72,57 @@ export default function ContactPage() {
   });
 
   return (
-    <div className="contact-page">
-      <nav className="privacy-nav" aria-label="Breadcrumb">
-        <Link href="/" className="back-link">
-          <span className="back-arrow" aria-hidden="true">←</span> Rosmox
-        </Link>
-      </nav>
+    <div className="contact">
+      <CrumbBar backHref="/" backLabel="Rosmox" right="Form RX-01 — Project intake" />
 
-      <div className="container">
-        <div className="contact-wrap">
-          <div className="section-label">
-            <span className="seam-tick" style={{ transform: "scaleX(1)" }} aria-hidden="true" />
-            Get in touch
-          </div>
-          <h1 className="contact-title">
-            Let&apos;s build something <span className="serif">people use.</span>
+      <div className="container contact-grid">
+        <header className="contact-rail">
+          <p className="mono contact-eyebrow">Get in touch</p>
+          <h1 className="display contact-title">
+            Start
+            <br />
+            here<span className="hero-star">.</span>
           </h1>
-          <p className="contact-sub">
-            Tell us about the project. We respond within one business day — or
-            email us directly at{" "}
-            <a href="mailto:hello@rosmox.com" className="contact-mail">
-              hello@rosmox.com
-            </a>
-            .
-          </p>
+          <dl className="contact-facts">
+            <div>
+              <dt className="mono">Direct line</dt>
+              <dd>
+                <a href="mailto:hello@rosmox.com" className="contact-mail">
+                  hello@rosmox.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="mono">Response time</dt>
+              <dd>Within one business day</dd>
+            </div>
+            <div>
+              <dt className="mono">Engagements</dt>
+              <dd>Usually 6–12 weeks</dd>
+            </div>
+          </dl>
+        </header>
 
+        <div className="contact-sheet">
           {status === "success" ? (
-            <div className="contact-success" role="status">
-              <div className="contact-success-dot" aria-hidden="true" />
-              <h2>Thanks, {form.name.trim() || "there"} — message received.</h2>
-              <p>We&apos;ll get back to you within one business day.</p>
+            <div className="contact-received" role="status">
+              <span className="received-stamp mono">Received</span>
+              <h2 className="display">
+                Thanks, {form.name.trim() || "there"}.
+              </h2>
+              <p>
+                Message logged. We&apos;ll get back to you within one business
+                day.
+              </p>
+              <Link href="/" className="btn btn-outline">
+                Back to home
+              </Link>
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="field-row">
                 <label className={`field${errors.name ? " has-error" : ""}`}>
-                  <span>Name</span>
+                  <span className="mono">01 — Name</span>
                   <input
                     type="text"
                     autoComplete="name"
@@ -121,7 +136,7 @@ export default function ContactPage() {
                   )}
                 </label>
                 <label className={`field${errors.email ? " has-error" : ""}`}>
-                  <span>Email</span>
+                  <span className="mono">02 — Email</span>
                   <input
                     type="email"
                     autoComplete="email"
@@ -136,7 +151,7 @@ export default function ContactPage() {
                 </label>
               </div>
               <label className="field">
-                <span>Company (optional)</span>
+                <span className="mono">03 — Company (optional)</span>
                 <input
                   type="text"
                   autoComplete="organization"
@@ -145,9 +160,9 @@ export default function ContactPage() {
                 />
               </label>
               <label className={`field${errors.message ? " has-error" : ""}`}>
-                <span>Project details</span>
+                <span className="mono">04 — Project details</span>
                 <textarea
-                  rows={5}
+                  rows={6}
                   placeholder="What are you building? Timeline, scope, anything useful."
                   {...fieldProps("message")}
                 />
@@ -159,7 +174,7 @@ export default function ContactPage() {
               </label>
               <button
                 type="submit"
-                className="btn btn-primary contact-submit"
+                className="btn btn-solid contact-submit"
                 disabled={status === "submitting"}
               >
                 {status === "submitting" ? (
@@ -169,8 +184,7 @@ export default function ContactPage() {
                   </>
                 ) : (
                   <>
-                    Send message
-                    <ArrowIcon size={13} />
+                    Send message <span className="arr">→</span>
                   </>
                 )}
               </button>

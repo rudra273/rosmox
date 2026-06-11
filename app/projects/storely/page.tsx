@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import JsonLd, { productJsonLd } from "../../components/JsonLd";
+import {
+  ChipList,
+  CrumbBar,
+  FeatureGrid,
+  ProjectHero,
+  ProjectSection,
+  Screens,
+  StatusStamp,
+} from "../../components/project/ProjectKit";
 
 export const metadata: Metadata = {
   title: "Storely — Inventory and Billing",
@@ -10,9 +18,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects/storely" },
 };
 
+const features = [
+  {
+    title: "Inventory Management",
+    desc: "Manage product names, prices, quantities, categories, suppliers, and barcodes.",
+  },
+  {
+    title: "Billing",
+    desc: "Create bills inside the app and keep billing records on the device.",
+  },
+  {
+    title: "Barcode and QR Scanning",
+    desc: "Use the camera only when scanning product barcodes and QR codes.",
+  },
+  {
+    title: "Import and Export",
+    desc: "Work with invoices, CSV or Excel files, and QR sheets through file access.",
+  },
+  {
+    title: "Local Storage",
+    desc: "No account, cloud sync, or server storage is required in version 1.0.0.",
+  },
+  {
+    title: "No Advertising SDK",
+    desc: "Version 1.0.0 does not include an advertising SDK or default third-party sharing.",
+  },
+];
+
 export default function StorelyPage() {
   return (
-    <div className="project-page">
+    <div className="proj-page">
       <JsonLd
         data={productJsonLd({
           name: "Storely",
@@ -23,87 +58,33 @@ export default function StorelyPage() {
           operatingSystem: "Android",
         })}
       />
-      <div className="project-hero">
-        <Link href="/products" className="back-link project-back">
-          <span className="back-arrow">←</span> All products
+      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 04/05" />
+      <ProjectHero
+        badge="Android"
+        year="2026"
+        title="Storely"
+        desc="Inventory and billing management for store owners. Track products, scan barcodes, create bills, and keep business records locally on the device."
+        logo={{ src: "/logo/storely.png", alt: "Storely app logo" }}
+      >
+        <StatusStamp>Coming soon — Play Store</StatusStamp>
+        <Link href="/projects/storely/privacy-policy" className="btn btn-outline">
+          Privacy policy
         </Link>
-        <Image
-          src="/logo/storely.png"
-          alt="Storely app logo"
-          width={96}
-          height={96}
-          className="project-app-logo"
-          priority
+      </ProjectHero>
+
+      <ProjectSection index="Spec 01" title="Features">
+        <FeatureGrid features={features} />
+      </ProjectSection>
+
+      <ProjectSection index="Spec 02" title="Screenshots">
+        <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
+      </ProjectSection>
+
+      <ProjectSection index="Spec 03" title="Built with">
+        <ChipList
+          items={["Flutter", "Dart", "Local Database", "Barcode Scanner", "File Export"]}
         />
-        <div className="project-hero-meta">
-          <span className="product-badge">Android</span>
-          <span className="product-year">2026</span>
-        </div>
-        <h1 className="project-hero-title">Storely</h1>
-        <p className="project-hero-desc">
-          Inventory and billing management for store owners. Track products,
-          scan barcodes, create bills, and keep business records locally on the
-          device.
-        </p>
-        <div className="project-actions">
-          <span className="project-status">Coming soon to Play Store</span>
-          <Link
-            href="/projects/storely/privacy-policy"
-            className="project-btn project-btn-secondary"
-          >
-            Privacy Policy
-          </Link>
-        </div>
-      </div>
-
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          <div className="project-feature">
-            <h4>Inventory Management</h4>
-            <p>Manage product names, prices, quantities, categories, suppliers, and barcodes.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Billing</h4>
-            <p>Create bills inside the app and keep billing records on the device.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Barcode and QR Scanning</h4>
-            <p>Use the camera only when scanning product barcodes and QR codes.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Import and Export</h4>
-            <p>Work with invoices, CSV or Excel files, and QR sheets through file access.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Local Storage</h4>
-            <p>No account, cloud sync, or server storage is required in version 1.0.0.</p>
-          </div>
-          <div className="project-feature">
-            <h4>No Advertising SDK</h4>
-            <p>Version 1.0.0 does not include an advertising SDK or default third-party sharing.</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="project-section">
-        <h2 className="project-section-title">Screenshots</h2>
-        <div className="project-screenshots">
-          <div className="screenshot-placeholder">Screenshot 1</div>
-          <div className="screenshot-placeholder">Screenshot 2</div>
-          <div className="screenshot-placeholder">Screenshot 3</div>
-        </div>
-      </div>
-
-      <div className="project-section">
-        <h2 className="project-section-title">Built With</h2>
-        <div className="project-tech">
-          {["Flutter", "Dart", "Local Database", "Barcode Scanner", "File Export"].map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </div>
-      </div>
-
+      </ProjectSection>
     </div>
   );
 }

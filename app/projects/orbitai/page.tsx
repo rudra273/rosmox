@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd, { productJsonLd } from "../../components/JsonLd";
+import {
+  ChipList,
+  CrumbBar,
+  FeatureGrid,
+  ProjectHero,
+  ProjectSection,
+  Screens,
+  StatusStamp,
+} from "../../components/project/ProjectKit";
 
 export const metadata: Metadata = {
   title: "OrbitAI — On-Device AI Assistant",
@@ -9,9 +18,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects/orbitai" },
 };
 
+const features = [
+  {
+    title: "On-Device LLM Chat",
+    desc: "Private, fast, and offline-capable AI chat using MediaPipe and LiteRtLm engines. No cloud dependency.",
+  },
+  {
+    title: "Retrieval-Augmented Generation",
+    desc: "Enhanced responses by embedding and searching your own data locally. Your knowledge, your device.",
+  },
+  {
+    title: "Floating Bubble Assistant",
+    desc: "A floating overlay assistant accessible from any app. Get AI help without switching context.",
+  },
+  {
+    title: "Multiple Modes",
+    desc: "Switch between chat, spaces (knowledge bases), and custom modes for different workflows.",
+  },
+  {
+    title: "Productivity Tools",
+    desc: "Built-in reminders, task management, and automation tools powered by local AI.",
+  },
+  {
+    title: "Complete Privacy",
+    desc: "Everything runs on-device. No data leaves your phone. No accounts required.",
+  },
+];
+
 export default function OrbitAIPage() {
   return (
-    <div className="project-page">
+    <div className="proj-page">
       <JsonLd
         data={productJsonLd({
           name: "OrbitAI",
@@ -22,81 +58,32 @@ export default function OrbitAIPage() {
           operatingSystem: "Android",
         })}
       />
-      {/* Hero */}
-      <div className="project-hero">
-        <Link href="/products" className="back-link project-back">
-          <span className="back-arrow">←</span> All products
+      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 02/05" />
+      <ProjectHero
+        badge="Android"
+        year="2026"
+        title="OrbitAI"
+        desc="An advanced on-device AI chat and productivity assistant for Android. Built with Jetpack Compose and modern Kotlin — leveraging local LLM inference, RAG, and a suite of productivity tools, all running privately on your device."
+      >
+        <StatusStamp>Coming soon — Play Store</StatusStamp>
+        <Link href="/contact" className="btn btn-outline">
+          Get notified
         </Link>
-        <div className="project-hero-meta">
-          <span className="product-badge">Android</span>
-          <span className="product-year">2026</span>
-        </div>
-        <h1 className="project-hero-title">OrbitAI</h1>
-        <p className="project-hero-desc">
-          An advanced on-device AI chat and productivity assistant for Android.
-          Built with Jetpack Compose and modern Kotlin — leveraging local LLM
-          inference, RAG, and a suite of productivity tools, all running
-          privately on your device.
-        </p>
-        <div className="project-actions">
-          <span className="project-status">Coming soon to Play Store</span>
-          <Link href="/contact" className="project-btn project-btn-secondary">
-            Get notified
-          </Link>
-        </div>
-      </div>
+      </ProjectHero>
 
-      {/* Features */}
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          <div className="project-feature">
-            <h4>On-Device LLM Chat</h4>
-            <p>Private, fast, and offline-capable AI chat using MediaPipe and LiteRtLm engines. No cloud dependency.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Retrieval-Augmented Generation</h4>
-            <p>Enhanced responses by embedding and searching your own data locally. Your knowledge, your device.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Floating Bubble Assistant</h4>
-            <p>A floating overlay assistant accessible from any app. Get AI help without switching context.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Multiple Modes</h4>
-            <p>Switch between chat, spaces (knowledge bases), and custom modes for different workflows.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Productivity Tools</h4>
-            <p>Built-in reminders, task management, and automation tools powered by local AI.</p>
-          </div>
-          <div className="project-feature">
-            <h4>Complete Privacy</h4>
-            <p>Everything runs on-device. No data leaves your phone. No accounts required.</p>
-          </div>
-        </div>
-      </div>
+      <ProjectSection index="Spec 01" title="Features">
+        <FeatureGrid features={features} />
+      </ProjectSection>
 
-      {/* Screenshots */}
-      <div className="project-section">
-        <h2 className="project-section-title">Screenshots</h2>
-        <div className="project-screenshots">
-          <div className="screenshot-placeholder">Screenshot 1</div>
-          <div className="screenshot-placeholder">Screenshot 2</div>
-          <div className="screenshot-placeholder">Screenshot 3</div>
-        </div>
-      </div>
+      <ProjectSection index="Spec 02" title="Screenshots">
+        <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
+      </ProjectSection>
 
-      {/* Tech Stack */}
-      <div className="project-section">
-        <h2 className="project-section-title">Built With</h2>
-        <div className="project-tech">
-          {["Kotlin", "Jetpack Compose", "MediaPipe", "LiteRT", "Room DB", "Material 3"].map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </div>
-      </div>
-
+      <ProjectSection index="Spec 03" title="Built with">
+        <ChipList
+          items={["Kotlin", "Jetpack Compose", "MediaPipe", "LiteRT", "Room DB", "Material 3"]}
+        />
+      </ProjectSection>
     </div>
   );
 }

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd, { productJsonLd } from "../../components/JsonLd";
+import {
+  ChipList,
+  CrumbBar,
+  FeatureGrid,
+  ProjectHero,
+  ProjectSection,
+  Screens,
+} from "../../components/project/ProjectKit";
 
 export const metadata: Metadata = {
   title: "BhashaLens — Indic OCR Pipeline",
@@ -55,7 +63,7 @@ const tech = ["Python", "PyTorch", "ONNX Runtime", "OpenCV", "FastAPI", "Docker"
 
 export default function BhashaLensPage() {
   return (
-    <div className="project-page">
+    <div className="proj-page">
       <JsonLd
         data={productJsonLd({
           name: "BhashaLens",
@@ -65,110 +73,71 @@ export default function BhashaLensPage() {
           category: "DeveloperApplication",
         })}
       />
-      {/* Hero */}
-      <div className="project-hero">
-        <Link href="/products" className="back-link project-back">
-          <span className="back-arrow">←</span> All products
+      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 01/05" />
+      <ProjectHero
+        badge="Vision · OCR"
+        year="2026"
+        title="BhashaLens"
+        desc="A smart OCR pipeline for accurate image-to-text conversion across Indian regional language documents. Printed or handwritten, single page or full archive — BhashaLens turns scanned documents into clean, structured, searchable text at scale."
+      >
+        <Link href="/contact" className="btn btn-solid">
+          Get in touch <span className="arr">→</span>
         </Link>
-        <div className="project-hero-meta">
-          <span className="product-badge">Vision · OCR</span>
-          <span className="product-year">2026</span>
-        </div>
-        <h1 className="project-hero-title">BhashaLens</h1>
-        <p className="project-hero-desc">
-          A smart OCR pipeline for accurate image-to-text conversion across
-          Indian regional language documents. Printed or handwritten,
-          single page or full archive — BhashaLens turns scanned documents
-          into clean, structured, searchable text at scale.
-        </p>
-        <div className="project-actions">
-          <Link href="/contact" className="project-btn project-btn-primary">
-            Get in touch →
-          </Link>
-          <a href="#how" className="project-btn project-btn-secondary">
-            See how it works
-          </a>
-        </div>
-      </div>
+        <a href="#how" className="btn btn-outline">
+          See how it works
+        </a>
+      </ProjectHero>
 
-      {/* How it works — OCR demo mock */}
-      <div className="project-section" id="how">
-        <h2 className="project-section-title">How it works</h2>
-        <div className="ocr-demo">
+      <ProjectSection index="Spec 01" title="How it works" id="how">
+        <div className="ocr-demo" aria-hidden="true">
           <div className="ocr-panel">
-            <div className="ocr-panel-label">Scanned document</div>
-            <div className="ocr-scan" aria-hidden="true" />
-          </div>
-          <div className="ocr-arrow" aria-hidden="true">
-            →
-          </div>
-          <div className="ocr-panel">
-            <div className="ocr-panel-label">Extracted text</div>
-            <div className="ocr-text-line" />
-            <div className="ocr-text-line" />
-            <div className="ocr-text-line" />
-            <div className="ocr-text-line" />
-            <div className="ocr-text-line" />
-          </div>
-        </div>
-      </div>
-
-      {/* Features */}
-      <div className="project-section">
-        <h2 className="project-section-title">Features</h2>
-        <div className="project-features-grid">
-          {features.map((f) => (
-            <div className="project-feature" key={f.title}>
-              <h4>{f.title}</h4>
-              <p>{f.desc}</p>
+            <div className="ocr-label mono">Scanned document</div>
+            <div className="dg dg-lens ocr-stage">
+              <div className="dg-doc">
+                <span className="dg-scan" />
+                <i />
+                <i />
+                <i />
+                <i />
+              </div>
+              <span className="dg-arrow">→</span>
+              <div className="dg-out">
+                <i className="long" />
+                <i />
+                <i className="short" />
+                <i />
+              </div>
             </div>
-          ))}
+            <div className="ocr-label mono right">Extracted text</div>
+          </div>
         </div>
-      </div>
+      </ProjectSection>
 
-      {/* Languages */}
-      <div className="project-section">
-        <h2 className="project-section-title">Supported languages</h2>
-        <div className="project-langs">
-          {languages.map((lang) => (
-            <span key={lang}>{lang}</span>
-          ))}
-        </div>
-      </div>
+      <ProjectSection index="Spec 02" title="Features">
+        <FeatureGrid features={features} />
+      </ProjectSection>
 
-      {/* Screenshots */}
-      <div className="project-section">
-        <h2 className="project-section-title">In action</h2>
-        <div className="project-screenshots">
-          <div className="screenshot-placeholder">Upload &amp; scan</div>
-          <div className="screenshot-placeholder">Live extraction</div>
-          <div className="screenshot-placeholder">Structured export</div>
-        </div>
-      </div>
+      <ProjectSection index="Spec 03" title="Supported languages">
+        <ChipList items={languages} />
+      </ProjectSection>
 
-      {/* Tech */}
-      <div className="project-section">
-        <h2 className="project-section-title">Built with</h2>
-        <div className="project-tech">
-          {tech.map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
-      </div>
+      <ProjectSection index="Spec 04" title="In action">
+        <Screens labels={["Upload & scan", "Live extraction", "Structured export"]} />
+      </ProjectSection>
 
-      {/* Closing CTA */}
-      <div className="project-section">
-        <h2 className="project-section-title">Get started</h2>
-        <p className="project-hero-desc">
+      <ProjectSection index="Spec 05" title="Built with">
+        <ChipList items={tech} />
+      </ProjectSection>
+
+      <ProjectSection index="Spec 06" title="Get started">
+        <p className="proj-closing">
           Have a pile of documents to digitize, or a product that needs Indic
           OCR baked in? Tell us about it.
         </p>
-        <div className="project-actions">
-          <Link href="/contact" className="project-btn project-btn-primary">
-            Get in touch →
-          </Link>
-        </div>
-      </div>
+        <Link href="/contact" className="btn btn-solid">
+          Get in touch <span className="arr">→</span>
+        </Link>
+      </ProjectSection>
     </div>
   );
 }
