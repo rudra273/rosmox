@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-/** Brand mark: ink tile, paper R, orange index corner. */
+/** Brand mark: dark tile, gradient orb core. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -11,32 +11,20 @@ export default function Icon() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#16140f",
+          background: "#04050a",
+          borderRadius: 7,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
         }}
       >
         <div
           style={{
-            color: "#f4f1ea",
-            fontSize: 22,
-            fontWeight: 800,
-            fontFamily: "Arial, sans-serif",
-            lineHeight: 1,
-          }}
-        >
-          R
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            right: 0,
-            bottom: 0,
-            width: 9,
-            height: 9,
-            background: "#ff4d00",
+            width: 16,
+            height: 16,
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #818cf8, #67e8f9)",
+            boxShadow: "0 0 10px rgba(99,102,241,0.9)",
           }}
         />
       </div>

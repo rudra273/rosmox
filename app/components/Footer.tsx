@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const columns = [
   {
-    title: "Studio",
+    title: "Company",
     links: [
       { href: "/#services", label: "Services" },
       { href: "/#work", label: "Work" },
@@ -33,38 +33,39 @@ const columns = [
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-mark" aria-hidden="true">
-        <div className="display">Rosmox</div>
-      </div>
-      <div className="footer-grid">
-        <div className="footer-brand">
-          <Link href="/" className="wordmark" aria-label="Rosmox — home">
-            Rosmox<sup>®</sup>
-          </Link>
-          <p>
-            An AI-native software studio. We design, build, and ship AI SaaS,
-            agentic systems, Android apps, and web platforms.
-          </p>
-          <a href="mailto:hello@rosmox.com" className="footer-mail">
-            hello@rosmox.com
-          </a>
+      <div className="footer-beam" aria-hidden="true" />
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <Link href="/" className="brand" aria-label="Rosmox — home">
+              <span className="brand-orb" aria-hidden="true" />
+              Rosmox
+            </Link>
+            <p>
+              An AI company. We build AI SaaS products, agentic systems,
+              Android apps, and web platforms — engineered for production.
+            </p>
+            <a href="mailto:hello@rosmox.com" className="footer-mail">
+              hello@rosmox.com
+            </a>
+          </div>
+          {columns.map((col) => (
+            <nav className="footer-col" key={col.title} aria-label={col.title}>
+              <h2 className="mono">{col.title}</h2>
+              {col.links.map((l) => (
+                <Link key={`${col.title}-${l.label}`} href={l.href}>
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+          ))}
         </div>
-        {columns.map((col) => (
-          <nav className="footer-col" key={col.title} aria-label={col.title}>
-            <h2>{col.title}</h2>
-            {col.links.map((l) => (
-              <Link key={`${col.title}-${l.label}`} href={l.href}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-        ))}
-      </div>
-      <div className="footer-bottom">
-        <div className="footer-bottom-inner">
+        <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Rosmox. All rights reserved.</span>
-          <span>Designed &amp; engineered in-house</span>
-          <Link href="/contact">Start a project →</Link>
+          <div className="footer-bottom-links">
+            <a href="mailto:hello@rosmox.com">Email</a>
+            <Link href="/contact">Start a project</Link>
+          </div>
         </div>
       </div>
     </footer>

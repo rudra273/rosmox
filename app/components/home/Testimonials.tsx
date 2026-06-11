@@ -1,7 +1,6 @@
-"use client";
-
-import { useState } from "react";
+import type { CSSProperties } from "react";
 import Reveal from "../Reveal";
+import GlowCard from "../GlowCard";
 
 const testimonials = [
   {
@@ -27,64 +26,43 @@ const testimonials = [
   },
 ];
 
-const total = testimonials.length;
-const wrap = (index: number) => ((index % total) + total) % total;
-
 export default function Testimonials() {
-  const [active, setActive] = useState(0);
-  const t = testimonials[active];
-
   return (
     <section id="words" className="sec" aria-labelledby="words-title">
       <div className="container">
         <Reveal className="sec-head">
-          <span className="sec-index rv">Sec. 06 — On record</span>
-          <h2 id="words-title" className="rv-wipe">
-            Quoted,
-            <br />
-            <span className="accent">verbatim.</span>
+          <p className="sec-chip mono rv">Signals</p>
+          <h2 id="words-title" className="rv" style={{ "--d": "0.08s" } as CSSProperties}>
+            What partners say <span className="grad-text">after launch.</span>
           </h2>
         </Reveal>
 
-        <Reveal className="quote-sheet rv">
-          <div className="quote-stage" aria-live="polite">
-            <span className="quote-mark display" aria-hidden="true">
-              “
-            </span>
-            <blockquote key={t.name}>
-              <p className="quote-text">{t.quote}</p>
-              <footer className="quote-by">
-                <span className="quote-initials mono" aria-hidden="true">
-                  {t.initials}
-                </span>
-                <span>
-                  <strong>{t.name}</strong>
-                  <em className="mono">{t.role}</em>
-                </span>
-              </footer>
-            </blockquote>
-          </div>
-          <div className="quote-controls">
-            <span className="mono quote-count">
-              {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
-            <button
-              type="button"
-              className="quote-btn"
-              aria-label="Previous testimonial"
-              onClick={() => setActive((a) => wrap(a - 1))}
+        <Reveal className="quotes-grid">
+          {testimonials.map((t, i) => (
+            <div
+              key={t.name}
+              className="rv-scale"
+              style={{ "--d": `${i * 0.09}s` } as CSSProperties}
             >
-              ←
-            </button>
-            <button
-              type="button"
-              className="quote-btn"
-              aria-label="Next testimonial"
-              onClick={() => setActive((a) => wrap(a + 1))}
-            >
-              →
-            </button>
-          </div>
+              <GlowCard className="quote-card" tilt={2}>
+                <span className="quote-glyph grad-text" aria-hidden="true">
+                  &ldquo;
+                </span>
+                <blockquote>
+                  <p>{t.quote}</p>
+                  <footer>
+                    <span className="quote-avatar mono" aria-hidden="true">
+                      {t.initials}
+                    </span>
+                    <span>
+                      <strong>{t.name}</strong>
+                      <em>{t.role}</em>
+                    </span>
+                  </footer>
+                </blockquote>
+              </GlowCard>
+            </div>
+          ))}
         </Reveal>
       </div>
     </section>

@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Space_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const anton = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
-  display: "swap",
-});
-
-const archivo = Archivo({
+const grotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-archivo",
+  variable: "--font-grotesk",
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jmono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jmono",
   display: "swap",
 });
 
@@ -30,32 +30,32 @@ const SITE_URL = "https://rosmox.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rosmox — AI-native software studio",
+    default: "Rosmox — AI SaaS & intelligent systems",
     template: "%s — Rosmox",
   },
   description:
-    "Rosmox is an AI-native software studio. We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+    "Rosmox is an AI company building AI SaaS products, agentic systems, Android apps, and web platforms — production-grade intelligence you can trust.",
   keywords: [
-    "AI software studio",
-    "agentic AI development",
+    "AI company",
     "AI SaaS development",
-    "Android app development",
-    "web development agency",
+    "agentic AI systems",
     "AI agents",
+    "Android app development",
+    "web platform development",
   ],
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: "Rosmox",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI SaaS & intelligent systems",
     description:
-      "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+      "AI SaaS products, agentic systems, Android apps, and web platforms — production-grade intelligence you can trust.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI SaaS & intelligent systems",
     description:
-      "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+      "AI SaaS products, agentic systems, Android apps, and web platforms — production-grade intelligence you can trust.",
   },
   robots: {
     index: true,
@@ -73,7 +73,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   email: "hello@rosmox.com",
   description:
-    "AI-native software studio building AI SaaS products, agentic AI systems, Android apps, and web platforms.",
+    "AI company building AI SaaS products, agentic systems, Android apps, and web platforms.",
   knowsAbout: [
     "Artificial intelligence",
     "AI agents",
@@ -95,12 +95,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${anton.variable} ${archivo.variable} ${spaceMono.variable}`}
-      >
+      <body className={`${grotesk.variable} ${inter.variable} ${jmono.variable}`}>
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
+        <div className="atmos" aria-hidden="true" />
+        <div className="starlines" aria-hidden="true" />
         <Navbar />
         <main id="main">{children}</main>
         <Footer />

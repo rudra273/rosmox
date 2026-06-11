@@ -58,7 +58,7 @@ export default function VidyalayaPage() {
           operatingSystem: "Android",
         })}
       />
-      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 03/05" />
+      <CrumbBar backHref="/products" backLabel="All products" right="Product 03 / 05" />
       <ProjectHero
         badge="Android"
         year="2026"
@@ -67,20 +67,20 @@ export default function VidyalayaPage() {
         logo={{ src: "/logo/vidyalaya.png", alt: "Vidyālaya app logo" }}
       >
         <StatusStamp>Coming soon — Play Store</StatusStamp>
-        <Link href="/projects/vidyalaya/privacy-policy" className="btn btn-outline">
+        <Link href="/projects/vidyalaya/privacy-policy" className="btn btn-glass">
           Privacy policy
         </Link>
       </ProjectHero>
 
-      <ProjectSection index="Spec 01" title="Screenshots">
+      <ProjectSection index="01" title="Screenshots">
         <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 02" title="Features">
+      <ProjectSection index="02" title="Features">
         <FeatureGrid features={features} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 03" title="Built with">
+      <ProjectSection index="03" title="Built with">
         <ChipList
           items={["Flutter", "Dart", "PDF Renderer", "SharedPreferences", "Material 3"]}
         />

@@ -1,56 +1,62 @@
 @import "tailwindcss";
 
 @import "./styles/nav.css";
+@import "./styles/hero.css";
 @import "./styles/home.css";
 @import "./styles/pages.css";
 
 /* =====================================================
-   TOKENS — "Ink & Index" design system
-   Paper ground, ink type, one orange signal.
+   TOKENS — "Deep Field" design system
+   Space-dark ground, glass surfaces, indigo→cyan signal.
    ===================================================== */
 :root {
-  /* surfaces */
-  --paper: #f4f1ea;
-  --paper-2: #ece8de;
-  --paper-3: #e3ded0;
-  --ink: #16140f;
-  --ink-2: #211e17;
-  --ink-3: #2c2920;
+  /* depth stack */
+  --bg: #04050a;
+  --bg-2: #070910;
+  --bg-3: #0b0e17;
+  --panel: rgba(255, 255, 255, 0.03);
+  --panel-2: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-2: rgba(255, 255, 255, 0.16);
 
-  /* text tiers (on paper) */
-  --ink-soft: #44403a;
-  --ink-mute: #5d5749;
+  /* text tiers */
+  --text: #eef0f7;
+  --text-2: #a9b0c2;
+  --text-3: #7e8699;
 
-  /* text tiers (on ink) */
-  --paper-soft: rgba(244, 241, 234, 0.78);
-  --paper-mute: rgba(244, 241, 234, 0.58);
+  /* the signal */
+  --ind: #818cf8;
+  --cyn: #67e8f9;
+  --vio: #c084fc;
+  --grad: linear-gradient(120deg, #818cf8 0%, #67e8f9 100%);
+  --grad-3: linear-gradient(120deg, #c084fc 0%, #818cf8 45%, #67e8f9 100%);
+  --glow-ind: rgba(99, 102, 241, 0.45);
+  --glow-cyn: rgba(34, 211, 238, 0.35);
 
-  /* rules */
-  --line: rgba(22, 20, 15, 0.16);
-  --line-strong: rgba(22, 20, 15, 0.55);
-  --line-on-ink: rgba(244, 241, 234, 0.18);
-  --line-on-ink-strong: rgba(244, 241, 234, 0.45);
-
-  /* the signal — one accent, used sparingly */
-  --accent: #ff4d00; /* graphic / large display only */
-  --accent-ink: #b23a00; /* AA-safe for small text on paper */
+  /* product identity hues */
+  --hue-lens: #fb7185;
+  --hue-orbit: #818cf8;
+  --hue-vid: #fbbf24;
+  --hue-store: #34d399;
+  --hue-every: #c084fc;
 
   /* motion */
-  --ease: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-snap: cubic-bezier(0.77, 0, 0.18, 1);
-  --dur-fast: 0.18s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.2s;
   --dur: 0.6s;
   --dur-slow: 1s;
 
-  /* layout */
-  --maxw: 1440px;
-  --gutter: clamp(20px, 4vw, 56px);
-  --nav-h: 64px;
+  /* shape & layout */
+  --r: 16px;
+  --r-lg: 24px;
+  --maxw: 1240px;
+  --nav-h: 76px;
 
-  /* font stacks (next/font sets the variables) */
-  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
-  --font-sans: var(--font-archivo), -apple-system, system-ui, sans-serif;
-  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+  /* fonts (next/font sets the variables) */
+  --font-display: var(--font-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-jmono), ui-monospace, monospace;
 }
 
 /* =====================================================
@@ -63,8 +69,8 @@
 }
 html,
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
 }
 html {
   scroll-behavior: smooth;
@@ -77,8 +83,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.55;
+  line-height: 1.6;
   font-size: 16px;
+  letter-spacing: -0.011em;
   overflow-x: clip;
   max-width: 100%;
   min-height: 100vh;
@@ -93,8 +100,8 @@ img {
   display: block;
 }
 ::selection {
-  background: var(--accent);
-  color: var(--paper);
+  background: rgba(129, 140, 248, 0.45);
+  color: #fff;
 }
 
 a {
@@ -107,61 +114,95 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
-  border-radius: 0;
 }
 
 /* type helpers */
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: 0.005em;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
 }
 .mono {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-weight: 500;
+}
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .container {
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding: 0 24px;
 }
 
-/* anchor targets clear the fixed masthead */
 [id] {
-  scroll-margin-top: calc(var(--nav-h) + 24px);
+  scroll-margin-top: calc(var(--nav-h) + 28px);
+}
+
+/* =====================================================
+   ATMOSPHERE — fixed, cheap, no WebGL
+   ===================================================== */
+.atmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 38% at 72% -6%, rgba(99, 102, 241, 0.13), transparent 60%),
+    radial-gradient(ellipse 45% 32% at 12% 16%, rgba(34, 211, 238, 0.06), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 50% 110%, rgba(99, 102, 241, 0.05), transparent 55%);
+}
+.starlines {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 75%);
+}
+main,
+header,
+footer {
+  position: relative;
+  z-index: 2;
 }
 
 /* =====================================================
    ACCESSIBILITY SCAFFOLDING
    ===================================================== */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--cyn);
   outline-offset: 3px;
+  border-radius: 6px;
 }
 .skip-link {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   z-index: 300;
-  padding: 12px 18px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  transform: translateY(-250%);
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: var(--ind);
+  color: #06070f;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(-220%);
   transition: transform var(--dur-fast) var(--ease);
 }
 .skip-link:focus {
   transform: translateY(0);
-  outline-color: var(--accent);
+  outline-color: #fff;
 }
 .visually-hidden {
   position: absolute;
@@ -175,103 +216,75 @@ button {
   border: 0;
 }
 
-main,
-header,
-footer {
-  position: relative;
-}
-
 /* =====================================================
-   SECTION SCAFFOLD — every section is a ruled sheet
+   SECTION SCAFFOLD
    ===================================================== */
 section {
   position: relative;
 }
 .sec {
-  border-top: 1px solid var(--line-strong);
-  padding: clamp(72px, 9vw, 130px) 0;
+  padding: clamp(80px, 10vw, 140px) 0;
 }
 .sec-head {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 18px clamp(20px, 4vw, 64px);
-  align-items: start;
-  margin-bottom: clamp(40px, 6vw, 84px);
+  max-width: 720px;
+  margin-bottom: clamp(44px, 6vw, 72px);
 }
-.sec-index {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  border: 1px solid var(--ink);
-  padding: 6px 10px;
-  line-height: 1;
-  white-space: nowrap;
+.sec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+.sec-chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 10px var(--glow-ind);
 }
 .sec-head h2 {
   font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 0.92;
-  letter-spacing: 0.005em;
-  font-size: clamp(40px, 6.5vw, 96px);
-  max-width: 18ch;
-}
-.sec-head h2 .accent {
-  color: var(--accent-ink);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(32px, 4.6vw, 56px);
+  margin-bottom: 16px;
+  text-wrap: balance;
 }
 .sec-sub {
-  grid-column: 2;
-  max-width: 560px;
-  color: var(--ink-soft);
-  font-size: 16.5px;
-  line-height: 1.6;
-  margin-top: 14px;
-}
-
-/* on-ink (inverted) sections */
-.on-ink {
-  background: var(--ink);
-  color: var(--paper);
-}
-.on-ink .sec-index {
-  border-color: var(--paper);
-}
-.on-ink .sec-sub {
-  color: var(--paper-soft);
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 580px;
 }
 
 /* =====================================================
-   BUTTONS — boxed, square, fill-swipe on hover
+   BUTTONS
    ===================================================== */
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 15px 24px;
-  border: 1px solid var(--ink);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: 9px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1;
-  overflow: hidden;
-  z-index: 0;
-  transition: color var(--dur-fast) var(--ease-snap),
-    border-color var(--dur-fast) var(--ease-snap);
+  transition: transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
 }
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.3s var(--ease-snap);
-}
-.btn:hover::before,
-.btn:focus-visible::before {
-  transform: scaleY(1);
+.btn:active {
+  transform: translateY(1px) scale(0.99);
 }
 .btn .arr {
   display: inline-block;
@@ -280,53 +293,39 @@ section {
 .btn:hover .arr {
   transform: translateX(4px);
 }
-.btn:active {
-  transform: translateY(1px);
+
+/* primary: the signal gradient with a halo */
+.btn-grad {
+  background: var(--grad);
+  color: #05060d;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 8px 28px -10px var(--glow-ind);
+}
+.btn-grad:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+    0 14px 40px -10px var(--glow-ind), 0 0 24px -4px var(--glow-cyn);
 }
 
-.btn-solid {
-  background: var(--ink);
-  color: var(--paper);
+/* secondary: glass */
+.btn-glass {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  backdrop-filter: blur(8px);
 }
-.btn-solid::before {
-  background: var(--accent);
-}
-.btn-solid:hover {
-  color: var(--ink);
-  border-color: var(--accent);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--ink);
-}
-.btn-outline::before {
-  background: var(--ink);
-}
-.btn-outline:hover {
-  color: var(--paper);
-}
-
-/* for dark / on-ink contexts */
-.btn-inverse {
-  background: transparent;
-  color: var(--paper);
-  border-color: var(--paper);
-}
-.btn-inverse::before {
-  background: var(--paper);
-}
-.btn-inverse:hover {
-  color: var(--ink);
+.btn-glass:hover {
+  background: var(--panel-2);
+  border-color: var(--border-2);
+  transform: translateY(-1px);
 }
 
 /* =====================================================
-   REVEAL PRIMITIVES (driven by .in via IntersectionObserver)
-   --d sets the stagger delay per element
+   REVEAL PRIMITIVES (.in toggled by IntersectionObserver)
    ===================================================== */
 .rv {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(26px);
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
   transition-delay: var(--d, 0s);
 }
@@ -335,28 +334,30 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
-.rv-wipe {
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.9s var(--ease-snap);
+.rv-scale {
+  opacity: 0;
+  transform: scale(0.94) translateY(18px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur-slow) var(--ease);
   transition-delay: var(--d, 0s);
 }
-.rv-wipe.in,
-.in .rv-wipe {
-  clip-path: inset(0 0 0 0);
+.rv-scale.in,
+.in .rv-scale {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
-.rv-rule {
+.rv-line {
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.9s var(--ease-snap);
+  transition: transform 1s var(--ease);
   transition-delay: var(--d, 0s);
 }
-.rv-rule.in,
-.in .rv-rule {
+.rv-line.in,
+.in .rv-line {
   transform: scaleX(1);
 }
 
 /* =====================================================
-   REDUCED MOTION — fully designed alternative
+   REDUCED MOTION — designed alternative
    ===================================================== */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -370,10 +371,9 @@ section {
     transition-duration: 0.01ms !important;
   }
   .rv,
-  .rv-wipe,
-  .rv-rule {
+  .rv-scale,
+  .rv-line {
     opacity: 1 !important;
     transform: none !important;
-    clip-path: none !important;
   }
 }

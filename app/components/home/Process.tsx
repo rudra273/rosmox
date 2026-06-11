@@ -4,48 +4,49 @@ import Reveal from "../Reveal";
 const steps = [
   {
     num: "01",
-    title: "Discover",
-    desc: "A working session to map the problem, constraints, and the shape of a great outcome.",
+    title: "Map",
+    desc: "A working session to define the problem, the constraints, and what a great outcome looks like in production.",
   },
   {
     num: "02",
-    title: "Design",
-    desc: "Wireframes, then high-fidelity. A clickable prototype before we touch production code.",
+    title: "Prototype",
+    desc: "Wireframes to high fidelity, fast. You click through a real prototype before any production code exists.",
   },
   {
     num: "03",
-    title: "Build",
-    desc: "Weekly Loom updates, a shared Linear board, and a staging URL from week one.",
+    title: "Engineer",
+    desc: "Weekly demos, a shared board, and a staging URL from week one — you watch the system come alive.",
   },
   {
     num: "04",
-    title: "Ship",
-    desc: "Launch, monitor, iterate. We stay on for 30 days post-ship to make sure it lands.",
+    title: "Launch & run",
+    desc: "Ship, monitor, iterate. We stay on for 30 days after launch to make sure it holds in the real world.",
   },
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="sec on-ink" aria-labelledby="process-title">
+    <section id="process" className="sec" aria-labelledby="process-title">
       <div className="container">
         <Reveal className="sec-head">
-          <span className="sec-index rv">Sec. 04 — Method</span>
-          <h2 id="process-title" className="rv-wipe">
-            Small team. Tight loops.
-            <br />
-            <span className="accent-bright">Visible work.</span>
+          <p className="sec-chip mono rv">How we ship</p>
+          <h2 id="process-title" className="rv" style={{ "--d": "0.08s" } as CSSProperties}>
+            A tight loop, <span className="grad-text">end to end.</span>
           </h2>
         </Reveal>
 
-        <Reveal className="steps">
+        <Reveal className="timeline">
+          <span className="timeline-beam rv-line" aria-hidden="true" />
           {steps.map((s, i) => (
             <div
-              className="step rv"
-              style={{ "--d": `${i * 0.1}s` } as CSSProperties}
+              className="tl-step rv"
+              style={{ "--d": `${0.15 + i * 0.12}s` } as CSSProperties}
               key={s.num}
             >
-              <div className="step-num display">{s.num}</div>
-              <h3 className="display">{s.title}</h3>
+              <span className="tl-node" aria-hidden="true">
+                <span className="mono">{s.num}</span>
+              </span>
+              <h3>{s.title}</h3>
               <p>{s.desc}</p>
             </div>
           ))}

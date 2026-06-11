@@ -73,68 +73,68 @@ export default function BhashaLensPage() {
           category: "DeveloperApplication",
         })}
       />
-      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 01/05" />
+      <CrumbBar backHref="/products" backLabel="All products" right="Product 01 / 05" />
       <ProjectHero
         badge="Vision · OCR"
         year="2026"
         title="BhashaLens"
         desc="A smart OCR pipeline for accurate image-to-text conversion across Indian regional language documents. Printed or handwritten, single page or full archive — BhashaLens turns scanned documents into clean, structured, searchable text at scale."
       >
-        <Link href="/contact" className="btn btn-solid">
+        <Link href="/contact" className="btn btn-grad">
           Get in touch <span className="arr">→</span>
         </Link>
-        <a href="#how" className="btn btn-outline">
+        <a href="#how" className="btn btn-glass">
           See how it works
         </a>
       </ProjectHero>
 
-      <ProjectSection index="Spec 01" title="How it works" id="how">
+      <ProjectSection index="01" title="How it works" id="how">
         <div className="ocr-demo" aria-hidden="true">
-          <div className="ocr-panel">
-            <div className="ocr-label mono">Scanned document</div>
-            <div className="dg dg-lens ocr-stage">
-              <div className="dg-doc">
-                <span className="dg-scan" />
-                <i />
-                <i />
-                <i />
-                <i />
-              </div>
-              <span className="dg-arrow">→</span>
-              <div className="dg-out">
-                <i className="long" />
-                <i />
-                <i className="short" />
-                <i />
-              </div>
+          <div className="ocr-stage">
+            <div className="ocr-doc">
+              <span className="ocr-doc-label mono">Scanned document</span>
+              <span className="ocr-scanline" />
+              <i />
+              <i />
+              <i />
+              <i />
             </div>
-            <div className="ocr-label mono right">Extracted text</div>
+            <span className="ocr-flow">
+              <span className="ocr-flow-dot" />
+            </span>
+            <div className="ocr-doc ocr-result">
+              <span className="ocr-doc-label mono">Extracted text</span>
+              <i className="long" />
+              <i />
+              <i className="short" />
+              <i />
+            </div>
           </div>
         </div>
       </ProjectSection>
 
-      <ProjectSection index="Spec 02" title="Features">
+      <ProjectSection index="02" title="Features">
         <FeatureGrid features={features} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 03" title="Supported languages">
+      <ProjectSection index="03" title="Supported languages">
         <ChipList items={languages} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 04" title="In action">
+      <ProjectSection index="04" title="In action">
         <Screens labels={["Upload & scan", "Live extraction", "Structured export"]} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 05" title="Built with">
+      <ProjectSection index="05" title="Built with">
         <ChipList items={tech} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 06" title="Get started">
+      <ProjectSection index="06" title="Get started">
         <p className="proj-closing">
           Have a pile of documents to digitize, or a product that needs Indic
           OCR baked in? Tell us about it.
         </p>
-        <Link href="/contact" className="btn btn-solid">
+        <Link href="/contact" className="btn btn-grad">
           Get in touch <span className="arr">→</span>
         </Link>
       </ProjectSection>

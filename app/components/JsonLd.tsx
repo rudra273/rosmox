@@ -50,13 +50,13 @@ export function productJsonLd({
   };
 }
 
-/** The studio's services, for the home page. */
+/** The company's services, for the home page. */
 export function servicesJsonLd() {
   const services = [
-    ["AI SaaS product development", "Multi-tenant SaaS platforms with AI built into the product core."],
-    ["Agentic AI systems", "Tool-using AI agents with guardrails, evals, and traces, integrated into existing stacks."],
-    ["Android app development", "Native Kotlin and Jetpack Compose apps, including on-device AI."],
-    ["Web platform development", "Marketing sites, dashboards, and storefronts — fast, semantic, accessible."],
+    ["AI SaaS platform development", "Complete AI products — multi-tenant architecture, model orchestration, billing, and analytics."],
+    ["Agentic AI systems", "Autonomous agents with tool use, guardrails, evaluations, and full traces, integrated into existing stacks."],
+    ["Android engineering", "Native Kotlin and Jetpack Compose apps with on-device AI — private and offline-capable."],
+    ["Web platform development", "High-performance marketing sites, dashboards, and storefronts — accessible and search-ready."],
   ];
   return {
     "@context": "https://schema.org",

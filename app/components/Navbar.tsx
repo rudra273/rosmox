@@ -9,13 +9,13 @@ const links = [
   { href: "/products", label: "Products" },
   { href: "/#work", label: "Work" },
   { href: "/#process", label: "Process" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Escape closes the takeover
+  // Escape closes the menu
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenuOpen(false);
@@ -24,7 +24,7 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // lock body scroll while the takeover is open
+  // lock body scroll while the mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -32,46 +32,62 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  // pill gains depth once the page scrolls
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setScrolled(window.scrollY > 16);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <>
-      <header className={`masthead${menuOpen ? " menu-open" : ""}`}>
-        <div className="masthead-inner">
-          <Link href="/" className="wordmark" aria-label="Rosmox — home">
-            Rosmox<sup>®</sup>
-          </Link>
-          <span className="masthead-tag">AI software studio</span>
-          <nav className="masthead-links" aria-label="Primary">
-            {links.slice(0, 4).map((l) => (
-              <Link key={l.href} href={l.href}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <Link href="/contact" className="btn btn-solid nav-cta">
-            Start a project <span className="arr">→</span>
-          </Link>
-          <button
-            type="button"
-            className="menu-word"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            aria-controls="takeover-menu"
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span className="menu-dot" aria-hidden="true" />
-            {menuOpen ? "Close" : "Menu"}
-          </button>
-        </div>
-      </header>
+    <header className={`nav${scrolled ? " scrolled" : ""}${menuOpen ? " menu-open" : ""}`}>
+      <div className="nav-pill">
+        <Link href="/" className="brand" aria-label="Rosmox — home">
+          <span className="brand-orb" aria-hidden="true" />
+          Rosmox
+        </Link>
+        <nav className="nav-links" aria-label="Primary">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href}>
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+        <Link href="/contact" className="btn btn-grad nav-cta">
+          Start a project <span className="arr">→</span>
+        </Link>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+      </div>
 
       <nav
-        id="takeover-menu"
-        className={`takeover${menuOpen ? " open" : ""}`}
-        aria-label="Menu"
+        id="mobile-menu"
+        className={`mobile-menu${menuOpen ? " open" : ""}`}
+        aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
       >
-        <div className="takeover-links">
-          {links.map((l, index) => (
+        <div className="mobile-menu-links">
+          {[...links, { href: "/contact", label: "Contact" }].map((l, index) => (
             <Link
               key={l.href}
               href={l.href}
@@ -79,20 +95,22 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               tabIndex={menuOpen ? 0 : -1}
             >
-              <span className="t-num" aria-hidden="true">
+              {l.label}
+              <span className="mm-num mono" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              {l.label}
             </Link>
           ))}
         </div>
-        <div className="takeover-foot">
-          <a href="mailto:hello@rosmox.com" tabIndex={menuOpen ? 0 : -1}>
-            hello@rosmox.com
-          </a>
-          <span>AI software studio — est. 2025</span>
-        </div>
+        <Link
+          href="/contact"
+          className="btn btn-grad mobile-menu-cta"
+          onClick={() => setMenuOpen(false)}
+          tabIndex={menuOpen ? 0 : -1}
+        >
+          Start a project <span className="arr">→</span>
+        </Link>
       </nav>
-    </>
+    </header>
   );
 }

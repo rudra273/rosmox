@@ -1,12 +1,11 @@
 import Hero from "./components/home/Hero";
-import Ticker from "./components/home/Ticker";
 import Services from "./components/home/Services";
-import ProductDeck from "./components/home/ProductDeck";
+import ProductsShowcase from "./components/home/ProductsShowcase";
 import Work from "./components/home/Work";
 import Process from "./components/home/Process";
-import Numbers from "./components/home/Numbers";
+import Stats from "./components/home/Stats";
 import Testimonials from "./components/home/Testimonials";
-import CtaBand from "./components/home/CtaBand";
+import CtaSection from "./components/home/CtaSection";
 import JsonLd, { servicesJsonLd } from "./components/JsonLd";
 
 export default function Home() {
@@ -14,14 +13,13 @@ export default function Home() {
     <>
       <JsonLd data={servicesJsonLd()} />
       <Hero />
-      <Ticker />
       <Services />
-      <ProductDeck />
+      <ProductsShowcase />
       <Work />
       <Process />
-      <Numbers />
+      <Stats />
       <Testimonials />
-      <CtaBand />
+      <CtaSection />
     </>
   );
 }

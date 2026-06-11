@@ -60,7 +60,7 @@ export default function EverythingPage() {
           operatingSystem: "Android",
         })}
       />
-      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 05/05" />
+      <CrumbBar backHref="/products" backLabel="All products" right="Product 05 / 05" />
       <ProjectHero
         badge="Privacy · Local-First"
         year="2026"
@@ -68,20 +68,20 @@ export default function EverythingPage() {
         desc="A local-first privacy utility for your whole device. Everything keeps user-created data on the device unless you intentionally create an encrypted local backup or connect Google Drive — with clear, opt-in control over every permission it touches."
       >
         <StatusStamp>Coming soon — Play Store</StatusStamp>
-        <Link href="/projects/everything/privacy-policy" className="btn btn-outline">
+        <Link href="/projects/everything/privacy-policy" className="btn btn-glass">
           Privacy policy
         </Link>
       </ProjectHero>
 
-      <ProjectSection index="Spec 01" title="Features">
+      <ProjectSection index="01" title="Features">
         <FeatureGrid features={features} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 02" title="In action">
+      <ProjectSection index="02" title="In action">
         <Screens labels={["Dashboard", "Permissions", "Backups"]} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 03" title="Built with">
+      <ProjectSection index="03" title="Built with">
         <ChipList items={tech} />
       </ProjectSection>
     </div>

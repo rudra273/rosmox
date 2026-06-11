@@ -4,37 +4,31 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useInView, animate } from "motion/react";
 import Reveal from "../Reveal";
 
-interface Stat {
-  count: number;
-  unit?: string;
-  label: string;
-}
-
-const stats: Stat[] = [
+const stats = [
   { count: 100, unit: "%", label: "On-time delivery" },
-  { count: 100, unit: "%", label: "Code quality focus" },
-  { count: 90, unit: "+", label: "Lighthouse / SEO scores" },
-  { count: 24, unit: "/7", label: "AI systems that run" },
+  { count: 5, unit: "", label: "Products in production" },
+  { count: 90, unit: "+", label: "Lighthouse & SEO scores" },
+  { count: 24, unit: "/7", label: "Systems running" },
 ];
 
 const pillars = [
   {
-    title: "AI built into your systems",
-    desc: "We don't just add a chatbot. We integrate reasoning, agents, and automation directly into your existing stack and workflows.",
+    title: "Intelligence inside the system",
+    desc: "Not a chatbot bolted on the side — reasoning, retrieval, and automation wired directly into your stack and workflows.",
   },
   {
-    title: "High performance & clean code",
-    desc: "Fast load times, smooth interactions, and a maintainable codebase. We benchmark against shipped software, not mockups.",
+    title: "Engineering you can audit",
+    desc: "Clean, typed, observable code. Every agent action traced, every release benchmarked against real production load.",
   },
   {
-    title: "SEO & on-time delivery",
-    desc: "Search-ready from day one — semantic markup, fast Core Web Vitals, and structured metadata. Shipped on schedule, every time.",
+    title: "Found, fast, on schedule",
+    desc: "Semantic markup, strong Core Web Vitals, and structured data from day one — delivered when we said it would be.",
   },
 ];
 
-/** Count-up number — cubic ease-out over 1.4s, fires once in view. */
+/** Count-up figure — cubic ease-out over 1.4s, fires once in view. */
 function CountUp({ to, unit }: { to: number; unit?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const [value, setValue] = useState(0);
 
@@ -49,35 +43,33 @@ function CountUp({ to, unit }: { to: number; unit?: string }) {
   }, [inView, to]);
 
   return (
-    <div className="num-figure display" ref={ref}>
+    <span className="stat-figure display" ref={ref}>
       {value}
-      {unit && <span className="num-unit">{unit}</span>}
-    </div>
+      {unit && <span className="stat-unit grad-text">{unit}</span>}
+    </span>
   );
 }
 
-export default function Numbers() {
+export default function Stats() {
   return (
     <section id="why" className="sec" aria-labelledby="why-title">
       <div className="container">
         <Reveal className="sec-head">
-          <span className="sec-index rv">Sec. 05 — Why Rosmox</span>
-          <h2 id="why-title" className="rv-wipe">
-            For teams who care
-            <br />
-            <span className="accent">about the details.</span>
+          <p className="sec-chip mono rv">Why Rosmox</p>
+          <h2 id="why-title" className="rv" style={{ "--d": "0.08s" } as CSSProperties}>
+            Built for teams that <span className="grad-text">measure twice.</span>
           </h2>
         </Reveal>
 
-        <Reveal className="num-grid">
+        <Reveal className="stats-panel">
           {stats.map((s, i) => (
             <div
-              className="num-cell rv"
+              className="stat rv"
               style={{ "--d": `${i * 0.08}s` } as CSSProperties}
               key={s.label}
             >
               <CountUp to={s.count} unit={s.unit} />
-              <div className="num-label mono">{s.label}</div>
+              <span className="stat-label">{s.label}</span>
             </div>
           ))}
         </Reveal>
@@ -89,7 +81,7 @@ export default function Numbers() {
               style={{ "--d": `${i * 0.1}s` } as CSSProperties}
               key={p.title}
             >
-              <span className="pillar-mark" aria-hidden="true" />
+              <span className="pillar-beam" aria-hidden="true" />
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
             </div>

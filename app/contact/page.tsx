@@ -73,21 +73,23 @@ export default function ContactPage() {
 
   return (
     <div className="contact">
-      <CrumbBar backHref="/" backLabel="Rosmox" right="Form RX-01 — Project intake" />
+      <CrumbBar backHref="/" backLabel="Rosmox" right="New project intake" />
 
       <div className="container contact-grid">
         <header className="contact-rail">
-          <p className="mono contact-eyebrow">Get in touch</p>
+          <p className="sec-chip mono">Get in touch</p>
           <h1 className="display contact-title">
-            Start
-            <br />
-            here<span className="hero-star">.</span>
+            Let&apos;s build it <span className="grad-text">together.</span>
           </h1>
+          <p className="contact-sub">
+            Tell us what you&apos;re making. The right scope, a clear timeline,
+            and an honest answer on whether we&apos;re the right team.
+          </p>
           <dl className="contact-facts">
             <div>
               <dt className="mono">Direct line</dt>
               <dd>
-                <a href="mailto:hello@rosmox.com" className="contact-mail">
+                <a href="mailto:hello@rosmox.com" className="contact-mail grad-text">
                   hello@rosmox.com
                 </a>
               </dd>
@@ -97,8 +99,8 @@ export default function ContactPage() {
               <dd>Within one business day</dd>
             </div>
             <div>
-              <dt className="mono">Engagements</dt>
-              <dd>Usually 6–12 weeks</dd>
+              <dt className="mono">Typical engagement</dt>
+              <dd>6–12 weeks, kickoff to launch</dd>
             </div>
           </dl>
         </header>
@@ -106,15 +108,15 @@ export default function ContactPage() {
         <div className="contact-sheet">
           {status === "success" ? (
             <div className="contact-received" role="status">
-              <span className="received-stamp mono">Received</span>
+              <span className="received-orb" aria-hidden="true" />
               <h2 className="display">
-                Thanks, {form.name.trim() || "there"}.
+                Thanks, {form.name.trim() || "there"} — received.
               </h2>
               <p>
-                Message logged. We&apos;ll get back to you within one business
-                day.
+                Your message is in. We&apos;ll get back to you within one
+                business day.
               </p>
-              <Link href="/" className="btn btn-outline">
+              <Link href="/" className="btn btn-glass">
                 Back to home
               </Link>
             </div>
@@ -122,7 +124,7 @@ export default function ContactPage() {
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="field-row">
                 <label className={`field${errors.name ? " has-error" : ""}`}>
-                  <span className="mono">01 — Name</span>
+                  <span>Name</span>
                   <input
                     type="text"
                     autoComplete="name"
@@ -136,7 +138,7 @@ export default function ContactPage() {
                   )}
                 </label>
                 <label className={`field${errors.email ? " has-error" : ""}`}>
-                  <span className="mono">02 — Email</span>
+                  <span>Email</span>
                   <input
                     type="email"
                     autoComplete="email"
@@ -151,7 +153,7 @@ export default function ContactPage() {
                 </label>
               </div>
               <label className="field">
-                <span className="mono">03 — Company (optional)</span>
+                <span>Company (optional)</span>
                 <input
                   type="text"
                   autoComplete="organization"
@@ -160,7 +162,7 @@ export default function ContactPage() {
                 />
               </label>
               <label className={`field${errors.message ? " has-error" : ""}`}>
-                <span className="mono">04 — Project details</span>
+                <span>Project details</span>
                 <textarea
                   rows={6}
                   placeholder="What are you building? Timeline, scope, anything useful."
@@ -174,7 +176,7 @@ export default function ContactPage() {
               </label>
               <button
                 type="submit"
-                className="btn btn-solid contact-submit"
+                className="btn btn-grad contact-submit"
                 disabled={status === "submitting"}
               >
                 {status === "submitting" ? (

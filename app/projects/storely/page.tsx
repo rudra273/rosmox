@@ -58,7 +58,7 @@ export default function StorelyPage() {
           operatingSystem: "Android",
         })}
       />
-      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 04/05" />
+      <CrumbBar backHref="/products" backLabel="All products" right="Product 04 / 05" />
       <ProjectHero
         badge="Android"
         year="2026"
@@ -67,20 +67,20 @@ export default function StorelyPage() {
         logo={{ src: "/logo/storely.png", alt: "Storely app logo" }}
       >
         <StatusStamp>Coming soon — Play Store</StatusStamp>
-        <Link href="/projects/storely/privacy-policy" className="btn btn-outline">
+        <Link href="/projects/storely/privacy-policy" className="btn btn-glass">
           Privacy policy
         </Link>
       </ProjectHero>
 
-      <ProjectSection index="Spec 01" title="Features">
+      <ProjectSection index="01" title="Features">
         <FeatureGrid features={features} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 02" title="Screenshots">
+      <ProjectSection index="02" title="Screenshots">
         <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 03" title="Built with">
+      <ProjectSection index="03" title="Built with">
         <ChipList
           items={["Flutter", "Dart", "Local Database", "Barcode Scanner", "File Export"]}
         />

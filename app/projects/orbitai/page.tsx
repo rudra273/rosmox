@@ -58,7 +58,7 @@ export default function OrbitAIPage() {
           operatingSystem: "Android",
         })}
       />
-      <CrumbBar backHref="/products" backLabel="All products" right="Spec sheet — 02/05" />
+      <CrumbBar backHref="/products" backLabel="All products" right="Product 02 / 05" />
       <ProjectHero
         badge="Android"
         year="2026"
@@ -66,20 +66,20 @@ export default function OrbitAIPage() {
         desc="An advanced on-device AI chat and productivity assistant for Android. Built with Jetpack Compose and modern Kotlin — leveraging local LLM inference, RAG, and a suite of productivity tools, all running privately on your device."
       >
         <StatusStamp>Coming soon — Play Store</StatusStamp>
-        <Link href="/contact" className="btn btn-outline">
+        <Link href="/contact" className="btn btn-glass">
           Get notified
         </Link>
       </ProjectHero>
 
-      <ProjectSection index="Spec 01" title="Features">
+      <ProjectSection index="01" title="Features">
         <FeatureGrid features={features} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 02" title="Screenshots">
+      <ProjectSection index="02" title="Screenshots">
         <Screens labels={["Screenshot 1", "Screenshot 2", "Screenshot 3"]} />
       </ProjectSection>
 
-      <ProjectSection index="Spec 03" title="Built with">
+      <ProjectSection index="03" title="Built with">
         <ChipList
           items={["Kotlin", "Jetpack Compose", "MediaPipe", "LiteRT", "Room DB", "Material 3"]}
         />

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
-/* Shared building blocks for the product "spec sheet" pages.
+/* Shared building blocks for the product detail pages.
    All server-safe — no hooks, no client code. */
 
 export function CrumbBar({
@@ -43,20 +43,21 @@ export function ProjectHero({
 }) {
   return (
     <header className="proj-hero">
+      <div className="proj-halo" aria-hidden="true" />
       <div className="container">
         {logo && (
           <Image
             src={logo.src}
             alt={logo.alt}
-            width={88}
-            height={88}
+            width={84}
+            height={84}
             className="proj-logo"
             priority
           />
         )}
-        <div className="proj-meta mono">
-          <span className="proj-badge">{badge}</span>
-          <span className="proj-year">{year}</span>
+        <div className="proj-meta">
+          <span className="proj-badge mono">{badge}</span>
+          <span className="proj-year mono">{year}</span>
         </div>
         <h1 className="display proj-title">{title}</h1>
         <p className="proj-desc">{desc}</p>
@@ -67,7 +68,12 @@ export function ProjectHero({
 }
 
 export function StatusStamp({ children }: { children: ReactNode }) {
-  return <span className="proj-stamp mono">{children}</span>;
+  return (
+    <span className="proj-stamp mono">
+      <i aria-hidden="true" />
+      {children}
+    </span>
+  );
 }
 
 export function ProjectSection({
@@ -85,7 +91,7 @@ export function ProjectSection({
     <section className="proj-sec" id={id}>
       <div className="container">
         <div className="proj-sec-head">
-          <span className="sec-index">{index}</span>
+          <span className="proj-index mono">{index}</span>
           <h2 className="display">{title}</h2>
         </div>
         {children}
