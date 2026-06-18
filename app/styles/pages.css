@@ -567,6 +567,68 @@ body:has(.privacy-page) { background: var(--bg); }
 }
 .privacy-link:hover { text-decoration-color: var(--accent); }
 
+/* Delete-account form (reuses .privacy-page shell) */
+.delete-form {
+  margin-top: 32px;
+  display: flex; flex-direction: column; gap: 20px;
+  max-width: 480px;
+}
+.delete-field { display: flex; flex-direction: column; gap: 8px; }
+.delete-field label {
+  font-size: 13px; font-weight: 600;
+  color: var(--text); letter-spacing: 0.01em;
+}
+.delete-optional { color: var(--text-faint); font-weight: 400; }
+.delete-field input,
+.delete-field textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.delete-field textarea { resize: vertical; min-height: 84px; line-height: 1.55; }
+.delete-field input::placeholder,
+.delete-field textarea::placeholder { color: var(--text-faint); }
+.delete-field input:focus,
+.delete-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(102, 163, 255, 0.15);
+}
+.delete-submit {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: 15px; font-weight: 600;
+  color: #060709;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease);
+}
+.delete-submit:hover {
+  background: var(--accent-2);
+  box-shadow: 0 8px 30px -8px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.delete-submit:active { transform: translateY(0); }
+.delete-note {
+  font-size: 13px; line-height: 1.6;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
 @media (max-width: 600px) {
   .privacy-page { padding: 100px 20px 80px; }
 }

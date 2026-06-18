@@ -238,8 +238,12 @@ export default function PrivacyPolicyPage() {
               <li>Edit your profile details at any time from the Profile screen.</li>
               <li>Sign out to stop syncing data to your account.</li>
               <li>
-                Request deletion of your account and associated data by contacting
-                us at the email below.
+                Request deletion of your account and associated data by
+                contacting us at the email below, or use our{" "}
+                <Link href="/projects/vidyalaya/delete-account" className="privacy-link">
+                  account deletion request page
+                </Link>
+                .
               </li>
             </ul>
           </section>
