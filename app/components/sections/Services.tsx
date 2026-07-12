@@ -114,13 +114,9 @@ export default function Services() {
     <section id="services" aria-labelledby="services-title">
       <div className="container">
         <SectionHead
-          label="What we do"
-          index="01"
-          title={
-            <span id="services-title">
-              Four disciplines. <span className="serif">One studio.</span>
-            </span>
-          }
+          label="Capabilities"
+          index="02"
+          title={<span id="services-title">Four disciplines. One company.</span>}
         >
           Strategy, design, and engineering under the same roof — no
           sub-contracting, no hand-off gaps. That&apos;s why the work feels

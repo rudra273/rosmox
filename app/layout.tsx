@@ -31,32 +31,32 @@ const SITE_URL = "https://rosmox.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rosmox — AI-native software studio",
+    default: "Rosmox — AI software company",
     template: "%s — Rosmox",
   },
   description:
-    "Rosmox is an AI-native software studio. We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+    "Rosmox is an AI software company. We build on-device AI apps for Android, agentic systems, and web platforms — engineered for production.",
   keywords: [
-    "AI software studio",
+    "AI software company",
     "agentic AI development",
     "AI SaaS development",
     "Android app development",
-    "web development agency",
+    "web development",
     "AI agents",
   ],
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: "Rosmox",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI software company",
     description:
-      "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+      "We build on-device AI apps for Android, agentic systems, and web platforms — engineered for production.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rosmox — AI-native software studio",
+    title: "Rosmox — AI software company",
     description:
-      "We build AI SaaS products, agentic AI systems, Android apps, and web platforms for ambitious teams.",
+      "We build on-device AI apps for Android, agentic systems, and web platforms — engineered for production.",
   },
   robots: {
     index: true,
@@ -74,7 +74,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   email: "hello@rosmox.com",
   description:
-    "AI-native software studio building AI SaaS products, agentic AI systems, Android apps, and web platforms.",
+    "AI software company building on-device AI apps for Android, agentic AI systems, and web platforms.",
   knowsAbout: [
     "Artificial intelligence",
     "AI agents",

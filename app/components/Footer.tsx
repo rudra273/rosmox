@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const columns = [
   {
-    title: "Studio",
+    title: "Company",
     links: [
-      { href: "/#services", label: "Services" },
-      { href: "/#work", label: "Work" },
-      { href: "/#process", label: "Process" },
+      { href: "/#services", label: "Capabilities" },
+      { href: "/#how", label: "How we build" },
+      { href: "/#principles", label: "Principles" },
       { href: "/contact", label: "Contact" },
     ],
   },
@@ -41,8 +41,8 @@ export default function Footer() {
               <span>Rosmox</span>
             </Link>
             <p>
-              An AI-native software studio. We design, build, and ship AI SaaS,
-              agentic systems, Android apps, and web platforms.
+              Rosmox is an AI software company. We design, build, and run AI
+              products — on-device apps, agentic systems, and web platforms.
             </p>
             <a href="mailto:hello@rosmox.com" className="foot-mail">
               hello@rosmox.com

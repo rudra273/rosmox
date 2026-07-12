@@ -24,12 +24,12 @@ const phases = [
   {
     num: "Phase 03 / 04",
     title: "The build",
-    desc: "Design, engineering, and QA run in parallel — with humans owning every decision that matters.",
+    desc: "Design, engineering, and QA run in parallel — a staging URL from week one, and humans owning every decision that matters.",
   },
   {
     num: "Phase 04 / 04",
     title: "The ship",
-    desc: "Launch, monitor, iterate. We stay on after release to make sure it lands.",
+    desc: "Launch, monitor, iterate. We stay on for 30 days post-ship to make sure it lands.",
   },
 ];
 
@@ -83,11 +83,11 @@ export default function AgentFlow() {
   const activePhase = reduced ? 3 : phase;
 
   return (
-    <section className="agentflow" ref={sectionRef} aria-labelledby="agentflow-title">
+    <section id="how" className="agentflow" ref={sectionRef} aria-labelledby="agentflow-title">
       <div className="agentflow-sticky">
         <div className="agentflow-head">
           <div className="section-label">
-            <span className="index" aria-hidden="true">02</span>
+            <span className="index" aria-hidden="true">03</span>
             How we build
           </div>
           <h2 id="agentflow-title">
