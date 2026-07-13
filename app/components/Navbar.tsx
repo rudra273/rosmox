@@ -6,10 +6,10 @@ import Link from "next/link";
 import ArrowIcon from "./ui/ArrowIcon";
 
 const links = [
-  { href: "/#services", label: "Services" },
   { href: "/products", label: "Products" },
-  { href: "/#work", label: "Work" },
-  { href: "/#process", label: "Process" },
+  { href: "/#services", label: "Capabilities" },
+  { href: "/#how", label: "How we build" },
+  { href: "/#principles", label: "Principles" },
 ];
 
 export default function Navbar() {

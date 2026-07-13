@@ -5,7 +5,7 @@ import JsonLd, { productJsonLd } from "../../components/JsonLd";
 export const metadata: Metadata = {
   title: "OrbitAI — On-Device AI Assistant",
   description:
-    "OrbitAI is an advanced on-device AI chat and productivity assistant for Android. Private, fast, and offline-capable.",
+    "OrbitAI is an on-device AI chat and productivity assistant for Android. Private, fast, and offline-capable.",
   alternates: { canonical: "/projects/orbitai" },
 };
 
@@ -33,10 +33,9 @@ export default function OrbitAIPage() {
         </div>
         <h1 className="project-hero-title">OrbitAI</h1>
         <p className="project-hero-desc">
-          An advanced on-device AI chat and productivity assistant for Android.
-          Built with Jetpack Compose and modern Kotlin — leveraging local LLM
-          inference, RAG, and a suite of productivity tools, all running
-          privately on your device.
+          An on-device AI assistant for Android. Chat, RAG over your own
+          files, and automation tools — built with Jetpack Compose and modern
+          Kotlin, running privately and offline on your device.
         </p>
         <div className="project-actions">
           <span className="project-status">Coming soon to Play Store</span>

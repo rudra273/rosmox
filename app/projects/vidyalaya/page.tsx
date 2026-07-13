@@ -17,7 +17,7 @@ export default function VidyalayaPage() {
         data={productJsonLd({
           name: "Vidyālaya",
           description:
-            "Free offline textbook reader for Indian school students — download once, read anytime, no accounts or tracking.",
+            "Free offline textbook reader for Indian school students — download once, read anytime. No account needed to read.",
           path: "/projects/vidyalaya",
           category: "EducationalApplication",
           operatingSystem: "Android",
@@ -43,8 +43,8 @@ export default function VidyalayaPage() {
         <h1 className="project-hero-title">Vidyālaya</h1>
         <p className="project-hero-desc">
           A free, offline textbook reader built for Indian school students.
-          Download your books once, read them anytime — no internet required.
-          No ads, no tracking, no accounts.
+          Download your books once, read them anytime — no internet required,
+          no ads, and no account needed to read.
         </p>
         <div className="project-actions">
           <span className="project-status">Coming soon to Play Store</span>
@@ -73,8 +73,8 @@ export default function VidyalayaPage() {
             <p>Download textbooks once and read anytime without an internet connection.</p>
           </div>
           <div className="project-feature">
-            <h4>Zero Data Collection</h4>
-            <p>No accounts, no tracking, no analytics. Your data stays on your device.</p>
+            <h4>Private by Design</h4>
+            <p>Reading works fully offline with no account. Optional AI learning features use sign-in, covered by our privacy policy.</p>
           </div>
           <div className="project-feature">
             <h4>Light &amp; Dark Mode</h4>

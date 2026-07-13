@@ -175,7 +175,8 @@ export default function ContactPage() {
                 )}
               </button>
               <p className="contact-note">
-                No mailing lists. No spam. Your message goes straight to the team.
+                No mailing lists. No spam. Prefer email? Write to us at
+                hello@rosmox.com.
               </p>
             </form>
           )}

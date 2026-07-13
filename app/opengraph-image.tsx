@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Rosmox — AI-native software studio";
+export const alt = "Rosmox — AI software company";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -83,10 +83,10 @@ export default function OpengraphImage() {
               lineHeight: 1.05,
             }}
           >
-            Intelligence, engineered to ship.
+            AI software, built for production.
           </div>
           <div style={{ color: "#A2A9B3", fontSize: 30, letterSpacing: -0.5 }}>
-            AI SaaS · Agentic systems · Android · Web — one studio.
+            On-device AI · Agentic systems · Android · Web
           </div>
         </div>
       </div>

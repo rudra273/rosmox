@@ -52,16 +52,12 @@ export default function Products() {
     <section id="products" aria-labelledby="products-title">
       <div className="container">
         <SectionHead
-          label="Our products"
-          index="03"
-          title={
-            <span id="products-title">
-              Software we build <span className="serif">for ourselves.</span>
-            </span>
-          }
+          label="Products"
+          index="01"
+          title={<span id="products-title">Software we build for ourselves.</span>}
         >
-          Each product solves a problem we encountered while shipping client
-          work — then refined until it stood on its own.
+          Five products, one team. Each started as a problem we had ourselves —
+          built to hold up in production.
         </SectionHead>
 
         <div ref={gridRef} className={`products${gridInView ? " in" : ""}`}>

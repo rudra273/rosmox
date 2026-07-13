@@ -10,16 +10,16 @@
 }
 .nav.scrolled,
 .nav.menu-open {
-  background: rgba(6, 7, 9, 0.78);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(6, 7, 9, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
 }
 /* scroll progress seam along the very top edge */
 .nav-progress {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 1px;
   background: var(--seam);
   transform: scaleX(var(--scroll-p, 0));
   transform-origin: left;
@@ -80,18 +80,7 @@
   border-radius: 8px;
   transition: color var(--dur-fast) var(--ease);
 }
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 13px; right: 13px; bottom: 3px;
-  height: 1px;
-  background: var(--seam);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-fast) var(--ease);
-}
 .nav-links a:hover { color: var(--text); }
-.nav-links a:hover::after { transform: scaleX(1); }
 .nav-cta {
   font-size: 13.5px;
   padding: 9px 16px;
@@ -105,7 +94,7 @@
 .nav-cta:hover {
   background: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px -8px var(--accent-glow);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.7);
 }
 .nav-cta svg { transition: transform var(--dur-fast) var(--ease); }
 .nav-cta:hover svg { transform: translateX(2px); }
