@@ -1,253 +1,389 @@
 @import "tailwindcss";
 
-@import "./styles/nav.css";
-@import "./styles/hero.css";
-@import "./styles/home.css";
-@import "./styles/mocks.css";
-@import "./styles/pages.css";
+/* ── ROSMOX design tokens ─────────────────────────────────
+   Single source of truth. Components use these tokens — no
+   one-off hex values, px font sizes or radii in classNames. */
+@theme {
+  /* Dark surfaces */
+  --color-ink: #04060d; /* page base */
+  --color-surface: #0a0f1e; /* raised dark */
+  --color-elevated: #0d1424; /* cards on dark */
 
-/* =====================================================
-   TOKENS — "Signal & Structure" design system
-   ===================================================== */
-:root {
-  /* surfaces */
-  --bg: #060709;
-  --bg-2: #0A0C0F;
-  --surface: #0F1115;
-  --surface-2: #14171C;
-  --line: rgba(255, 255, 255, 0.07);
-  --line-strong: rgba(255, 255, 255, 0.13);
+  /* Light surfaces */
+  --color-paper: #f6f8fc; /* white sections */
+  --color-paper-2: #eceff5; /* secondary light surface */
 
-  /* text tiers */
-  --text: #F2F3F5;
-  --text-dim: #A2A9B3;
-  --text-faint: #79828F;
+  /* Brand */
+  --color-primary: #4da2ff; /* key blue — fills, accents on dark */
+  --color-accent: #62adff; /* primary hover */
+  --color-glow: #82beff; /* particles / glows */
+  --color-primary-ink: #1a66d1; /* blue text on light surfaces (AA) */
+  --color-storely: #f5a623; /* retail app */
+  --color-vidya: #34d399; /* learning app */
 
-  /* signature accent — the "signal" */
-  --accent: #66A3FF;
-  --accent-2: #8BD9FF;
-  --accent-glow: rgba(102, 163, 255, 0.35);
+  /* Radius — three steps only */
+  --radius-sm: 6px; /* buttons, chips, inputs, badges */
+  --radius-md: 12px; /* cards, nav islands */
+  --radius-lg: 20px; /* panels, sheets, large frames */
 
-  /* product identity colors (used by mocks/marks) */
-  --blue: #66A3FF;
-  --green: #3DD68C;
-  --red: #FF6B6B;
-  --amber: #F5A524;
-  --violet: #A78BFA;
+  /* Type scale — fluid. Mono labels never go below 12px. */
+  --text-hero: clamp(2.5rem, 7vw, 6.25rem); /* homepage hero h1 only */
+  --text-hero--line-height: 0.98;
+  --text-hero--letter-spacing: -0.045em;
 
-  /* the seam — recurring luminous hairline motif */
-  --seam: linear-gradient(90deg, transparent, var(--accent) 35%, var(--accent-2) 60%, transparent);
-  --seam-v: linear-gradient(180deg, transparent, var(--accent) 35%, var(--accent-2) 60%, transparent);
+  --text-label: 0.75rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.18em;
 
-  /* motion manifesto */
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);        /* primary — decisive arrival */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* secondary reveals */
-  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);    /* ambient loops */
-  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* playful pop (numbers, dots) */
-  --dur-fast: 0.22s;   /* micro-interactions */
-  --dur: 0.65s;        /* standard reveals */
-  --dur-slow: 1.1s;    /* set pieces */
+  --text-display: clamp(2.5rem, 4.4vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
 
-  /* shape & layout */
-  --radius: 12px;
-  --radius-lg: 16px;
-  --maxw: 1200px;
+  --text-statement: clamp(2rem, 4.2vw, 4rem);
+  --text-statement--line-height: 1.18;
+  --text-statement--letter-spacing: -0.025em;
 
-  /* font stacks (next/font sets --font-geist, --font-geist-mono, --font-serif) */
-  --font-sans: var(--font-geist), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-serif), serif;
+  --text-h2: clamp(2rem, 3.6vw, 3.5rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.03em;
+
+  --text-h3: clamp(1.375rem, 2vw, 1.875rem);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.02em;
+
+  --text-lead: clamp(1.0625rem, 1.25vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+
+  /* Motion — mirrors lib/motion.ts */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* =====================================================
-   BASE
-   ===================================================== */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--text); }
+@theme inline {
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* ── Layout ───────────────────────────────────────────── */
+
+/* The one page container — every section aligns to these edges */
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 1.5rem;
+  @media (width >= 48rem) {
+    padding-inline: 3rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Vertical rhythm between sections */
+@utility section-y {
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+
+/* Text links: an underline that draws in from the left */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition:
+    background-size 0.45s var(--ease-out-expo),
+    color 0.2s ease;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* ── Reusable glass surface (navbar only — blur is expensive) ── */
+@utility glass {
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+}
+
+/* ── Deck panel (Work cards) ──
+   The page's own ink, outlined with a cool blue hairline —
+   opaque, so the stacked card below is hidden. A soft shadow
+   above lifts each card as it slides up. */
+@utility deck-panel {
+  background: var(--color-ink);
+  border: 1px solid color-mix(in srgb, var(--color-glow) 18%, transparent);
+  box-shadow: 0 -20px 50px -24px rgb(0 0 0 / 0.9);
+}
+
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  /* clip (not hidden): hidden would create a scroll container and break position: sticky */
-  overflow-x: clip;
-  max-width: 100%;
 }
+
 body {
-  font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  overflow-x: clip;
-  max-width: 100%;
-  min-height: 100vh;
+  @apply bg-ink font-sans text-white antialiased;
+  text-rendering: optimizeLegibility;
 }
-img, svg, canvas, video { max-width: 100%; }
-img { display: block; }
-::selection { background: rgba(102, 163, 255, 0.35); color: #fff; }
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
 
-.serif { font-family: var(--font-display); font-style: italic; letter-spacing: -0.02em; }
-.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-
-/* anchor targets clear the fixed nav */
-[id] { scroll-margin-top: 96px; }
-
-/* =====================================================
-   ACCESSIBILITY SCAFFOLDING
-   ===================================================== */
-/* designed focus ring — never removed, never default */
-:focus-visible {
-  outline: 2px solid var(--accent);
+/* ── Focus — visible for keyboard users only, on every control ── */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
-  border-radius: 4px;
-}
-.skip-link {
-  position: fixed;
-  top: 14px; left: 14px;
-  z-index: 200;
-  padding: 10px 18px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #06121F;
-  font-size: 14px;
-  font-weight: 600;
-  transform: translateY(-200%);
-  transition: transform var(--dur-fast) var(--ease);
-}
-.skip-link:focus {
-  transform: translateY(0);
-  outline-color: #fff;
-}
-.visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
 }
 
-/* =====================================================
-   BACKGROUND ATMOSPHERE (static, cheap — no WebGL here)
-   ===================================================== */
-.atmos {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(102, 163, 255, 0.04), transparent 60%),
-    radial-gradient(ellipse 90% 80% at 50% 50%, transparent 0%, rgba(6, 7, 9, 0.5) 100%);
-}
-.grain {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  opacity: 0.03; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-main, header, footer { position: relative; z-index: 2; }
-
-/* =====================================================
-   SECTION BASE + SECTION HEAD (seam motif)
-   ===================================================== */
-section { position: relative; padding: clamp(120px, 12vw, 176px) 0; }
-.section-head { margin-bottom: 72px; max-width: 760px; }
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  color: var(--text-faint);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px;
-}
-.section-label .seam-tick {
-  width: 32px; height: 1px;
-  background: var(--seam);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-slow) var(--ease) 0.15s;
-}
-.section-head.in .seam-tick { transform: scaleX(1); }
-.section-label .index { color: var(--accent); }
-.section-head h2 {
-  font-size: clamp(34px, 4.8vw, 62px);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-  font-weight: 500;
-  margin-bottom: 16px;
-  text-wrap: balance;
-}
-.section-head h2 .serif { color: var(--text-dim); }
-.section-head p { color: var(--text-dim); font-size: 17.5px; max-width: 620px; line-height: 1.6; }
-
-/* head reveal: label slides, title rises behind a mask */
-.section-head .head-mask { display: block; overflow: hidden; }
-.section-head .head-mask > span {
-  display: block;
-  transform: translateY(105%);
-  transition: transform 0.9s var(--ease);
-}
-.section-head.in .head-mask > span { transform: translateY(0); }
-.section-head .section-label,
-.section-head p {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-.section-head.in .section-label { opacity: 1; transform: translateY(0); }
-.section-head.in p { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
-
-/* =====================================================
-   BUTTONS (shared)
-   ===================================================== */
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 20px;
-  border-radius: 11px;
-  font-size: 14px; font-weight: 500;
-  position: relative;
-  transition:
-    transform var(--dur-fast) var(--ease),
-    background var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease),
-    box-shadow var(--dur-fast) var(--ease);
-}
-.btn:active { transform: translateY(1px) scale(0.99); }
-.btn-primary {
-  background: var(--text);
-  color: var(--bg);
-}
-.btn-primary:hover {
-  background: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.7);
-}
-.btn-ghost {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--line);
-  color: var(--text);
-}
-.btn-ghost:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--line-strong); }
-.btn svg { transition: transform var(--dur-fast) var(--ease); }
-.btn:hover svg { transform: translateX(3px); }
-
-/* =====================================================
-   REDUCED MOTION — fully designed alternative
-   ===================================================== */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* ── First-paint reveals ──────────────────────────────────
+   CSS (not JS) so above-the-fold content animates the moment
+   the page paints — it never waits for hydration. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise, 18px));
   }
-  /* everything that hides itself before animating in must be visible */
-  .section-head .section-label,
-  .section-head p,
-  .section-head .head-mask > span,
-  .section-label .seam-tick {
-    opacity: 1 !important;
-    transform: none !important;
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Starts partly revealed (not fully clipped) on purpose: Chrome only
+   counts an element for LCP at its first paint, so a fully masked h1
+   would never be the LCP — the page would score as if it painted late. */
+@keyframes line-in {
+  from {
+    transform: translateY(58%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* For above-the-fold blocks that can be the LCP element (a product
+   shot, the start of a document): starts faint but painted — never
+   opacity 0 — so it counts at first paint, not when the fade ends. */
+@keyframes lift-in {
+  from {
+    opacity: 0.2;
+    transform: translateY(var(--rise, 28px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Route transition (app/template.tsx) — client navigations only */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-enter 0.6s var(--ease-out-expo) both;
+}
+
+.reveal-rise {
+  animation: rise-in 0.9s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+.reveal-fade {
+  animation: fade-in 1s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+.reveal-lift {
+  animation: lift-in 1.1s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+/* Line-mask heading reveal: wrap each line in .line-mask > .line */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  /* room for descenders inside the mask */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.line-mask > .line {
+  display: block;
+  animation: line-in 1.05s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* ── Services: per-illustration idle loops + node ping ────
+   Applied only while a card is focused (see ServiceGraphics). */
+@keyframes svc-blink {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+@keyframes svc-lift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes svc-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2px, -7px); }
+}
+@keyframes svc-scan {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(62px, 36px); }
+}
+@keyframes svc-ping {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(3.4); opacity: 0; }
+}
+.svc-blink {
+  animation: svc-blink 2.4s var(--ease-in-out) infinite;
+  animation-delay: var(--d, 0ms);
+}
+.svc-lift { animation: svc-lift 3.6s var(--ease-in-out) infinite; }
+.svc-float { animation: svc-float 4.8s var(--ease-in-out) infinite; }
+.svc-scan { animation: svc-scan 4.2s var(--ease-in-out) infinite; }
+.svc-ping { animation: svc-ping 0.9s var(--ease-out-expo) forwards; }
+
+/* AI inference loop — every beat shares one 3.6s cycle and is
+   placed in it by --d, so data in → layer 1 → layer 2 → fire
+   stay in step. `both` keeps each beat hidden until its turn. */
+@keyframes svc-ai-feed {
+  0% { transform: translate(0, 0); opacity: 0; }
+  4% { opacity: 1; }
+  13% { transform: translate(var(--tx), var(--ty)); opacity: 1; }
+  16%, 100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+}
+@keyframes svc-ai-pulse {
+  0% { transform: translate(0, 0); opacity: 0; }
+  3% { opacity: 1; }
+  19% { transform: translate(var(--tx), var(--ty)); opacity: 1; }
+  23%, 100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+}
+@keyframes svc-ai-glow {
+  0%, 100% { opacity: 0; }
+  7% { opacity: 1; }
+  30% { opacity: 0; }
+}
+@keyframes svc-ai-node {
+  0%, 100% { opacity: 0.45; }
+  6% { opacity: 1; }
+  32% { opacity: 0.45; }
+}
+@keyframes svc-ai-fire {
+  0% { transform: scale(0.2); opacity: 0; }
+  3% { opacity: 0.9; }
+  30%, 100% { transform: scale(1.9); opacity: 0; }
+}
+@keyframes svc-ai-out {
+  0% { transform: translateY(6px) scale(0.4); opacity: 0; }
+  8%, 30% { transform: translateY(0) scale(1); opacity: 1; }
+  40%, 100% { transform: translateY(-4px) scale(0.85); opacity: 0; }
+}
+.svc-ai-feed,
+.svc-ai-pulse,
+.svc-ai-glow,
+.svc-ai-node,
+.svc-ai-fire,
+.svc-ai-out {
+  animation-duration: 3.6s;
+  animation-timing-function: var(--ease-in-out);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: var(--d, 0ms);
+}
+.svc-ai-feed { animation-name: svc-ai-feed; }
+.svc-ai-pulse { animation-name: svc-ai-pulse; }
+.svc-ai-glow { animation-name: svc-ai-glow; }
+.svc-ai-node { animation-name: svc-ai-node; }
+.svc-ai-fire { animation-name: svc-ai-fire; animation-timing-function: var(--ease-out-expo); }
+.svc-ai-out { animation-name: svc-ai-out; animation-timing-function: var(--ease-out-expo); }
+
+/* Card spotlight: a soft blue light under the pointer (--mx/--my) */
+.tile-spot {
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(77 162 255 / 0.1), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover > .tile-spot {
+    opacity: 1;
+  }
+}
+
+/* Button hover — same as the navbar "Let's talk" CTA: the button is a
+   rounded-md shell and on hover a rounded-sm pill fades in, inset by the
+   same 1.5 spacing step the nav islands use. Pill tint per surface via
+   --btn-pill. Used by every button. */
+.btn-fx {
+  --btn-pill: rgb(255 255 255 / 0.08);
+  position: relative;
+  isolation: isolate;
+}
+.btn-fx::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--spacing) * 1.5);
+  z-index: -1;
+  border-radius: var(--radius-sm);
+  background: var(--btn-pill);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-out-expo);
+}
+.btn-fx-on-light {
+  --btn-pill: rgb(4 6 13 / 0.06);
+}
+.btn-fx-on-primary {
+  --btn-pill: rgb(255 255 255 / 0.22);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-fx:hover::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-rise,
+  .reveal-fade,
+  .reveal-lift,
+  .line-mask > .line,
+  .page-enter,
+  .svc-blink,
+  .svc-lift,
+  .svc-float,
+  .svc-scan,
+  .svc-ai-feed,
+  .svc-ai-pulse,
+  .svc-ai-glow,
+  .svc-ai-node,
+  .svc-ai-fire,
+  .svc-ai-out,
+  .btn-fx::before,
+  .svc-ping {
+    animation: none;
+  }
+  .svc-ping,
+  .svc-ai-feed,
+  .svc-ai-pulse,
+  .svc-ai-glow,
+  .svc-ai-fire,
+  .svc-ai-out {
+    opacity: 0;
   }
 }

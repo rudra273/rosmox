@@ -1,11 +1,29 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Rosmox — AI software company";
+import { SITE } from "@/lib/site";
+
+/* Default social-share card for every route (pages can override
+   with their own opengraph-image). Echoes the hero: ink base,
+   blue glow, headline, and the pipeline stages as chips — set in
+   the brand face (Space Grotesk, via @fontsource; OG images
+   need WOFF/TTF, not WOFF2). Prerendered at build time. */
+
+const FONT_DIR = join(process.cwd(), "node_modules/@fontsource/space-grotesk/files");
+
+export const alt = SITE.title;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** Default Open Graph card — brand mark, wordmark, and the signal seam. */
-export default function OpengraphImage() {
+const STAGES = ["INGEST", "TRAIN", "EVALUATE", "DEPLOY", "MONITOR"];
+
+export default async function OpengraphImage() {
+  const [semibold, bold] = await Promise.all([
+    readFile(join(FONT_DIR, "space-grotesk-latin-600-normal.woff")),
+    readFile(join(FONT_DIR, "space-grotesk-latin-700-normal.woff")),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -15,82 +33,89 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#060709",
-          padding: 72,
-          position: "relative",
-          fontFamily: "sans-serif",
+          padding: "72px 80px",
+          background: "#04060d",
+          backgroundImage:
+            "radial-gradient(700px 520px at 92% 18%, rgba(77,162,255,0.22), transparent 70%)",
+          color: "#ffffff",
+          fontFamily: "Space Grotesk",
         }}
       >
-        {/* receding grid floor */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: 240,
-            backgroundImage:
-              "linear-gradient(rgba(102,163,255,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(102,163,255,0.10) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-          }}
-        />
-        {/* horizon seam */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 240,
-            height: 2,
-            background:
-              "linear-gradient(90deg, rgba(102,163,255,0) 0%, #66A3FF 35%, #8BD9FF 60%, rgba(139,217,255,0) 100%)",
-          }}
-        />
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        {/* wordmark */}
+        <div style={{ display: "flex", fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>
+          <span>ROX</span>
+          <span style={{ color: "#4da2ff" }}>MOS</span>
+        </div>
+
+        {/* headline */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              width: 44,
-              height: 44,
-              borderRadius: 12,
-              background: "#0F1115",
-              border: "2px solid rgba(255,255,255,0.16)",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              fontSize: 84,
+              fontWeight: 700,
+              letterSpacing: -3,
+              lineHeight: 1.02,
             }}
           >
-            <div
-              style={{
-                width: 11,
-                height: 11,
-                borderRadius: "50%",
-                background: "#66A3FF",
-                boxShadow: "0 0 14px rgba(102,163,255,0.9)",
-              }}
-            />
+            AI that ships,
           </div>
-          <div style={{ color: "#F2F3F5", fontSize: 34, fontWeight: 700, letterSpacing: -1 }}>
-            Rosmox
+          <div
+            style={{
+              display: "flex",
+              fontSize: 84,
+              fontWeight: 700,
+              letterSpacing: -3,
+              lineHeight: 1.02,
+              color: "rgba(255,255,255,0.45)",
+            }}
+          >
+            not slideware.
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 18, marginBottom: 120 }}>
-          <div
-            style={{
-              color: "#F2F3F5",
-              fontSize: 76,
-              fontWeight: 600,
-              letterSpacing: -3,
-              lineHeight: 1.05,
-            }}
-          >
-            AI software, built for production.
-          </div>
-          <div style={{ color: "#A2A9B3", fontSize: 30, letterSpacing: -0.5 }}>
-            On-device AI · Agentic systems · Android · Web
-          </div>
+
+        {/* pipeline chips */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          {STAGES.map((s, i) => (
+            <div key={s} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "10px 16px",
+                  borderRadius: 10,
+                  border: `1.5px solid ${i === 3 ? "#4da2ff" : "rgba(255,255,255,0.16)"}`,
+                  background: i === 3 ? "rgba(77,162,255,0.10)" : "rgba(10,15,30,0.8)",
+                  fontSize: 20,
+                  letterSpacing: 3,
+                  color: i === 3 ? "#cfe4ff" : "rgba(255,255,255,0.7)",
+                }}
+              >
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: 8,
+                    background: i === 3 ? "#82beff" : "rgba(255,255,255,0.25)",
+                  }}
+                />
+                {s}
+              </div>
+              {i < STAGES.length - 1 && (
+                <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.18)" }} />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Space Grotesk", data: semibold, weight: 600, style: "normal" },
+        { name: "Space Grotesk", data: bold, weight: 700, style: "normal" },
+      ],
+    },
   );
 }

@@ -1,26 +1,34 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://rosmox.com";
+import { PRODUCTS } from "@/lib/products";
+import { SERVICES } from "@/lib/services";
+import { SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    { path: "", priority: 1.0 },
-    { path: "/products", priority: 0.9 },
-    { path: "/contact", priority: 0.9 },
-    { path: "/projects/bhashalens", priority: 0.8 },
-    { path: "/projects/orbitai", priority: 0.8 },
-    { path: "/projects/vidyalaya", priority: 0.8 },
-    { path: "/projects/storely", priority: 0.8 },
-    { path: "/projects/everything", priority: 0.8 },
-    { path: "/projects/vidyalaya/privacy-policy", priority: 0.3 },
-    { path: "/projects/storely/privacy-policy", priority: 0.3 },
-    { path: "/projects/everything/privacy-policy", priority: 0.3 },
+  const now = new Date();
+  return [
+    { url: SITE.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    ...SERVICES.map((s) => ({
+      url: `${SITE.url}${s.href}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    ...PRODUCTS.map((p) => ({
+      url: `${SITE.url}/products/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    { url: `${SITE.url}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE.url}/products/vidyakalp/delete-account`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    ...PRODUCTS.filter((p) => p.privacyPolicyPath).map((p) => ({
+      url: `${SITE.url}${p.privacyPolicyPath}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
   ];
-
-  return routes.map(({ path, priority }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority,
-  }));
 }
