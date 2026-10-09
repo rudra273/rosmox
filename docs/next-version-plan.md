@@ -125,7 +125,7 @@ v2 doesn't need a new look. It needs **one system, real content and better motio
 - Landmarks are wrong: there's no `<header>`, and `<footer>` sits inside `<main>`.
 - No `next/image`. That's fine for today's SVGs, but it's required once real screenshots arrive.
 - ESLint isn't installed, so `npm run lint` won't run.
-- Stray `roxmos-preview.html` in the root. The README is stale: it mentions React Three Fiber and hide-on-scroll, neither of which exists.
+- Stray `rosmox-preview.html` in the root. The README is stale: it mentions React Three Fiber and hide-on-scroll, neither of which exists.
 - No security headers, analytics or error monitoring. The footer year is hard-coded as `{2026}`.
 
 ---

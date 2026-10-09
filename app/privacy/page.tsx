@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import PrivacyPolicy from "@/components/PrivacyPolicy";
-import { ROSMOX_PRIVACY } from "@/lib/roxmos-privacy";
+import { ROSMOX_PRIVACY } from "@/lib/rosmox-privacy";
 
-/* ROSMOX company privacy policy — /privacy (content: lib/roxmos-privacy.ts) */
+/* ROSMOX company privacy policy — /privacy (content: lib/rosmox-privacy.ts) */
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
