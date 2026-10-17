@@ -1,6 +1,6 @@
 # Product banners and screenshots
 
-Created with the built-in image-generation tool using the supplied screenshots. Original JPEGs and existing SVG assets are retained. All new website image references use WebP. The Vidya AI product retains `/products/vidyakalp` so existing links continue to resolve.
+Created with the built-in image-generation tool using the supplied screenshots. Original JPEGs and existing SVG assets are retained. All new website image references use WebP. The Vidyakalp product retains `/products/vidyakalp` so existing links continue to resolve.
 
 ## Final assets
 
@@ -21,13 +21,15 @@ Backdrop: deep near-black graphite with a restrained soft warm amber glow behind
 Text (verbatim) in left area: "Storely" as main large title, then "Billing. Inventory. Your store." in a readable smaller line or two. Small category "RETAIL MANAGEMENT". Use simple modern geometric sans typography, white and warm amber. No other marketing text, no badges.
 Constraints: accurate supplied screenshot UI; no fictional features, customer claims, statistics, testimonials, logos, watermarks, extra decorative objects. Match a polished minimal technology portfolio. One finished single banner only.
 
-## Vidya AI prompt
+## Vidyakalp prompt
+
+The Vidyakalp banner and the home and profile screenshots were re-composed on 17 October 2026 after the rename, from the real app screens (no image generation): the title is set in Georgia Bold, the tagline in SF, and the header of the home screenshot is the app's own "Vidyakalp" text. The prompt below produced the earlier version of the banner and is kept for reference.
 
 Use case: compositing / ads-marketing.
 Asset type: finished 16:9 landscape product banner for ROSMOX portfolio website, ideally 2048x1152. A paired companion to a Storely banner showing editorial title on left and three large phone devices on right.
-Primary request: create a sophisticated "Vidya AI" mobile learning app banner using the three supplied real screenshots as the actual phone screen contents.
+Primary request: create a sophisticated "Vidyakalp" mobile learning app banner using the three supplied real screenshots as the actual phone screen contents.
 Input images: 1 home; 2 AI Learning; 3 Explore. These are supporting compositing inputs. Preserve the supplied real UI, layouts, typography, icons, labels and proportions. Remove only the Android status and system navigation bars for the phone presentation.
 Composition: generous editorial type area occupying left third; three elegant front-facing slim phone mockups on right in a restrained stepped arrangement, home centered foremost, AI and Explore alongside. Show all phones completely inside frame with generous margins, no cropping. Screens occupy most of banner height and stay recognizable. Restrained shadows and studio presentation, no perspective distortion.
 Backdrop: soft off-white mint and pale sage, a subtle emerald glow behind phones, sophisticated calm light surface. Mirror emerald, cream, sage palette of supplied app. Simple premium portfolio styling.
-Text (verbatim) at left: main title "Vidya AI", smaller line or two "Ask. Explore. Keep learning.", small category "AI LEARNING". Main title dark forest, accent emerald. Simple modern geometric typography. No extra text.
+Text (verbatim) at left: main title "Vidyakalp", smaller line or two "Ask. Explore. Keep learning.", small category "AI LEARNING". Main title dark forest, accent emerald. Simple modern geometric typography. No extra text.
 Constraints: accurately represent supplied screenshot UI. No made-up features, testimonials, customer logos, metrics, plan promises, badges or watermark. One single finished banner. No personal profile screen.

@@ -9,7 +9,7 @@ import {
 } from "@/lib/delete-request";
 
 /* ──────────────────────────────────────────────────────────
-   Vidya AI account-deletion request → email (Resend HTTP API).
+   Vidyakalp account-deletion request → email (Resend HTTP API).
      RESEND_API_KEY     — required (server-side only, never in code)
      DELETE_TO_EMAIL    — inbox (default rosmoxx@gmail.com)
      DELETE_FROM_EMAIL  — sender (default onboarding@resend.dev, which
@@ -36,7 +36,7 @@ export async function sendDeleteRequest(
   if (errors) return { status: "error", errors, values };
 
   const text = [
-    "Vidya AI — account deletion request",
+    "Vidyakalp — account deletion request",
     "",
     `Name:          ${v.name}`,
     `Google email:  ${v.email}`,
@@ -65,7 +65,7 @@ export async function sendDeleteRequest(
         from: process.env.DELETE_FROM_EMAIL ?? "ROSMOX <onboarding@resend.dev>",
         to: [process.env.DELETE_TO_EMAIL ?? DELETE_REQUEST_TO],
         reply_to: v.email,
-        subject: `Vidya AI account deletion request — ${v.email}`,
+        subject: `Vidyakalp account deletion request — ${v.email}`,
         text,
       }),
       cache: "no-store",
