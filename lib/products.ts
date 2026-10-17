@@ -5,7 +5,7 @@
    both the homepage deck (components/Products.tsx) and the
    per-product detail page (app/products/[slug]/page.tsx).
 
-   Storely and Vidya AI copy reflects the supplied app screens.
+   Storely and Vidyakalp copy reflects the supplied app screens.
    Their banners and screenshot galleries use WebP; original
    JPEG screenshots are retained alongside the converted files.
    `highlights` (stats) are intentionally empty until we have
@@ -86,15 +86,15 @@ export const PRODUCTS: Product[] = [
   {
     slug: "vidyakalp",
     n: "02",
-    name: "Vidya AI",
+    name: "Vidyakalp",
     tagline: "AI textbook help and interactive learning, in your pocket.",
     tag: "AI LEARNING",
     image: "/products/vidyakalp/vidya-banner.webp",
-    imageAlt: "Vidya AI banner showing the home, AI Learning and Explore screens on three phones",
+    imageAlt: "Vidyakalp banner showing the AI Learning, home and Explore screens on three phones",
     accent: "var(--color-vidya)",
     platform: "Android",
     overview: [
-      "Vidya AI brings textbook questions, study tools and hands-on exploration into one mobile learning app. Ask a question, choose a simple explanation or work through an answer step by step, with support for English, Odia and Hindi.",
+      "Vidyakalp brings textbook questions, study tools and hands-on exploration into one mobile learning app. Ask a question, choose a simple explanation or work through an answer step by step, with support for English, Odia and Hindi.",
       "Beyond AI help, students can explore interactive diagrams, maths practice, laboratory experiments, the periodic table and a 3D solar system. Books, bookmarks, notes, quizzes and a timetable keep everyday learning close at hand.",
     ],
     features: [
@@ -127,7 +127,7 @@ export const PRODUCTS: Product[] = [
     gallery: [
       {
         src: "/products/vidyakalp/vidya-home.webp",
-        alt: "Vidya AI home screen with AI Learning, study shortcuts and the word of the day",
+        alt: "Vidyakalp home screen with AI Learning, study shortcuts and the word of the day",
         title: "A place to start",
         description: "AI help, study shortcuts and a new word to explore.",
         width: 738, height: 1600,

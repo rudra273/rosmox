@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────
-   Vidya AI account-deletion request — shared validation.
+   Vidyakalp account-deletion request — shared validation.
    Used by the client form and re-checked in the server action.
    ────────────────────────────────────────────────────────── */
 
@@ -32,7 +32,7 @@ export function validateDelete(v: ReturnType<typeof readDelete>) {
   const errors: Partial<Record<DeleteField, string>> = {};
   if (!v.name) errors.name = "Please enter your name.";
   else if (v.name.length > DELETE_LIMITS.name) errors.name = "That name is a bit long.";
-  if (!v.email) errors.email = "Enter the Google account email you use in Vidya AI.";
+  if (!v.email) errors.email = "Enter the Google account email you use in Vidyakalp.";
   else if (!EMAIL_RE.test(v.email) || v.email.length > DELETE_LIMITS.email)
     errors.email = "That email doesn't look right.";
   if (!v.confirm) errors.confirm = "Please confirm you want your account deleted.";
@@ -43,9 +43,9 @@ export function validateDelete(v: ReturnType<typeof readDelete>) {
 export const DELETE_REQUEST_TO = "rosmoxx@gmail.com";
 
 export function buildDeleteMail(v: { name: string; email: string; reason: string }) {
-  const subject = `Vidya AI account deletion request — ${v.email}`;
+  const subject = `Vidyakalp account deletion request — ${v.email}`;
   const body = [
-    "Please delete my Vidya AI account and all associated data.",
+    "Please delete my Vidyakalp account and all associated data.",
     "",
     `Name: ${v.name}`,
     `Google account email: ${v.email}`,

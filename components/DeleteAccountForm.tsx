@@ -11,7 +11,7 @@ import {
   type DeleteState,
 } from "@/lib/delete-request";
 
-/* Vidya AI account-deletion request form — validates in the browser,
+/* Vidyakalp account-deletion request form — validates in the browser,
    then a server action emails the request. If delivery fails, the
    user gets Gmail / mail-app links to send it themselves. */
 
@@ -48,7 +48,7 @@ export default function DeleteAccountForm() {
           Request received.
         </h2>
         <p className="mt-3 max-w-xl text-white/65">
-          We&apos;ve got your request. Your Vidya AI account and its data will be deleted within 30
+          We&apos;ve got your request. Your Vidyakalp account and its data will be deleted within 30
           days, and we&apos;ll email you when it&apos;s done.
         </p>
       </div>
@@ -72,7 +72,7 @@ export default function DeleteAccountForm() {
         Request deletion
       </h2>
       <p className="mt-3 max-w-xl text-white/65">
-        Use the Google account email you sign in to Vidya AI with.
+        Use the Google account email you sign in to Vidyakalp with.
       </p>
 
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
@@ -141,7 +141,7 @@ export default function DeleteAccountForm() {
               className="mt-1 h-4 w-4 accent-[#4da2ff]"
             />
             <span>
-              I understand that my Vidya AI account and all its data will be permanently deleted.
+              I understand that my Vidyakalp account and all its data will be permanently deleted.
             </span>
           </label>
           {err.confirm && <p role="alert" className="mt-2 text-[0.8125rem] text-red-300">{err.confirm}</p>}

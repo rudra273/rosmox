@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
       { source: "/services/mobile", destination: "/services/product-platform-development", permanent: true },
       { source: "/services/ux", destination: "/services/product-platform-development", permanent: true },
       /* the previous site's /projects/* URLs — Google Play listings still
-         point at them. Vidya AI's route slug is "vidyakalp"; DayKit was
+         point at them. Vidyakalp's route slug is "vidyakalp"; DayKit was
          called "Everything" and has only a policy page. */
       { source: "/projects/vidyalaya", destination: "/products/vidyakalp", permanent: true },
       { source: "/projects/vidyalaya/privacy-policy", destination: "/products/vidyakalp/privacy-policy", permanent: true },
