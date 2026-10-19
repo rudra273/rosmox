@@ -48,7 +48,8 @@ export const PRODUCTS: Product[] = [
     name: "Breaksmith",
     tagline: "AI that breaks your app before your users do.",
     tag: "AI TESTING",
-    image: "/products/breaksmith/breaksmith-banner.webp",
+    image: "/products/breaksmith/breaksmith-overview.webp",
+    imageAlt: "Breaksmith dashboard overview",
     accent: "#e8622c",
     overview: [
       "Breaksmith is an autonomous AI QA engineer for any app or website. Give it a website, an app build or a code repo — it explores everything, works out what could go wrong, tests it, and hands you every bug with proof.",
@@ -81,7 +82,36 @@ export const PRODUCTS: Product[] = [
       },
     ],
     highlights: [],
-    gallery: [],
+    gallery: [
+      {
+        src: "/products/breaksmith/breaksmith-overview.webp",
+        alt: "Breaksmith project overview with the software map of files and connections",
+        title: "See your whole codebase",
+        description: "A software map of files, definitions and connections.",
+        width: 2940, height: 1604,
+      },
+      {
+        src: "/products/breaksmith/breaksmith-api.webp",
+        alt: "Breaksmith API routes list with methods, source files and analysis status",
+        title: "Every API route, found",
+        description: "Browse routes and trace each one back to its source.",
+        width: 2940, height: 1602,
+      },
+      {
+        src: "/products/breaksmith/breaksmith-test.webp",
+        alt: "Breaksmith test runs screen with test plans",
+        title: "Plan and run checks",
+        description: "Create test plans, run checks and inspect recorded evidence.",
+        width: 2940, height: 1602,
+      },
+      {
+        src: "/products/breaksmith/breaksmith-pr-review.webp",
+        alt: "Breaksmith PR review screen for choosing revisions and analysing changes",
+        title: "Review every pull request",
+        description: "Compare changes and inspect the evidence.",
+        width: 2936, height: 1600,
+      },
+    ],
   },
   {
     slug: "vidyakalp",

@@ -272,7 +272,13 @@ export default function ProductDetail({ product }: { product: Product }) {
               text={`A closer look at ${name}.`}
               className="mt-5 max-w-3xl font-display text-h2 font-semibold text-white"
             />
-            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              className={
+                gallery[0].width > gallery[0].height
+                  ? "mt-12 grid gap-10 md:grid-cols-2"
+                  : "mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+              }
+            >
               {gallery.map((shot, i) => (
                 <m.figure
                   key={shot.src}
@@ -280,7 +286,9 @@ export default function ProductDetail({ product }: { product: Product }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={VIEWPORT}
                   transition={{ duration: DURATION.reveal, delay: i * STAGGER, ease: EASE }}
-                  className="mx-auto w-full max-w-sm"
+                  className={
+                    shot.width > shot.height ? "w-full" : "mx-auto w-full max-w-sm"
+                  }
                 >
                   <div className="overflow-hidden rounded-lg border border-white/10 bg-surface p-2">
                     <Image
@@ -288,7 +296,11 @@ export default function ProductDetail({ product }: { product: Product }) {
                       alt={shot.alt}
                       width={shot.width}
                       height={shot.height}
-                      sizes="(min-width: 1440px) 300px, (min-width: 1024px) 23vw, (min-width: 640px) 45vw, 90vw"
+                      sizes={
+                        shot.width > shot.height
+                          ? "(min-width: 768px) 45vw, 90vw"
+                          : "(min-width: 1440px) 300px, (min-width: 1024px) 23vw, (min-width: 640px) 45vw, 90vw"
+                      }
                       className="h-auto w-full rounded-md"
                     />
                   </div>
