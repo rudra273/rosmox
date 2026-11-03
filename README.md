@@ -22,7 +22,7 @@ Copy `.env.example` to `.env.local`. The contact form sends through [Resend](htt
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL (defaults to `https://rosmox.com`) |
 | `RESEND_API_KEY` | Required in production. Without it the form logs enquiries in dev and shows an "email us instead" error in prod. |
-| `CONTACT_TO_EMAIL` | Inbox for enquiries (defaults to `hello@rosmox.com`) |
+| `CONTACT_TO_EMAIL` | Inbox for enquiries (defaults to `business@rosmox.com`) |
 | `CONTACT_FROM_EMAIL` | Verified Resend sender, e.g. `ROSMOX Website <website@rosmox.com>` |
 
 **Analytics:** Vercel Web Analytics + Speed Insights render only on Vercel builds (`process.env.VERCEL`). Turn both on in the Vercel dashboard (Project → Analytics / Speed Insights), or their scripts 404.

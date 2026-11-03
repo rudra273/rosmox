@@ -71,7 +71,7 @@ export const STORELY_PRIVACY: PrivacyPolicyContent = {
         "• Local Data: You can delete all your local data at any time by uninstalling the Storely app or clearing the app data in your device settings.",
         "• Cloud Data: If you enabled Cloud Sync, cloud data is stored in the Supabase project configured by you. You can delete cloud data, users, and authentication records from your Supabase project dashboard.",
         "• Storely Server Data: Storely does not operate a Storely-owned backend for collecting your app data, so Storely does not hold a separate copy of your shop, product, supplier, customer, or bill records.",
-        "• Assistance: For privacy questions or help understanding deletion steps, contact rosmoxx@gmail.com.",
+        "• Assistance: For privacy questions or help understanding deletion steps, contact admin@rosmox.com.",
       ],
     },
     {
@@ -89,7 +89,7 @@ export const STORELY_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Contact",
       body: [
-        "For any privacy-related questions, data deletion requests, or concerns, contact us at: rosmoxx@gmail.com.",
+        "For any privacy-related questions, data deletion requests, or concerns, contact us at: admin@rosmox.com.",
       ],
     },
   ],

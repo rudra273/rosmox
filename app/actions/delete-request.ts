@@ -11,7 +11,7 @@ import {
 /* ──────────────────────────────────────────────────────────
    Vidyakalp account-deletion request → email (Resend HTTP API).
      RESEND_API_KEY     — required (server-side only, never in code)
-     DELETE_TO_EMAIL    — inbox (default rosmoxx@gmail.com)
+     DELETE_TO_EMAIL    — inbox (default admin@rosmox.com)
      DELETE_FROM_EMAIL  — sender (default onboarding@resend.dev, which
                           Resend only lets deliver to your own account
                           email; verify a domain to lift that)

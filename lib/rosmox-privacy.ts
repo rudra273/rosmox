@@ -22,7 +22,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Who we are",
       body: [
-        `ROSMOX designs and builds AI products, web and mobile software. When this policy says "we", "us" or "our", it means ROSMOX. You can reach us about anything in this policy at ${SITE.email}.`,
+        `ROSMOX designs and builds AI products, web and mobile software. When this policy says "we", "us" or "our", it means ROSMOX. You can reach us about anything in this policy at ${SITE.adminEmail}.`,
       ],
     },
     {
@@ -76,7 +76,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Your rights",
       body: [
-        `Depending on where you live — including under India's Digital Personal Data Protection Act and the GDPR — you can ask to access, correct or delete the personal information we hold about you, or object to how we use it. Email ${SITE.email} and we'll respond as quickly as we can, and within the time the law requires.`,
+        `Depending on where you live — including under India's Digital Personal Data Protection Act and the GDPR — you can ask to access, correct or delete the personal information we hold about you, or object to how we use it. Email ${SITE.adminEmail} and we'll respond as quickly as we can, and within the time the law requires.`,
       ],
     },
     {

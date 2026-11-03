@@ -20,7 +20,7 @@ export const VIDYA_DELETE_ACCOUNT: PrivacyPolicyContent = {
       title: "Request account deletion",
       body: [
         "Vidyakalp uses Google sign-in. To delete your account, fill in the form at the bottom of this page with the Google account email you sign in with, and submit it.",
-        `If the form doesn't work for you, email ${SITE.email} from that Google account instead. We may reply to confirm the request is from you before we delete anything.`,
+        `If the form doesn't work for you, email ${SITE.adminEmail} from that Google account instead. We may reply to confirm the request is from you before we delete anything.`,
       ],
     },
     {
@@ -38,7 +38,7 @@ export const VIDYA_DELETE_ACCOUNT: PrivacyPolicyContent = {
     },
     {
       title: "Questions",
-      body: [`If you have any questions about deletion or your data, write to ${SITE.email}.`],
+      body: [`If you have any questions about deletion or your data, write to ${SITE.adminEmail}.`],
     },
   ],
 };
