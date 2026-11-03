@@ -63,10 +63,10 @@ export default function Faq() {
                 Something else on your mind?
               </p>
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${SITE.successEmail}`}
                 className="group mt-1 inline-flex items-center gap-2 font-display text-xl font-medium text-ink transition-colors duration-200 hover:text-primary-ink"
               >
-                {SITE.email}
+                {SITE.successEmail}
                 <IconArrowUpRight className="h-4 w-4 text-primary-ink transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px" />
               </a>
             </div>

@@ -142,7 +142,7 @@ export const VIDYA_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Contact Us",
       body: [
-        "If you have any questions, requests, or suggestions about this Privacy Policy or your data, please contact the developer team at rosmoxx@gmail.com.",
+        "If you have any questions, requests, or suggestions about this Privacy Policy or your data, please contact the developer team at admin@rosmox.com.",
       ],
     },
   ],

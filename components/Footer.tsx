@@ -117,7 +117,7 @@ export default function Footer() {
           >
             © {new Date().getFullYear()} {SITE.name} — All rights reserved
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <Link href="/privacy" className="link-underline text-sm text-white/55 hover:text-white">
               Privacy
             </Link>
@@ -126,6 +126,12 @@ export default function Footer() {
               className="link-underline text-sm text-white/55 hover:text-white"
             >
               {SITE.email}
+            </a>
+            <a
+              href={`mailto:${SITE.successEmail}`}
+              className="link-underline text-sm text-white/55 hover:text-white"
+            >
+              {SITE.successEmail}
             </a>
           </div>
         </div>

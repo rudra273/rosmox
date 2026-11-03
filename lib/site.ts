@@ -9,7 +9,9 @@
 export const SITE = {
   name: "ROSMOX",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://rosmox.com",
-  email: "hello@rosmox.com",
+  email: "business@rosmox.com",
+  successEmail: "success@rosmox.com",
+  adminEmail: "admin@rosmox.com",
   title: "ROSMOX — AI products, web and mobile engineering",
   description:
     "ROSMOX partners with teams to turn ambitious ideas into AI products running in production — plus the web, mobile and UX work around them.",

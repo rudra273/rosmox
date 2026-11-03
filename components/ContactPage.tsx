@@ -66,15 +66,27 @@ export default function ContactPage() {
               </ol>
             </Reveal>
 
-            <Reveal delay={0.1} className="mt-12 border-t border-ink/10 pt-6">
-              <p className="text-sm text-ink/60">Prefer email?</p>
-              <a
-                href={`mailto:${SITE.email}`}
-                className="group mt-1 inline-flex items-center gap-2 font-display text-xl font-medium text-ink transition-colors duration-200 hover:text-primary-ink"
-              >
-                {SITE.email}
-                <IconArrowUpRight className="h-4 w-4 text-primary-ink transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px" />
-              </a>
+            <Reveal delay={0.1} className="mt-12 space-y-6 border-t border-ink/10 pt-6">
+              <div>
+                <p className="text-sm text-ink/60">Projects &amp; partnerships</p>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="group mt-1 inline-flex items-center gap-2 font-display text-xl font-medium text-ink transition-colors duration-200 hover:text-primary-ink"
+                >
+                  {SITE.email}
+                  <IconArrowUpRight className="h-4 w-4 text-primary-ink transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px" />
+                </a>
+              </div>
+              <div>
+                <p className="text-sm text-ink/60">Customer success &amp; support</p>
+                <a
+                  href={`mailto:${SITE.successEmail}`}
+                  className="group mt-1 inline-flex items-center gap-2 font-display text-xl font-medium text-ink transition-colors duration-200 hover:text-primary-ink"
+                >
+                  {SITE.successEmail}
+                  <IconArrowUpRight className="h-4 w-4 text-primary-ink transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px" />
+                </a>
+              </div>
             </Reveal>
           </div>
 

@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 /* ──────────────────────────────────────────────────────────
    Vidyakalp account-deletion request — shared validation.
    Used by the client form and re-checked in the server action.
@@ -40,7 +42,7 @@ export function validateDelete(v: ReturnType<typeof readDelete>) {
 }
 
 /** Inbox that receives deletion requests (composed in the user's own mail app) */
-export const DELETE_REQUEST_TO = "rosmoxx@gmail.com";
+export const DELETE_REQUEST_TO = SITE.adminEmail;
 
 export function buildDeleteMail(v: { name: string; email: string; reason: string }) {
   const subject = `Vidyakalp account deletion request — ${v.email}`;

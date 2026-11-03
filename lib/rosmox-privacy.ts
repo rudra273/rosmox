@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
    ROSMOX company privacy policy — rendered at /privacy.
 
    DRAFT: written to match what this website actually does
-   (contact form → email via Resend, cookieless Vercel Web
+   (contact form → email via Brevo, cookieless Vercel Web
    Analytics + Speed Insights, hosting logs). Have it reviewed
    by a lawyer before launch, and update it whenever the site
    starts collecting anything new.
@@ -22,7 +22,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Who we are",
       body: [
-        `ROSMOX designs and builds AI products, web and mobile software. When this policy says "we", "us" or "our", it means ROSMOX. You can reach us about anything in this policy at ${SITE.email}.`,
+        `ROSMOX designs and builds AI products, web and mobile software. When this policy says "we", "us" or "our", it means ROSMOX. You can reach us about anything in this policy at ${SITE.adminEmail}.`,
       ],
     },
     {
@@ -51,7 +51,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Who we share it with",
       body: [
-        "We use a small number of service providers who process data on our behalf, under contract and only to provide their service: Vercel (website hosting, analytics and performance monitoring) and Resend (delivering contact-form messages to our inbox).",
+        "We use a small number of service providers who process data on our behalf, under contract and only to provide their service: Vercel (website hosting, analytics and performance monitoring) and Brevo (delivering contact-form messages to our inbox).",
         "We may also disclose information if the law requires it, or to protect our rights and the safety of others.",
       ],
     },
@@ -76,7 +76,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Your rights",
       body: [
-        `Depending on where you live — including under India's Digital Personal Data Protection Act and the GDPR — you can ask to access, correct or delete the personal information we hold about you, or object to how we use it. Email ${SITE.email} and we'll respond as quickly as we can, and within the time the law requires.`,
+        `Depending on where you live — including under India's Digital Personal Data Protection Act and the GDPR — you can ask to access, correct or delete the personal information we hold about you, or object to how we use it. Email ${SITE.adminEmail} and we'll respond as quickly as we can, and within the time the law requires.`,
       ],
     },
     {

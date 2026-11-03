@@ -77,8 +77,8 @@ export default function DeleteAccountForm() {
 
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
-          Website
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          Leave this empty
+          <input type="text" name="_gotcha" tabIndex={-1} autoComplete="new-password" />
         </label>
       </div>
 

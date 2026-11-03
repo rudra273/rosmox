@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { BLOG_POSTS } from "@/lib/blog";
 import { PRODUCTS } from "@/lib/products";
 import { SERVICES } from "@/lib/services";
 import { SITE } from "@/lib/site";
@@ -8,7 +9,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
     { url: SITE.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE.url}/solutions`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE.url}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    ...BLOG_POSTS.map((post) => ({
+      url: `${SITE.url}/blog/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     ...SERVICES.map((s) => ({
       url: `${SITE.url}${s.href}`,

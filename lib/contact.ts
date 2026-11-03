@@ -21,7 +21,7 @@ export const LIMITS = {
 } as const;
 
 /** Submissions faster than this after render are treated as bots */
-export const MIN_FILL_MS = 2500;
+export const MIN_FILL_MS = 1200;
 
 export type ContactField = "name" | "email" | "company" | "message";
 
