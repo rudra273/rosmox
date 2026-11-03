@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
    ROSMOX company privacy policy — rendered at /privacy.
 
    DRAFT: written to match what this website actually does
-   (contact form → email via Resend, cookieless Vercel Web
+   (contact form → email via Brevo, cookieless Vercel Web
    Analytics + Speed Insights, hosting logs). Have it reviewed
    by a lawyer before launch, and update it whenever the site
    starts collecting anything new.
@@ -51,7 +51,7 @@ export const ROSMOX_PRIVACY: PrivacyPolicyContent = {
     {
       title: "Who we share it with",
       body: [
-        "We use a small number of service providers who process data on our behalf, under contract and only to provide their service: Vercel (website hosting, analytics and performance monitoring) and Resend (delivering contact-form messages to our inbox).",
+        "We use a small number of service providers who process data on our behalf, under contract and only to provide their service: Vercel (website hosting, analytics and performance monitoring) and Brevo (delivering contact-form messages to our inbox).",
         "We may also disclose information if the law requires it, or to protect our rights and the safety of others.",
       ],
     },

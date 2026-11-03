@@ -152,8 +152,8 @@ export default function ContactForm({ tone = "dark" }: { tone?: Tone }) {
             {/* spam trap (the fill timer is added to the form data on submit) */}
             <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
               <label>
-                Website
-                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                Leave this empty
+                <input type="text" name="_gotcha" tabIndex={-1} autoComplete="new-password" />
               </label>
             </div>
 
