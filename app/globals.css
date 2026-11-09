@@ -10,8 +10,8 @@
   --color-elevated: #0d1424; /* cards on dark */
 
   /* Light surfaces */
-  --color-paper: #f6f8fc; /* white sections */
-  --color-paper-2: #eceff5; /* secondary light surface */
+  --color-paper: #fff; /* white sections */
+  --color-paper-2: #fff; /* secondary light surface */
 
   /* Brand */
   --color-primary: #4da2ff; /* key blue — fills, accents on dark */

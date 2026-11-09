@@ -45,7 +45,7 @@ export default function Faq() {
         <Eyebrow tone="light">FAQ</Eyebrow>
       </Reveal>
 
-      <div className="mt-6 rounded-lg bg-paper-2/70 p-6 md:p-8 lg:p-12">
+      <div className="mt-6 rounded-lg border border-ink/10 bg-paper-2 p-6 md:p-8 lg:p-12">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* ── Left — heading + direct line ── */}
           <div className="flex flex-col">
@@ -81,7 +81,7 @@ export default function Faq() {
               return (
                 <li
                   key={f.q}
-                  className={`rounded-md bg-white transition-shadow duration-300 ${
+                  className={`rounded-md border border-ink/10 bg-white transition-shadow duration-300 ${
                     isOpen
                       ? "shadow-[0_0_0_1px_rgba(26,102,209,0.25),0_16px_40px_-24px_rgba(4,6,13,0.35)]"
                       : "shadow-[0_1px_0_rgba(4,6,13,0.04)] hover:shadow-[0_0_0_1px_rgba(4,6,13,0.08)]"
